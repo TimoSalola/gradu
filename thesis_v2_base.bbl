@@ -1,0 +1,44 @@
+\newcommand{\http}{\texttt{http:$\sslash$}}\newcommand{\ftp}{\texttt{ftp:$\sslash$}}\newcommand{\place}[1]{}\begin{thebibliography}{1}
+
+\bibitem{navid_australian_article}
+N.~Haghdadi, J.~Copper, A.~Bruce, and I.~MacGill,
+\newblock {``A method to estimate the location and orientation of distributed
+  photovoltaic systems from their generation output data,''} {\em Renew.
+  Energy} {\bfseries 108}, 390--400 (2017).
+
+\bibitem{older_solar_solver_article}
+M.~K. Williams, S.~L. Kerrigan, and A.~Thornton,
+\newblock {``Automatic detection of PV system configuration,''} {\em
+  Proceedings of World Renewable Energy Forum} (2012).
+
+\bibitem{hbook1}
+H.~Böök., Poikonen, A., Aarva, A., Mielonen, T., Pitkänen, M.R.A., Lindfors,
+  and A.V.,
+\newblock {``Photovoltaic system modeling: A validation study at high latitudes
+  with implementation of a novel DNI quality control method.,''} {\em Sol
+  Energy} {\bfseries 204}, 316--329 (2020).
+
+\bibitem{perez}
+R.~Perez, P.~Ineichen, R.~Seals, J.~Michalsky, and R.~Stewart,
+\newblock {``Modeling daylight availability and irradiance components from
+  direct and global irradiance,''} {\em Solar Energy} {\bfseries 44}, 271--289
+  (1990).
+
+\bibitem{sandia_poa_dhi}
+S.~N. Laboratories,
+\newblock {``POA Sky Diffuse,''} ({\textbf{!!YEAR!!}}).
+
+\bibitem{sandia_poa_dni}
+S.~N. Laboratories,
+\newblock {``POA Beam,''} ({\textbf{!!YEAR!!}}).
+
+\bibitem{sandia_poa_ghi}
+S.~N. Laboratories,
+\newblock {``POA Ground Reflected,''} ({\textbf{!!YEAR!!}}).
+
+\bibitem{solarnoonpattern}
+dunno lol,
+  \url{https://ysjournal.com/astrophysics/analemma-the-suns-journey-in-the-sky/}
+  (visited on 2023-11-12).
+
+\end{thebibliography}
