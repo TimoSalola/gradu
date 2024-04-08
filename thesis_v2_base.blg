@@ -14,55 +14,55 @@ A level-1 auxiliary file: v2_remarks.aux
 A level-1 auxiliary file: v2_appendix.aux
 Database file #1: example_refs.bib
 Warning--entry type for "sandia_poa_ghi" isn't style-file defined
---line 38 of file example_refs.bib
+--line 48 of file example_refs.bib
 Warning--entry type for "sandia_poa_dni" isn't style-file defined
---line 44 of file example_refs.bib
+--line 54 of file example_refs.bib
 Warning--entry type for "sandia_poa_dhi" isn't style-file defined
---line 50 of file example_refs.bib
+--line 60 of file example_refs.bib
 Warning--I didn't find a database entry for "fibolat2"
 Warning--I didn't find a database entry for "github_source"
 Warning--there's no year in sandia_poa_dhi
 Warning--there's no year in sandia_poa_dni
 Warning--there's no year in sandia_poa_ghi
-You've used 8 entries,
+You've used 9 entries,
             2422 wiz_defined-function locations,
-            599 strings with 6003 characters,
-and the built_in function-call counts, 1647 in all, are:
-= -- 159
-> -- 90
+            607 strings with 6261 characters,
+and the built_in function-call counts, 1884 in all, are:
+= -- 188
+> -- 98
 < -- 0
-+ -- 34
-- -- 26
-* -- 145
-:= -- 269
-add.period$ -- 8
-call.type$ -- 8
++ -- 37
+- -- 28
+* -- 166
+:= -- 307
+add.period$ -- 9
+call.type$ -- 9
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 64
-empty$ -- 152
-format.name$ -- 26
-if$ -- 376
+cite$ -- 12
+duplicate$ -- 75
+empty$ -- 174
+format.name$ -- 28
+if$ -- 433
 int.to.chr$ -- 0
-int.to.str$ -- 8
+int.to.str$ -- 9
 missing$ -- 1
-newline$ -- 34
-num.names$ -- 7
-pop$ -- 23
+newline$ -- 38
+num.names$ -- 8
+pop$ -- 24
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 31
+skip$ -- 34
 stack$ -- 0
-substring$ -- 63
-swap$ -- 18
+substring$ -- 78
+swap$ -- 21
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 10
-width$ -- 9
-write$ -- 71
+while$ -- 12
+width$ -- 10
+write$ -- 81
 (There were 8 warnings)

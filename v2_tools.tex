@@ -330,7 +330,7 @@ These irradiance types are present in both the simpler PVlib POA based model and
 
 \subsection{Panel surface projections}
 
-The first step in the improved model is panel surface projection. Sandia National Laboratories, the original author of PVlib suggests the following two equations for DNI and GHI projection and five alternative models for DHI projection. Perez 1990 model \cite{perez} was chosen for DNI projections due to the use of the model by a co-worker at FMI and inclusion in Sandia suggested projection models \cite{sandia_poa_dhi}. For implementation of DNI, DHI and GHI equations, see thesis source code.
+The first step in the improved model is panel surface projection. Sandia National Laboratories, the original author of PVlib suggests the following two equations for DNI and GHI projection and five alternative models for DHI projection. Perez 1990 model \cite{perez} was chosen for DHI projections due to the use of the model by a co-worker at FMI and inclusion in Sandia suggested projection models \cite{sandia_poa_dhi}. For implementation of DNI, DHI and GHI equations, see thesis source code.
 
 %As there are three irradiance types with different apparent sources and thus directions, three irradiance projection functions are needed. The simplest way to project DNI and DHI to panel surface is to use the equations $DNI_{proj}= DNI* sin(AOI)$ and $DHI_{proj}= DHI* sin(tilt)$ both of which are mathematically trivial. However ground reflected irradiance projection is not as simple. The original author of PVlib, Sandia National Laboratories recommends the use the following two equations for DNI and GHI, offering five different models for DHI. 
 
@@ -343,6 +343,8 @@ The first step in the improved model is panel surface projection. Sandia Nationa
 DNI_{proj}(DNI, AOI)= DNI*cos(AOI)
 \end{split}
 \end{equation}
+Where $AOI$ is the angle of incidence.
+
 
 \noindent\textbf{GHI projection}\cite{sandia_poa_ghi}
 %
@@ -353,6 +355,11 @@ GHI_{proj}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
 \end{split}
 \end{equation}
 
+\noindent Where
+\noindent $albedo = 0.151$ This represents ground reflectivity near the solar PV installation. The value varies significantly depending on the area, season and time of day. A fixed value is used as terrain, weather and snow cover are assumed to be unknown.
+
+\noindent $tilt$ is the tilt angle of the PV installation, this is $15^\circ$ for both FMI installations.
+
 %\noindent\textbf{DHI projection}\cite{sandia_poa_dhi}
 %\begin{equation}
 %\begin{split}
@@ -361,8 +368,49 @@ GHI_{proj}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
 %\end{split}
 %\end{equation}
 
-
+\newpage
 \subsection{Reflection estimation}
+The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a solar simulator and a physical contraption in which different types of solar panels were rotated and their outputs were measured. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.q. a value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
+
+\noindent\textbf{DNI reflective lossess}
+
+%
+\begin{equation}
+\begin{split}
+\label{solar_reflecive_dni_loss}
+DNI_{reflected}= exp(-\frac{1}{a_r}(c_1 p +c_2 p^2))
+\end{split}
+\end{equation}
+
+\noindent Where
+
+$p= sin(tilt) + \frac{tilt-sin(tilt)}{1-cos(tilt)}$
+
+$a_r = 0.159$ Empirical reflectance constant for polycrystalline silicon solar PV panels.
+
+$c_1= \frac{4}{3\pi}$  Fitting parameter 1.
+
+$c_2 = -0.074$ Fitting parameter 2.
+
+
+\noindent\textbf{DHI reflective lossess}
+%
+\begin{equation}
+\begin{split}
+\label{solar_reflecive_dhi_loss}
+DHI_{reflected}= exp(-\frac{•}{•})
+\end{split}
+\end{equation}
+
+\noindent\textbf{GHI reflective lossess}
+%
+\begin{equation}
+\begin{split}
+\label{solar_reflecive_ghi_loss}
+GHI_{reflected}
+\end{split}
+\end{equation}
+
 
 
 \subsection{Panel temperature estimation}
