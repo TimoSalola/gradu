@@ -315,7 +315,7 @@ The problem of solving installation parameters lies somewhere in between the two
 
 
 \noindent 
-The improved PV model introduces some new concepts, the most important of which are the following irradiance types. 
+The improved PV model introduces some new concepts, among which are the following irradiance types.
 
 \begin{itemize}
 \item DNI is diffused normal irradiance which represents direct sunlight received by a 1m² -sized plane with AOI of 0 degrees. Note that athmosphere scattered or ground reflected irradiance are not components of DNI.
@@ -369,36 +369,27 @@ GHI_{proj}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
 %\end{equation}
 
 \newpage
-\subsection{Reflection estimation}
-The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a solar simulator and a physical contraption in which different types of solar panels were rotated and their outputs were measured. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.q. a value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
+\subsection{Reflection estimation and absorbed irradiance}
+The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a solar simulator and a physical contraption in which different types of solar panels were rotated and their outputs were measured. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.q. a $DNI_{reflected}$ value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
 
 \noindent\textbf{DNI reflective lossess}
 
-%
-\begin{equation}
+% THIS IS F_A(Beta) in original source
+\begin{equation} 
 \begin{split}
-\label{solar_reflecive_dni_loss}
-DNI_{reflected}= exp(-\frac{1}{a_r}(c_1 p +c_2 p^2))
+\label{solar_reflecive_dni_loss} 
+DNI_{reflected}= exp(-\frac{1}{a_r}(c_1 p_1 +c_2 p_1^2))
 \end{split}
 \end{equation}
 
-\noindent Where
 
-$p= sin(tilt) + \frac{tilt-sin(tilt)}{1-cos(tilt)}$
-
-$a_r = 0.159$ Empirical reflectance constant for polycrystalline silicon solar PV panels.
-
-$c_1= \frac{4}{3\pi}$  Fitting parameter 1.
-
-$c_2 = -0.074$ Fitting parameter 2.
-
-
+% THIS IS F_D(Beta) in original source
 \noindent\textbf{DHI reflective lossess}
 %
 \begin{equation}
 \begin{split}
 \label{solar_reflecive_dhi_loss}
-DHI_{reflected}= exp(-\frac{•}{•})
+DHI_{reflected}= exp(-\frac{1}{a_r}(c_1 p_2 +c_2 p_2^2))
 \end{split}
 \end{equation}
 
@@ -407,13 +398,52 @@ DHI_{reflected}= exp(-\frac{•}{•})
 \begin{equation}
 \begin{split}
 \label{solar_reflecive_ghi_loss}
-GHI_{reflected}
+GHI_{reflected} = \frac{exp(-cos(\alpha)/a_r)- exp(-1/a_r)}{1-exp(-1/\alpha_r)}
 \end{split}
 \end{equation}
 
+\noindent Where
+
+$a_r = 0.159$ Empirical reflectance constant for polycrystalline silicon solar PV panels.
+
+$c_1= \frac{4}{3\pi}$  Fitting parameter 1.
+
+$c_2 = -0.074$ Fitting parameter 2.
+
+$p_1= sin(tilt) + \frac{tilt-sin(tilt)}{1-cos(tilt)}$
+
+$p_2= sin(tilt) + \frac{\pi - tilt-sin(tilt)}{1+cos(tilt)}$
+
+
+\noindent\textbf{Absorbed irradiance}
+
+\begin{equation}
+\begin{split}
+\label{solar_reflecive_absorbed}
+POA_{absorbed} = DNI(1-DNI_{reflected})+ DHI(1-DHI_{reflected})+GHI(1-GHI_{reflected})
+\end{split}
+\end{equation}
+
+\noindent Where DNI, DHI and GHI are solar irradiance values in watts.
 
 
 \subsection{Panel temperature estimation}
+
+
+$T_{panel} = T_{air} + POA_{absorbed} e ^{C_a+ C_b*w}$
+
+Where 
+
+$T_{air}$ is estimated air temperature in $^\circ C$.
+
+$C_a = -3.47$ Model fitting constant.
+
+$C_b = -0.0594$ Model fitting constant. 
+
+$w = w_{2m}*(elevation/10)^{0.1429}$ Wind speed at 2m to wind speed at panel elevation equation.
+
+
+This panel temperature estimation equation 
 
 
 \subsection{Output estimation}

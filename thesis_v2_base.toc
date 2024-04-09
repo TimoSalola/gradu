@@ -12,40 +12,40 @@
 \contentsline {section}{\numberline {3.2}Increasing the accuracy of solar PV simulations}{20}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Improved PV model}{21}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Panel surface projections}{22}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Reflection estimation}{23}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Panel temperature estimation}{23}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Output estimation}{23}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Results}{23}{subsection.3.2.6}%
-\contentsline {chapter}{\numberline {4}Estimating geographic location}{25}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Estimating geographic longitude}{26}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Longitude estimation results}{30}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Possible issues and further development ideas}{31}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Estimating geographic latitude}{33}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Latitude algorithm}{33}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Latitude algorithm visualization}{34}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Improving latitude prediction algorithm}{34}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Latitude estimation results}{36}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Possible issues and further development ideas}{37}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Combined latitude and longitude estimations}{38}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Estimating panel angles}{40}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Prediction error function}{41}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Simulation error function}{44}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Area based error function}{45}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Alternative simulation error functions}{45}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Multiplier matching}{46}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Area based multiplier matching}{46}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Segmented multiplier matching}{47}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Translating multiplier values to PV system rated power values}{50}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}Angle space discretization}{51}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Importance of lattice density}{53}{subsection.5.4.1}%
-\contentsline {section}{\numberline {5.5}Solving panel angles}{54}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Evaluation of exhaustive search results}{56}{subsection.5.5.1}%
-\contentsline {section}{\numberline {5.6}Fast panel angle solving}{57}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Gradient search}{58}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Possible issues and further development ideas}{59}{subsection.5.6.2}%
-\contentsline {chapter}{\numberline {6}Conclusion}{61}{chapter.6}%
-\contentsline {chapter}{Appendix}{63}{chapter.6}%
-\contentsline {section}{\numberline {.1}Code samples}{63}{section.Alph0.1}%
-\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{63}{subsection.Alph0.1.1}%
-\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{66}{subsection.Alph0.1.2}%
-\contentsline {chapter}{References}{68}{section*.48}%
+\contentsline {subsection}{\numberline {3.2.3}Reflection estimation and absorbed irradiance}{23}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Panel temperature estimation}{24}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Output estimation}{24}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Results}{24}{subsection.3.2.6}%
+\contentsline {chapter}{\numberline {4}Estimating geographic location}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Estimating geographic longitude}{27}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Longitude estimation results}{31}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Possible issues and further development ideas}{32}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Estimating geographic latitude}{34}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Latitude algorithm}{34}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Latitude algorithm visualization}{35}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Improving latitude prediction algorithm}{35}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Latitude estimation results}{37}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Possible issues and further development ideas}{38}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Combined latitude and longitude estimations}{39}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Estimating panel angles}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Prediction error function}{42}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Simulation error function}{45}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Area based error function}{46}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Alternative simulation error functions}{46}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Multiplier matching}{47}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Area based multiplier matching}{47}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Segmented multiplier matching}{48}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Translating multiplier values to PV system rated power values}{51}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Angle space discretization}{52}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Importance of lattice density}{54}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Solving panel angles}{55}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Evaluation of exhaustive search results}{57}{subsection.5.5.1}%
+\contentsline {section}{\numberline {5.6}Fast panel angle solving}{58}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Gradient search}{59}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Possible issues and further development ideas}{60}{subsection.5.6.2}%
+\contentsline {chapter}{\numberline {6}Conclusion}{62}{chapter.6}%
+\contentsline {chapter}{Appendix}{64}{chapter.6}%
+\contentsline {section}{\numberline {.1}Code samples}{64}{section.Alph0.1}%
+\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{64}{subsection.Alph0.1.1}%
+\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{67}{subsection.Alph0.1.2}%
+\contentsline {chapter}{References}{69}{section*.48}%
