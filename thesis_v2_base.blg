@@ -24,45 +24,48 @@ Warning--I didn't find a database entry for "github_source"
 Warning--there's no year in sandia_poa_dhi
 Warning--there's no year in sandia_poa_dni
 Warning--there's no year in sandia_poa_ghi
-You've used 9 entries,
+`school' is a missing field, not a string, for entry king2004
+while executing---line 1036 of file uefunsrt.bst
+Warning--empty school in king2004
+You've used 10 entries,
             2422 wiz_defined-function locations,
-            607 strings with 6261 characters,
-and the built_in function-call counts, 1884 in all, are:
-= -- 188
-> -- 98
+            613 strings with 6351 characters,
+and the built_in function-call counts, 2059 in all, are:
+= -- 204
+> -- 109
 < -- 0
-+ -- 37
-- -- 28
-* -- 166
-:= -- 307
-add.period$ -- 9
-call.type$ -- 9
++ -- 41
+- -- 31
+* -- 184
+:= -- 341
+add.period$ -- 10
+call.type$ -- 10
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 75
-empty$ -- 174
-format.name$ -- 28
-if$ -- 433
+cite$ -- 14
+duplicate$ -- 82
+empty$ -- 187
+format.name$ -- 31
+if$ -- 469
 int.to.chr$ -- 0
-int.to.str$ -- 9
+int.to.str$ -- 10
 missing$ -- 1
-newline$ -- 38
-num.names$ -- 8
-pop$ -- 24
+newline$ -- 43
+num.names$ -- 9
+pop$ -- 27
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 34
+skip$ -- 35
 stack$ -- 0
 substring$ -- 78
-swap$ -- 21
+swap$ -- 22
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 3
-while$ -- 12
-width$ -- 10
-write$ -- 81
-(There were 8 warnings)
+warning$ -- 4
+while$ -- 13
+width$ -- 12
+write$ -- 91
+(There was 1 error message)

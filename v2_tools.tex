@@ -370,7 +370,7 @@ GHI_{proj}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
 
 \newpage
 \subsection{Reflection estimation and absorbed irradiance}
-The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a solar simulator and a physical contraption in which different types of solar panels were rotated and their outputs were measured. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.q. a $DNI_{reflected}$ value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
+The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a physical contraption in which solar panels were rotated under a light beam from a solar simulator. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.q. a $DNI_{reflected}$ value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
 
 \noindent\textbf{DNI reflective lossess}
 
@@ -416,39 +416,87 @@ $p_2= sin(tilt) + \frac{\pi - tilt-sin(tilt)}{1+cos(tilt)}$
 
 
 \noindent\textbf{Absorbed irradiance}
-
 \begin{equation}
 \begin{split}
 \label{solar_reflecive_absorbed}
-POA_{absorbed} = DNI(1-DNI_{reflected})+ DHI(1-DHI_{reflected})+GHI(1-GHI_{reflected})
+POA_{absorbed} = DNI(1-DNI_{r})+ DHI(1-DHI_{r})+GHI(1-GHI_{r})
 \end{split}
 \end{equation}
 
-\noindent Where DNI, DHI and GHI are solar irradiance values in watts.
+\noindent Where $DNI$, $DHI$ and $GHI$ are solar irradiance values in watts and $DNI_r$, $DHI_r$, $GHI_r$ refer to \ref{solar_reflecive_dni_loss}, \ref{solar_reflecive_dhi_loss} and \ref{solar_reflecive_ghi_loss}.
+
+
+
 
 
 \subsection{Panel temperature estimation}
+Panel temperatures need to be estimated as the efficiency of solar panels depends on panel temperature. This can be accomplished with the following King et al 2004 model\cite{king2004} if air temperature, wind speed and absorbed radiation are known. Note that as the model does not take the thermal capacity of the panels into account, the actual panel temperature is likely smoother and delayed compared to modeled temperature.
 
+\noindent\textbf{Panel temperature}
+\begin{equation}
+\begin{split}
+\label{panel_temp}
+T_{panel} = T_{air} + POA_{absorbed} e ^{C_a+ C_b*w}
+\end{split}
+\end{equation}
 
-$T_{panel} = T_{air} + POA_{absorbed} e ^{C_a+ C_b*w}$
+\noindent Where 
 
-Where 
-
-$T_{air}$ is estimated air temperature in $^\circ C$.
+$T_{air}$ is air temperature in $^\circ C$.
 
 $C_a = -3.47$ Model fitting constant.
 
 $C_b = -0.0594$ Model fitting constant. 
 
-$w = w_{2m}*(elevation/10)^{0.1429}$ Wind speed at 2m to wind speed at panel elevation equation.
+$w$ is wind speed at panel elevation.
 
 
-This panel temperature estimation equation 
+\vspace{6mm}
 
+\noindent As air temperature and wind speed are unknown, dummy values have to be used for both variables. Air temperatures of 20$^\circ C$ and wind speed of 2m/s were used as dummy values.
 
+\newpage
 \subsection{Output estimation}
+Now that the absorbed radiation and panel temperature are known, the output can be estimated with Huld et al 2010 model \cite{huld2010}.
+
+\noindent\textbf{PV output model}
+\begin{equation}
+\begin{split}
+\label{pv_output_model}
+P_{output} = P_{rated}  P_n  \eta_{rel}
+\end{split}
+\end{equation}
+
+\noindent Where 
+
+$P_{rated}$ is the rated power of the system in kW.
+
+$P_n = \frac{POA_{absorbed}}{1000}$
+
+%$POA_{absorbed}$ is \ref{solar_reflecive_absorbed}.
+
+$\eta_{rel}= 1+k_1 ln(P_n) + k_2 ln(P_n)^2 + T_{diff}(k_3) + k_4 ln(P_n) + k_5 ln(P_n)^2 + k_6 T_{diff}^2$
+
+In $\eta_{rel}$ the variables $k_1$ to $k_6$ are fitting parameters and $T_{diff}$ is $T_{panel}-25^\circ C$.
+
+\begin{table}[h]
+\begin{tabular}{l|l|l|l|l|l}
+k1        & k2        & k3        & k4       & k5       & k6       \\ \hline
+-0.017162 & -0.040289 & -0.004681 & 0.000148 & 0.000169 & 0.000005
+\end{tabular}
+\end{table}
+
+\noindent This leaves the rated power of the system as an unknown parameter. For unknown PV systems, the $P_{rated}$ value can be estimated by comparing the measured power output to simulated power output with a theoretical 1kW system. Visualization of this process with POA simulations and real measurements is shown in \ref{fig_area_match}.
 
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{pics/areamatching2}
+\figcaption{Measurement data from FMI Helsinki dataset, POA irradiance simulation was computed with FMI Kumpula coordinates and installation angle parameters.}
+\label{fig_area_match}
+\end{figure}
+
+\newpage
 \subsection{Results}
 
 

@@ -1,4 +1,4 @@
-\newcommand{\http}{\texttt{http:$\sslash$}}\newcommand{\ftp}{\texttt{ftp:$\sslash$}}\newcommand{\place}[1]{}\begin{thebibliography}{1}
+\newcommand{\http}{\texttt{http:$\sslash$}}\newcommand{\ftp}{\texttt{ftp:$\sslash$}}\newcommand{\place}[1]{}\begin{thebibliography}{10}
 
 \bibitem{navid_australian_article}
 N.~Haghdadi, J.~Copper, A.~Bruce, and I.~MacGill,
@@ -42,6 +42,11 @@ N.~Martin~Chivelet and J.~Ruiz,
   conditions by means of an analytical model (vol 70, pg 25, 2001),''} {\em
   Solar Energy Materials and Solar Cells - SOLAR ENERG MATER SOLAR CELLS}
   {\bfseries 70}, 25--38 (2001).
+
+\bibitem{king2004}
+D.~King, J.~Kratochvil, and W.~Boyson,
+\newblock {\em Photovoltaic Array Performance Model}, Vol. 8, ,
+\newblock PhD thesis 2004).
 
 \bibitem{solarnoonpattern}
 dunno lol,
