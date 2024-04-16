@@ -475,7 +475,7 @@ $P_n = \frac{POA_{absorbed}}{1000}$
 
 %$POA_{absorbed}$ is \ref{solar_reflecive_absorbed}.
 
-$\eta_{rel}= 1+k_1 ln(P_n) + k_2 ln(P_n)^2 + T_{diff}(k_3) + k_4 ln(P_n) + k_5 ln(P_n)^2 + k_6 T_{diff}^2$
+$\eta_{rel}= 1+k_1 ln(P_n) + k_2 ln(P_n)^2 + T_{diff}k_3 + k_4 ln(P_n) + k_5 ln(P_n)^2 + k_6 T_{diff}^2$
 
 In $\eta_{rel}$ the variables $k_1$ to $k_6$ are fitting parameters and $T_{diff}$ is $T_{panel}-25^\circ C$.
 
@@ -486,7 +486,8 @@ k1        & k2        & k3        & k4       & k5       & k6       \\ \hline
 \end{tabular}
 \end{table}
 
-\noindent This leaves the rated power of the system as an unknown parameter. For unknown PV systems, the $P_{rated}$ value can be estimated by comparing the measured power output to simulated power output with a theoretical 1kW system. Visualization of this process with POA simulations and real measurements is shown in \ref{fig_area_match}.
+\noindent %This leaves the rated power of the system as an unknown parameter. 
+For unknown PV systems, the $P_{rated}$ value can be estimated by comparing the measured power output to simulated power output with a theoretical 1kW system. Visualization of this process with POA simulations and real measurements is shown in \ref{fig_area_match}.
 
 
 \begin{figure}[h]
