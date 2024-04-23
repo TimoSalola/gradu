@@ -38,9 +38,9 @@ The space of possible panel installation angles can be thought as a half unit sp
 \noindent Estimating panel installation angles requires the use of multiple functions, each of which can be defined in multiple ways. These functions are defined in the following sections.
 \begin{itemize}
   \item Prediction error function for quantifying how good a prediction was when the correct panel parameters are known.
-  \item Model error function for measuring the error between simulated power values and measured power values.
-  \item Multiplier matching function for matching the magnitude of simulated power values with the magnitude of measurements.
-  \item Angle space discretization function for discretizing the angle space into $n$ discrete points which can then be tested with model error function.
+  \item Model fitness function for measuring the difference between simulated power values and measured power values.
+  %\item Multiplier matching function for matching the magnitude of simulated power values with the magnitude of measurements.
+  \item Angle space discretization function for discretizing the angle space into $n$ discrete points which can then be tested with model fitness function.
 \end{itemize}
 
 
@@ -50,7 +50,7 @@ The space of possible panel installation angles can be thought as a half unit sp
 %The first part in developing a panel installation estimation algorithm is creating a metric for measuring how well the algorithm performs. 
 In this thesis, the proposed error estimation method combines the tilt and azimuth delta values into one error angle value, the angular distance between two points on a spherical surface. The goal is then to develop a panel angle estimation function which achieves the lowest angle error value with the available datasets.
 
-Alternative approaches can also be chosen as the function or functions for measuring the distance between two points in angle space can be defined in multiple ways. The simplest way is to use the delta of known tilt and azimuth angles as two separate error values without normalizing in any way. This method was used in Hagdadi's 2017 article but such values are not direcly comparable between installations as the significance of azimuth delta depends on tilt angle.
+Alternative approaches can also be chosen as the function or functions for measuring the distance between two points in angle space can be defined in multiple ways. The simplest way is to use the delta of known tilt and azimuth angles as two separate error values without normalizing in any way. This method was used in Hagdadi's 2017\cite{navid_australian_article} article but such values are not direcly comparable between installations as the significance of azimuth delta depends on tilt angle.
 
 %Measuring the distance between two coordinate pairs in angle space is more complicated than measuring errors in latitudinal or longitudinal degrees. This difficulty rises from how the azimuth angle lines converge at the pole, resulting in a coordinate system where azimuth delta values are disconnected from the phenomena which they are trying to describe. If the tilt angle is near zero, azimuth delta becomes meaningless but at high tilt angles, even small azimuth delta values can be significant. If this is not corrected for, using azimuth and tilt deltas (changes in angles) as algorithm performance metrics would incorrectly suggest that the data quality of low tilt installations is lower than that of high tilt installations, or that the system is less capable of estimating the parameters of low tilt installations. Due to these reasons, a better way of measuring the distance between two points is needed, luckily the center angle between two points on an unit sphere is easy to solve with geometry and the resulting equation is rather simple.
 
@@ -129,215 +129,33 @@ Where
 
 
 \newpage
-\section{Simulation error function}
+\section{Simulation fitness function}
 \label{section_simulation_error_function}
-Simulation error function measures how much the predicted power generation values vary from the measured power generation values. The purpose of the simulation error function is to be able to generate a single numerical value which describes how well a certain parameter combination models the measurements. By then testing out multiple parameter combinations, the combination with the lowest simulation error function value should be the best fit and the parameters used for the simulation should be within a small error of the physical parameters of the solar PV installation. In \ref{fig_error} the error between a cloud free day and randomly chosen set of wrong simulation parameters is visualized.
 
+The earlier model error function defined in \ref{pv_model_delta} can be re-used as the simulation fitness function. By then computing multiple simulations with different panel angles and choosing the simulation with the best fitness, meaning lowest delta value, the panel angle values can be estimated.
 
+\vspace{6mm}
+\noindent\textbf{Simulation fitness function}
+\begin{equation}
+\begin{split}
+\label{pv_model_delta}
+Delta_{model} = \sum_{t=1}^{1440} |P_{measured}(t) - P_{simulated}(t)| /1440
+\end{split}
+\end{equation}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\linewidth]{pics/error}
-\figcaption{Error area between measured power values and simulated irradiance values with different panel installation angles.}
-\label{fig_error}
-\end{figure}
+%The earlier simulation error function defined in \ref{pv_model_delta} can be used for evaluating how well a simulated power output curve fits measured power data. By then simulating the power output with several installation parameters and 
 
 
+%By simulating power generation with different parameter combinations and choosing the set of parameters with the lowest delta value, 
 
-\newpage
-\subsection{Area based error function}
-%\noindent \textbf{Area based error function}
-The following function can be used in order to get a numerical value which signifies the area between simulated and measured power values. 
 
-\begin{align}
-	Error =  \Sigma_{t=0}^{1439} |m(t)-p(t)| \label{areaerror}
-\end{align}
 
-\noindent Where $m(t)$ is the measured power at minute $t$ and $p(t)$ is simulated power at minute $t$.
+%Simulation error function measures how much the predicted power generation values vary from the measured power generation values. The purpose of the simulation error function is to be able to generate a single numerical value which describes how well a certain parameter combination models the measurements. By then testing out multiple parameter combinations, the combination with the lowest simulation error function value should be the best fit and the parameters used for the simulation should be within a small error of the physical parameters of the solar PV installation. In \ref{fig_error} the error between a cloud free day and randomly chosen set of wrong simulation parameters is visualized.
 
-\vspace{5mm}
-\noindent The error values can also be normalized so that the error value reflects the average percentual deviation between the measured and modeled values for each minute.
-
-\begin{align}
-	Error\_per\_minute =  \frac{\Sigma_{t=a}^{b} m(t)/p(t)}{b-a} \label{areaerrorpercents}
-\end{align}
-
-\noindent Where $m(t)$ is the measured power at minute $t$ and $p(t)$ is simulated power at minute $t$. And $a$ and $b$ are the first and last non-zero power minutes.
-
-\subsection{Alternative simulation error functions}
-\noindent Other error estimation methods could be used as well. Skew values, peak power generation minutes and other similar charasteristics could be measured and matched. The benefit of such charasteristics matching based error algorithms is that charasteristics errors have a direction as well as magnitude and these could be used in order to estimate the proximity and direction of the best fit in angle space. 
-
-The downsides of using charasteristics are that measurement data contains noise which can distort the estimated values of charasteristics and having a direction and a magnitude is of limited value unless additional functions are created for turning these error values into directions in parameter space. These relationships between traits, their error directions and magnitudes could prove to be difficult to solve.
-
-
-% Examples of some of the possible charasteristics can be seen in \ref{fig_charasteristics}.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\linewidth]{pics/poa_charasteristics}
-\figcaption{Center of mass, highest value and knee minute marked on a simulated POA irradiance figure. Note that the knee minute is not as distinct on the improved solar PV model.}
-\label{fig_charasteristics}
-\end{figure}
-
-
-
-
-\newpage
-\section{Multiplier matching}
-As the plane of array irradiance model models the solar radiation towards a virtual 1 m$^2$ sized panel, using the values to simulate the power generation of a solar power installation requires the use of a multiplier. This multiplier is related to the efficiency and the surface area of the solar PV installation.
-
-%holds information on the surface area and the efficiency of the solar panel installation. %For example, a 1 m$^2$ installation with the efficiency of 15\% would have the multiplier of 0.15 while as a 10 m$^2$ installation with the same efficiency would require the multiplier value to be 1.5. Thus the relationship between multiplier, efficiency and surface area is multiplier = efficiency*area.
-
-%The multiplier value can be necessary for installation angle solving depending on the methods used, luckily solving the multiplier value can be almost trivial.
-
-\subsection{Area based multiplier matching}
-The multiplier value can be solved by making the assumption that a plane of array irradiance curve $p(t)$ with correct simulation parameters matches the measurements curve $m(t)$ in its shape but not magnitude. By calculating the sum of simulated and measured power values, their ratio can then be used as a multiplier. After scaling $p(t)$ with a multiplier to match $m(t)$ the two curves should be nearly inditinquishable. 
-%This matching can be done by taking sums of measured and simulated irradiance and power values over a day and generating a ratio based on these sums. Thus, multiplier can be defined as follows:
-
-\begin{align} 
-	M_{multiplier} =  \frac{\Sigma_{t=0}^{1439} m(t)}{\Sigma_{t=0}^{1439} p(t)}\label{function_multipliermatch}
-\end{align}
-
-%And if the two curves do not match in shape, multiplying the simulated values by a constant should not change this fact as the ratio between measurements $m(t_0)$ and any other measurement $m(t_1)$ stays the same when both are multiplied by a non-zero multiplier. While this means that the multiplier variable can not be solved separately from panel installation angles, the multiplier can still be estimated each time a new set of parameters is evaluated. As the multiplier estimation method relies on the computation of two sums, the operation is computationally fast.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\linewidth]{pics/areamatching2}
-\figcaption{Visualization of automated multiplier matching. Measurement data from FMI Helsinki dataset, POA irradiance simulation was computed with FMI Kumpula coordinates and installation angle parameters.}
-\label{fig_area_match}
-\end{figure}
-
-
-\newpage
-
-\subsection{Segmented multiplier matching}
-
-
-\noindent The earlier multiplier matching method falls apart if the measurements used for multiplier solving contain deviations caused by clouds, trees or other sources. If the energy production during a certain section of the day varies from the expected, then this abnormal segment will affect the resulting multiplier value. If these deviating segments could be avoided, then partially cloudy days could still be used for multiplier matching. The process of segmentation can be done with multiple different methods. Here the inverval between the first and the last non-zero power minute of the day was split into 10 segments of equivalent length.
-
-
-
-%day into multiple segments and then using the area matching algorithm on each of these segments to compute multiple multiplier values. If these multiplier values contain a tight cluster, then the average of this cluster can be used to approximate the correct multiplier value.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\linewidth]{pics/10segmentcloudy}
-\figcaption{Partially cloudy day split into 10 segments.}
-\label{fig_segment_match_segments}
-\end{figure}
-
-
-\noindent Now that the data is split into segments, the earlier area based multiplier algorithm can be used to compute a multiplier value for each segment. A mathematical representation for the segments $S_i$ multiplier $M_i$ could be as follows. 
-
-\begin{align}
-	M_i =  \frac{\Sigma_{t=a_i}^{b_i} m(t)}{\Sigma_{t=a_i}^{b_i} p(t)}
-\end{align}
-
-\noindent Where $a_i$ and $b_i$ are the first and last minutes of the interval \textit{i}.
-
-
-
-\begin{table}[!ht]
-\centering
-\begin{tabular}{c|c} \hline
-
-Interval & Multiplier\\
-\hline
-$[299, 367]$ & 1.26 \\
-$[368, 437]$ & 3.22 \\
-$[438, 506]$ & 16.56 \\
-$[507, 576]$ & 21.68 \\
-$[577, 646]$ & 21.58 \\
-$[647, 715]$ & 21.52 \\
-$[716, 785]$ & 21.23 \\
-$[786, 854]$ & 19.80 \\
-$[855, 924]$ & 16.08 \\
-$[925, 994]$ & 16.80 \\
-\hline\hline
-\end{tabular}
-\tabcaption{Segment based multiplier matching intervals and resulting multipliers. FMI Kumpula dataset day [2018 - 85] was used with irradiance simulation parameters listed in \ref{table_fmi_helsinki_kuopio_parameters}.}
-\label{table_segmentmatch1}
-\end{table}
-
-\vspace{10mm}
-
-\noindent In \ref{table_segmentmatch1} the segments 4 to 7 are all tightly grouped and their average is 21.50. These closely grouped segments, commonly referred to as clusters in the field of data science, can be identified algorithmically by locating a window that encompasses a relatively high number of values within it. For example a $\pm 5\%$ window $[M_i*0.95, M_i*1.05]$ would contain the cluster if any of the 4 cluster values was used as as $M_i$.
-
-A possible issue with the clustering algorithm could rise from random chance. The last multiplier values 16.08 and 16.80 are close enough to the early 16.56 that due to random variation in the data, the algorithm could in some cases choose the wrong multiplier value cluster. %Accuracy during these low production hours could be improved by using the improved PV model instead of POA, but as the 
-
-
-%The low values are unexpected as the plot appears to be free from cloud interference and it is possible that the deviation from the expected values occurs due to increased reflectivity of the solar panels resulting from a higher angle of incidence. This issue could be midigated to some extent by using a more advanced solar power generation simulation algorithm.
-
-
-% High reflectivity is especially difficult to account for in this stage as the panel angles are not yet known.
-
-
-%Regarding the observation that the last two segments result lower multiplier values than expected, despite the plot appearing to be smooth and interference free
-
-%absence of apparent cloud interference in the plot, one possible explanation could be attributed to increased reflectivity of the solar panels resulting from a higher angle of incidence. High reflectivity is especially difficult to account for in this stage as the panel angles are not yet known.
-
-% In figure \ref{fig_segment_match_segments} the same segments, marked in red to pink, can be seen to be well-behaving. The lower than expected multipliers for segments 1 to 3 are to be expected, but the deviance of segments 8 to 10 is somewhat unintuitive. One explanation could be higher reflectivity of the solar panels caused by the higher angle of incidence.
-
-
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\linewidth]{pics/segmentmatch1}
-\figcaption{Comparison of area and segmented area based multiplier matching algorithms on a partially cloudy day.}
-\label{fig_segment_match}
-\end{figure}
-
-
-%This can be seen in figure \ref{fig_segment_match} where a day from FMI Kumpula dataset is plotted against an area matched irraidance simulation. Here the low power generation during early minutes of the day results in an underestimated multiplier.
-
-%If this lower than normal power generation segment of the day could be algorithmically detected and avoided, the previously shown area matching algorithm would still allow the simulated curve to be matched with the non-cloudy section of the data. 
-
-
-
-%The table \ref{table_segmentmatch1} shows 10 different segments and their corresponding multiplier values when area matching algorithm is applied to them. In the ideal case, all of these multiplier values would be identical, but due to shading in the early hours of the day, the first multiplier values are much lower than they would be for a clear day. The important values in this table are the tightly grouped multipliers 21.69, 21.57, 21.55 and 21.30. Their average 21.52 was used for the segment matched purple line in \ref{fig_segment_match} and at least in this case, the segment matched curve follows the measurements closely through most of the day. 
-
-%This cluster of values can be detected algorithmically by taking each multiplier value $M_i$ and counting how many other values on the multiplier list fit with within the range of [$M_i - \delta $, $M_i + \delta $]. The more values that fit in this interval, the more likely those values are to perform well as the fitting multiplier. Delta value of 1 was used for figure \ref{fig_segment_match}. The clustering method and the delta values were arbitrarily chosen and so further experimentation with different clustering methods and delta values is recommended if such algorithms are applied to other datasets. For example, proportional instead of absolute ranges such as [$M_i (1- \delta) $, $M_i(1+\delta) $] may perform better when PV installations have differing power output ratings.
-
-
-%Methods similar to the segment multiplier matching algorithm detailed in this section could be used for detecting cloudy time periods or shading.
-
-
-
-
-
-
-\newpage
-
-\subsection{Translating multiplier values to PV system rated power values}
-As the simulated irradiance values are an estimation of power radiated towards a sigle square meter sized imaginary panel, the scaling multiplier can be used for estimating the power rating of a solar PV installation. The power ratings of PV installations describe the expected power generation in watts that could be expected to be generated during peak power generation hours if the panels were oriented optimally.
-
-With the help of the rated power value, the surface area of the panels can be estimated. The precise estimation is difficult as different panel types and panel age affect the efficiency of PV systems, but having some frame of reference for installation sizes could prove to be useful in other studies where lidar data or satellite images are available.
-
-\noindent \textbf{Rated power estimation equation}
-\begin{align}
-	RatedPower =  MP \label{ratedpower}
-\end{align}
-Where $M$ is the multiplier required to match the POA simulated values with measured values and $P$ is an estimation for solar irradiance per square meter or approximately 1000w. 
-
-\vspace{5mm}
-%The equation is as simple as it is because the plane of array irradiance simulations used for estimating the multiplier value already take the power generation losses due to different panel installation angles into account. 
-\noindent By using \ref{ratedpower} and the clustered multiplier values from \ref{table_segmentmatch1}, the power rating of the Helsinki installation would be estimated as 21.5KW which is within close proximity the reported 21KW in \ref{table_fmi_helsinki_kuopio_parameters}.
-
-
-
-
-
-\noindent \textbf{Panel area estimation equation}
-\begin{align}
-	PanelArea =  RatePower * \frac{1m^2}{\eta}
-\end{align}
-Where $\eta$ is the efficiency of solar panels, typically in the range of 0.15 to 0.20. The efficiency coefficient varies according to panel type, age, variance in manufacturing and other factors.
-\vspace{5mm}
 
 \newpage
 \section{Angle space discretization}\label{angle_space_discretization}
-The next step is angle space discretization. The panel angles are denoted with a doublet of tilt and azimuth values, ranging from 0 to 90 and 0 to 360 respectively. If the tilt and azimuth axes are discretized individually in steps of 5 so that tilt is [0, 5, 10, 15... 90] and azimuth [0, 5, 10, 15... 355], the permuations of these tilt and azimuth values create an even grid in the euclidean projection of angle space where x = tilt, y = azimuth. However as the physical phenomena represented by the angle values is not a point on a plane but a point on a half-sphere surface, this results in an uneven discretization \ref{fig_5step}. A better option is to use Fibonacci lattice \cite{fibolat2} for a more even distribution of points on a spherical surface \ref{fig_fibolat}.
+The next step is angle space discretization. The panel angles are denoted with a doublet of tilt and azimuth values, ranging from 0 to 90 and 0 to 360 respectively. If the tilt and azimuth axes are discretized individually in steps of 5 so that tilt is [0, 5, 10, 15... 90] and azimuth [0, 5, 10, 15... 355], the permuations of these tilt and azimuth values create an even grid in the euclidean projection of angle space where x = tilt, y = azimuth. However as the physical phenomena represented by the angle values is not a point on a plane but a point on a half-sphere surface, this results in an uneven discretization seen in figure \ref{fig_5step}. A better option is to use Fibonacci lattice \cite{fibolat} for a more even distribution of points on a spherical surface \ref{fig_fibolat}.
 
 %or another algorithm for a more even distribution of points on a spherical surface \ref{fig_fibolat}.
 

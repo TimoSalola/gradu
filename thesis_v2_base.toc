@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {3.2.3}Reflection estimation and absorbed irradiance}{23}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Panel temperature estimation}{24}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Output estimation}{25}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Results}{26}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.6}Model improvement results}{26}{subsection.3.2.6}%
 \contentsline {chapter}{\numberline {4}Estimating geographic location}{28}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Estimating geographic longitude}{29}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Longitude estimation results}{33}{subsection.4.1.1}%
@@ -29,23 +29,17 @@
 \contentsline {section}{\numberline {4.3}Combined latitude and longitude estimations}{41}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Estimating panel angles}{43}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Prediction error function}{44}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Simulation error function}{47}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Area based error function}{48}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Alternative simulation error functions}{48}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Multiplier matching}{49}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Area based multiplier matching}{49}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Segmented multiplier matching}{50}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Translating multiplier values to PV system rated power values}{53}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}Angle space discretization}{54}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Importance of lattice density}{56}{subsection.5.4.1}%
-\contentsline {section}{\numberline {5.5}Solving panel angles}{57}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Evaluation of exhaustive search results}{59}{subsection.5.5.1}%
-\contentsline {section}{\numberline {5.6}Fast panel angle solving}{60}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Gradient search}{61}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Possible issues and further development ideas}{62}{subsection.5.6.2}%
-\contentsline {chapter}{\numberline {6}Conclusion}{64}{chapter.6}%
-\contentsline {chapter}{Appendix}{66}{chapter.6}%
-\contentsline {section}{\numberline {.1}Code samples}{66}{section.Alph0.1}%
-\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{66}{subsection.Alph0.1.1}%
-\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{69}{subsection.Alph0.1.2}%
-\contentsline {chapter}{References}{71}{section*.50}%
+\contentsline {section}{\numberline {5.2}Simulation fitness function}{47}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Angle space discretization}{48}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Importance of lattice density}{50}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Solving panel angles}{51}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Evaluation of exhaustive search results}{53}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Fast panel angle solving}{54}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Gradient search}{55}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Possible issues and further development ideas}{56}{subsection.5.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusion}{58}{chapter.6}%
+\contentsline {chapter}{Appendix}{60}{chapter.6}%
+\contentsline {section}{\numberline {.1}Code samples}{60}{section.Alph0.1}%
+\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{60}{subsection.Alph0.1.1}%
+\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{63}{subsection.Alph0.1.2}%
+\contentsline {chapter}{References}{65}{section*.44}%

@@ -355,8 +355,7 @@ GHI_{proj}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
 \end{split}
 \end{equation}
 
-\noindent Where
-\noindent $albedo = 0.151$ This represents ground reflectivity near the solar PV installation. The value varies significantly depending on the area, season and time of day. A fixed value is used as terrain, weather and snow cover are assumed to be unknown.
+\noindent Where $albedo = 0.151$. This represents ground reflectivity near the solar PV installation. The value varies significantly depending on the area, season and time of day. A fixed value is used as terrain, weather and snow cover are assumed to be unknown.
 
 \noindent $tilt$ is the tilt angle of the PV installation, this is $15^\circ$ for both FMI installations.
 
@@ -457,7 +456,7 @@ $w$ is wind speed at panel elevation.
 
 \newpage
 \subsection{Output estimation}
-Now that the absorbed radiation and panel temperature are known, the output can be estimated with Huld et al 2010 model \cite{huld2010}.
+Now that the absorbed radiation and panel temperature are known, the output can be estimated with the following Huld et al 2010 model\cite{huld2010}.
 
 \noindent\textbf{PV output model}
 \begin{equation}
@@ -487,7 +486,7 @@ k1        & k2        & k3        & k4       & k5       & k6       \\ \hline
 \end{table}
 
 \noindent %This leaves the rated power of the system as an unknown parameter. 
-For unknown PV systems, the $P_{rated}$ value can be estimated by comparing the measured power output to simulated power output with a theoretical 1kW system. Visualization of this process with POA simulations and real measurements is shown in \ref{fig_area_match}.
+For unknown PV systems, the unknown $P_{rated}$ value can be estimated by comparing the measured power output to simulated power output with a theoretical 1kW system. Visualization of this process with POA simulations and real measurements is shown in \ref{fig_area_match}.
 
 
 \begin{figure}[h]
@@ -498,30 +497,43 @@ For unknown PV systems, the $P_{rated}$ value can be estimated by comparing the 
 \end{figure}
 
 \newpage
-\subsection{Results}
+\subsection{Model improvement results}
+The models can be compared with the original measurement data with the following equation.
 
 
 
+\noindent\textbf{Model error}
+\begin{equation}
+\begin{split}
+\label{pv_model_delta}
+Delta_{model} = \sum_{t=1}^{1440} |P_{measured}(t) - P_{simulated}(t)| /1440
+\end{split}
+\end{equation}
 
-%Projecting DNI and DHI irradiance onto a tilted solar panel can appear to be mathematically trivial as the cosine of AOI and tilt can be used to calculate fractions which denote the ground projected and AOI zero degrees projected surface area of solar panels. However as the air mass that sunlight has to travel through depends on the Sun elevation, physically accurate models for geometric irradiance projection are more complicated. The improved model uses a simple cosine function for DNI projection, Perez et al. model from PVlib for DHI projection and King[find reference sandia] model for GHI projection. As these models are not the main focus of this thesis, they are not included here and they can be viewed from the source code or referred sources.
+\noindent The delta value represents a normalized per minute deviation between the model and the meausred data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
 
-%In the reflection estimation step the projected DNI, DHI and GHI are split into reflected and absorbed portitions. How much of the irradiance is reflected and absorbed depends on panel reflectivity, panel angles, angle of incidence and the models used are physics based models based on TODO ADD SOURCES FOR REFLECTION EQUATIONS
 
-%Panel temperature is calculated by using ambient temperature, absorbed radiation, module elevation and wind speed at 2 meters. As PV system parameters and geolocation are presumed unknown, ambient temperature, module elevation and wind speed are given dummy values. 2m/s for wind, 8m for module elevation and 25C for ambient temperature. With this data known, the output of a theretical PV system can be calculated. 
+Delta values for detected cloud free days for FMI Helsinki installation are on average 244 for the POA model and 145 for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487 and improved model 320 with 42 day dataset. This shows that the improved PV model is more accurate for PV estimation than the POA model.
 
-\newpage
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.99\linewidth]{pics/pvlibsimplecomplex}
-\figcaption{Comparison of PVlib POA and a more accurate PV power generation model.}
+\figcaption{Comparison of PVlib POA and the improved PV power generation model on a day from Helsinki dataset.}
 \label{fig-poa_eval_simplecomplex}
 \end{figure}
 
-\noindent Figure \ref{fig-poa_eval_simplecomplex} shows that the improved PV model performs better than the simple POA-model at 1000 minutes where the AOI is high and thus reflective losses from direct irradiance are significant. And during peak production minutes where the panel temperatures are likely high enough to cause thermal losses.
+Figure \ref{fig-poa_eval_simplecomplex} shows what the improvement looks like in a best case scenario. The model can be seen to perform better during peak production hours and during the last productive hours. 
 
-The improved model would appear to be a more accurate approximation for PV generation than the POA model, but the POA model still has uses in applications where faster computation is beneficial or where only the timing of the first and last non-zero minutes matter. Which of these models is being used will be mentioned in the following chapters.
 
-The model performance could be further tuned as inverter efficiency and other possible factors were not taken into account. However as there are only two datasets, this would increase the likelyhood of overfitting and thus the improved model is left as is.
+The improved model would appear to be a more accurate approximation for PV generation than the POA model, but the POA model still has uses in applications where faster computation is beneficial or where only the timing of the first and last non-zero minutes matter. Which of these models is being used will be mentioned in each use case in the following chapters.
+
+
+%that the improved PV model performs better than the simple POA-model at 1000 minutes where the AOI is high and thus reflective losses from direct irradiance are significant. And during peak production minutes where the panel temperatures are likely high enough to cause thermal losses.
+
+%The improved model would appear to be a more accurate approximation for PV generation than the POA model, but the POA model still has uses in applications where faster computation is beneficial or where only the timing of the first and last non-zero minutes matter. Which of these models is being used will be mentioned in the following chapters.
+
+%The model performance could be further tuned as inverter efficiency and other possible factors were not taken into account. However as there are only two datasets, this would increase the likelyhood of overfitting and thus the improved model is left as is.
 
 
 %is near 90$^\circ$ and during peak production hours where increased temperature effects performance. This is promising but the complexcity of the model also increases the likelyhood of overfitting. Nevertheless this improved model with 2m/s wind speed, 8m elevation and 25 $^\circ$C ambient temperature and the POA model will both be used in the following chapters depending on the charasteristics of parameter estimation functions.
