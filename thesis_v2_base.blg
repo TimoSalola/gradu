@@ -13,13 +13,14 @@ A level-1 auxiliary file: v2_angler.aux
 A level-1 auxiliary file: v2_remarks.aux
 A level-1 auxiliary file: v2_appendix.aux
 Database file #1: example_refs.bib
+Warning--entry type for "medium_fibolat_equation" isn't style-file defined
+--line 26 of file example_refs.bib
 Warning--entry type for "sandia_poa_ghi" isn't style-file defined
---line 48 of file example_refs.bib
+--line 80 of file example_refs.bib
 Warning--entry type for "sandia_poa_dni" isn't style-file defined
---line 54 of file example_refs.bib
+--line 86 of file example_refs.bib
 Warning--entry type for "sandia_poa_dhi" isn't style-file defined
---line 60 of file example_refs.bib
-Warning--I didn't find a database entry for "fibolat2"
+--line 92 of file example_refs.bib
 Warning--I didn't find a database entry for "github_source"
 Warning--there's no year in sandia_poa_dhi
 Warning--there's no year in sandia_poa_dni
@@ -27,45 +28,46 @@ Warning--there's no year in sandia_poa_ghi
 `school' is a missing field, not a string, for entry king2004
 while executing---line 1036 of file uefunsrt.bst
 Warning--empty school in king2004
-You've used 11 entries,
+Warning--there's no year in medium_fibolat_equation
+You've used 14 entries,
             2422 wiz_defined-function locations,
-            620 strings with 6589 characters,
-and the built_in function-call counts, 2340 in all, are:
-= -- 235
-> -- 123
+            640 strings with 7109 characters,
+and the built_in function-call counts, 2941 in all, are:
+= -- 307
+> -- 135
 < -- 0
-+ -- 46
-- -- 35
-* -- 212
-:= -- 387
-add.period$ -- 11
-call.type$ -- 11
++ -- 52
+- -- 38
+* -- 259
+:= -- 479
+add.period$ -- 14
+call.type$ -- 14
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 93
-empty$ -- 211
-format.name$ -- 35
-if$ -- 534
+cite$ -- 19
+duplicate$ -- 121
+empty$ -- 276
+format.name$ -- 38
+if$ -- 680
 int.to.chr$ -- 0
-int.to.str$ -- 11
+int.to.str$ -- 14
 missing$ -- 1
-newline$ -- 47
-num.names$ -- 10
-pop$ -- 28
+newline$ -- 59
+num.names$ -- 13
+pop$ -- 35
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 37
+skip$ -- 48
 stack$ -- 0
-substring$ -- 99
-swap$ -- 25
+substring$ -- 135
+swap$ -- 33
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 4
-while$ -- 15
-width$ -- 13
-write$ -- 101
+warning$ -- 5
+while$ -- 20
+width$ -- 16
+write$ -- 129
 (There was 1 error message)

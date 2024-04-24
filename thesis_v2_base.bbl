@@ -58,4 +58,19 @@ dunno lol,
   \url{https://ysjournal.com/astrophysics/analemma-the-suns-journey-in-the-sky/}
   (visited on 2023-11-12).
 
+\bibitem{Gonzlez}
+{\'A}.~Gonz{\'a}lez,
+\newblock {``Measurement of Areas on a Sphere Using Fibonacci and
+  Latitude–Longitude Lattices,''} {\em Mathematical Geosciences} {\bfseries
+  42}, 49--64 (2009).
+
+\bibitem{fibolat_old}
+H.~Vogel,
+\newblock {``A better way to construct the sunflower head,''} {\em Mathematical
+  Biosciences} {\bfseries 44}, 179--189 (1979).
+
+\bibitem{medium_fibolat_equation}
+V.~Seibert,
+\newblock {``Distributing points on a sphere,''} ({\textbf{!!YEAR!!}}).
+
 \end{thebibliography}
