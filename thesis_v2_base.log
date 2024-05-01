@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  24 APR 2024 15:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  30 APR 2024 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,12 +836,14 @@ Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 62.
 LaTeX Font Info:    Trying to load font information for TS1+aer on input line 7
 1.
- (/usr/share/texmf/tex/latex/R/tex/latex/ts1aer.fd
-File: ts1aer.fd 
-)
-LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <12> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 71.
- [13] [14]
+LaTeX Font Info:    No file TS1aer.fd. on input line 71.
+
+
+LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
+(Font)              using `TS1/cmr/m/n' instead
+(Font)              for symbol `textbullet' on input line 71.
+
+[13] [14]
 Overfull \hbox (4.0718pt too wide) in paragraph at lines 149--150
 \T1/aer/m/n/12 Before im-ple-ment-ing the pa-ram-e-ter es-ti-ma-tion func-tions
 , the POA sim-u-la-tions should
@@ -1011,152 +1013,159 @@ Underfull \hbox (badness 1014) in paragraph at lines 28--28
 []\T1/aer/b/n/10 (b) |\T1/aer/m/n/10 2D pro-jec-tion of the an-gle
  []
 
-[44 <./pics/halfdome.png> <./pics/polarplot.png>] [45] [46] [47]
-<pics/disc5.png, id=533, 690.58pt x 681.54625pt>
+[44 <./pics/halfdome.png> <./pics/polarplot.png>] [45] [46]
+<pics/measured_vs_simulated.png, id=525, 943.8462pt x 627.3036pt>
+File: pics/measured_vs_simulated.png Graphic file (type png)
+<use pics/measured_vs_simulated.png>
+Package pdftex.def Info: pics/measured_vs_simulated.png  used on input line 154
+.
+(pdftex.def)             Requested size: 341.43436pt x 226.92032pt.
+ [47 <./pics/measured_vs_simulated.png>]
+<pics/disc5.png, id=537, 690.58pt x 681.54625pt>
 File: pics/disc5.png Graphic file (type png)
 <use pics/disc5.png>
-Package pdftex.def Info: pics/disc5.png  used on input line 187.
+Package pdftex.def Info: pics/disc5.png  used on input line 201.
 (pdftex.def)             Requested size: 192.0548pt x 189.5421pt.
-<pics/fibolat1.png, id=534, 690.58pt x 681.54625pt>
+<pics/fibolat1.png, id=538, 690.58pt x 681.54625pt>
 File: pics/fibolat1.png Graphic file (type png)
 <use pics/fibolat1.png>
-Package pdftex.def Info: pics/fibolat1.png  used on input line 194.
+Package pdftex.def Info: pics/fibolat1.png  used on input line 208.
 (pdftex.def)             Requested size: 192.0548pt x 189.5421pt.
 
-Underfull \hbox (badness 1824) in paragraph at lines 195--195
+Underfull \hbox (badness 1824) in paragraph at lines 209--209
 []\T1/aer/b/n/10 (b) |\T1/aer/m/n/10 Fi-bonacci lattice-based dis-cretiza-tion
  []
 
 [48] [49 <./pics/disc5.png> <./pics/fibolat1.png>] [50]
 
-LaTeX Warning: Reference `areaerror' on page 51 undefined on input line 223.
+LaTeX Warning: Reference `areaerror' on page 51 undefined on input line 240.
 
 
 LaTeX Warning: Reference `function_multipliermatch' on page 51 undefined on inp
-ut line 223.
+ut line 240.
 
-<pics/polarplot10.png, id=560, 537.00626pt x 528.97626pt>
+<pics/polarplot10.png, id=564, 537.00626pt x 528.97626pt>
 File: pics/polarplot10.png Graphic file (type png)
 <use pics/polarplot10.png>
-Package pdftex.def Info: pics/polarplot10.png  used on input line 236.
+Package pdftex.def Info: pics/polarplot10.png  used on input line 253.
 (pdftex.def)             Requested size: 208.39566pt x 205.27483pt.
 File: pics/polarplot10.png Graphic file (type png)
 <use pics/polarplot10.png>
-Package pdftex.def Info: pics/polarplot10.png  used on input line 236.
+Package pdftex.def Info: pics/polarplot10.png  used on input line 253.
 (pdftex.def)             Requested size: 208.39566pt x 205.27483pt.
+<pics/scatter_multiyear.png, id=565, 536.0025pt x 527.9725pt>
+File: pics/scatter_multiyear.png Graphic file (type png)
+<use pics/scatter_multiyear.png>
+Package pdftex.def Info: pics/scatter_multiyear.png  used on input line 295.
+(pdftex.def)             Requested size: 197.97523pt x 195.0084pt.
+File: pics/scatter_multiyear.png Graphic file (type png)
+<use pics/scatter_multiyear.png>
+Package pdftex.def Info: pics/scatter_multiyear.png  used on input line 295.
+(pdftex.def)             Requested size: 197.97523pt x 195.0084pt.
+<pics/scatter_multiyear_summer.png, id=566, 560.0925pt x 543.02875pt>
+File: pics/scatter_multiyear_summer.png Graphic file (type png)
+<use pics/scatter_multiyear_summer.png>
+Package pdftex.def Info: pics/scatter_multiyear_summer.png  used on input line 
+302.
+(pdftex.def)             Requested size: 197.97523pt x 191.9438pt.
+File: pics/scatter_multiyear_summer.png Graphic file (type png)
+<use pics/scatter_multiyear_summer.png>
+Package pdftex.def Info: pics/scatter_multiyear_summer.png  used on input line 
+302.
+(pdftex.def)             Requested size: 197.97523pt x 191.9438pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/10khelsinki.png, id=568, 688.5725pt x 677.53125pt>
+File: pics/10khelsinki.png Graphic file (type png)
+<use pics/10khelsinki.png>
+Package pdftex.def Info: pics/10khelsinki.png  used on input line 320.
+(pdftex.def)             Requested size: 197.97523pt x 194.79388pt.
+File: pics/10khelsinki.png Graphic file (type png)
+<use pics/10khelsinki.png>
+Package pdftex.def Info: pics/10khelsinki.png  used on input line 320.
+(pdftex.def)             Requested size: 197.97523pt x 194.79388pt.
+<pics/kuopio10kfitsplot.png, id=569, 691.58376pt x 688.5725pt>
+File: pics/kuopio10kfitsplot.png Graphic file (type png)
+<use pics/kuopio10kfitsplot.png>
+Package pdftex.def Info: pics/kuopio10kfitsplot.png  used on input line 326.
+(pdftex.def)             Requested size: 197.97523pt x 197.10675pt.
+File: pics/kuopio10kfitsplot.png Graphic file (type png)
+<use pics/kuopio10kfitsplot.png>
+Package pdftex.def Info: pics/kuopio10kfitsplot.png  used on input line 326.
+(pdftex.def)             Requested size: 197.97523pt x 197.10675pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [51 <./pics/polarplot10.png>]
-<pics/scatter_multiyear.png, id=572, 536.0025pt x 527.9725pt>
-File: pics/scatter_multiyear.png Graphic file (type png)
-<use pics/scatter_multiyear.png>
-Package pdftex.def Info: pics/scatter_multiyear.png  used on input line 275.
-(pdftex.def)             Requested size: 197.97523pt x 195.0084pt.
-File: pics/scatter_multiyear.png Graphic file (type png)
-<use pics/scatter_multiyear.png>
-Package pdftex.def Info: pics/scatter_multiyear.png  used on input line 275.
-(pdftex.def)             Requested size: 197.97523pt x 195.0084pt.
-<pics/scatter_multiyear_summer.png, id=573, 560.0925pt x 543.02875pt>
-File: pics/scatter_multiyear_summer.png Graphic file (type png)
-<use pics/scatter_multiyear_summer.png>
-Package pdftex.def Info: pics/scatter_multiyear_summer.png  used on input line 
-282.
-(pdftex.def)             Requested size: 197.97523pt x 191.9438pt.
-File: pics/scatter_multiyear_summer.png Graphic file (type png)
-<use pics/scatter_multiyear_summer.png>
-Package pdftex.def Info: pics/scatter_multiyear_summer.png  used on input line 
-282.
-(pdftex.def)             Requested size: 197.97523pt x 191.9438pt.
-<pics/10khelsinki.png, id=575, 688.5725pt x 677.53125pt>
-File: pics/10khelsinki.png Graphic file (type png)
-<use pics/10khelsinki.png>
-Package pdftex.def Info: pics/10khelsinki.png  used on input line 300.
-(pdftex.def)             Requested size: 197.97523pt x 194.79388pt.
-File: pics/10khelsinki.png Graphic file (type png)
-<use pics/10khelsinki.png>
-Package pdftex.def Info: pics/10khelsinki.png  used on input line 300.
-(pdftex.def)             Requested size: 197.97523pt x 194.79388pt.
-<pics/kuopio10kfitsplot.png, id=576, 691.58376pt x 688.5725pt>
-File: pics/kuopio10kfitsplot.png Graphic file (type png)
-<use pics/kuopio10kfitsplot.png>
-Package pdftex.def Info: pics/kuopio10kfitsplot.png  used on input line 306.
-(pdftex.def)             Requested size: 197.97523pt x 197.10675pt.
-File: pics/kuopio10kfitsplot.png Graphic file (type png)
-<use pics/kuopio10kfitsplot.png>
-Package pdftex.def Info: pics/kuopio10kfitsplot.png  used on input line 306.
-(pdftex.def)             Requested size: 197.97523pt x 197.10675pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[52 <./pics/scatter_multiyear.png> <./pics/scatter_multiyear_summer.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[53 <./pics/10khelsinki.png> <./pics/kuopio10kfitsplot.png>]
-<pics/10kfitshelsinkiplot.png, id=595, 569.12625pt x 429.605pt>
+<pics/10kfitshelsinkiplot.png, id=581, 569.12625pt x 429.605pt>
 File: pics/10kfitshelsinkiplot.png Graphic file (type png)
 <use pics/10kfitshelsinkiplot.png>
-Package pdftex.def Info: pics/10kfitshelsinkiplot.png  used on input line 415.
+Package pdftex.def Info: pics/10kfitshelsinkiplot.png  used on input line 435.
 (pdftex.def)             Requested size: 256.0774pt x 193.30734pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/10kfitskuopioplots.png, id=596, 566.115pt x 415.5525pt>
+<pics/10kfitskuopioplots.png, id=582, 566.115pt x 415.5525pt>
 File: pics/10kfitskuopioplots.png Graphic file (type png)
 <use pics/10kfitskuopioplots.png>
-Package pdftex.def Info: pics/10kfitskuopioplots.png  used on input line 424.
+Package pdftex.def Info: pics/10kfitskuopioplots.png  used on input line 444.
 (pdftex.def)             Requested size: 256.0774pt x 187.97337pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/10kfitshelsinki.png, id=598, 798.985pt x 703.62875pt>
+[52 <./pics/scatter_multiyear.png> <./pics/scatter_multiyear_summer.png>]
+<pics/10kfitshelsinki.png, id=593, 798.985pt x 703.62875pt>
 File: pics/10kfitshelsinki.png Graphic file (type png)
 <use pics/10kfitshelsinki.png>
-Package pdftex.def Info: pics/10kfitshelsinki.png  used on input line 437.
+Package pdftex.def Info: pics/10kfitshelsinki.png  used on input line 457.
 (pdftex.def)             Requested size: 256.0774pt x 225.50937pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[54] [55 <./pics/10kfitshelsinkiplot.png>]) [56 <./pics/10kfitskuopioplots.png>
-] [57 <./pics/10kfitshelsinki.png>]
+[53 <./pics/10khelsinki.png> <./pics/kuopio10kfitsplot.png>] [54]) [55 <./pics/
+10kfitshelsinkiplot.png>] [56 <./pics/10kfitskuopioplots.png> <./pics/10kfitshe
+lsinki.png>]
 \openout2 = `v2_remarks.aux'.
 
  (./v2_remarks.tex
 Chapter 6.
-[58
+[57
 
 
 
 
-]) [59]
+]) [58]
 \openout2 = `v2_appendix.aux'.
 
  (./v2_appendix.tex
 Appendix defined ...
 
-LaTeX Warning: Citation `github_source' on page 60 undefined on input line 3.
+LaTeX Warning: Citation `github_source' on page 59 undefined on input line 3.
 
-[60
+[59
 
 
 
-] [61]
+] [60]
 LaTeX Info: Symbol \textminus not provided by
             font family aer in TS1 encoding.
             Default family used instead on input line 73.
-LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 82.
+ [61]
+LaTeX Info: Symbol \textminus not provided by
+            font family aer in TS1 encoding.
+            Default family used instead on input line 108.
+LaTeX Info: Symbol \textminus not provided by
+            font family aer in TS1 encoding.
+            Default family used instead on input line 108.
+LaTeX Info: Symbol \textminus not provided by
+            font family aer in TS1 encoding.
+            Default family used instead on input line 108.
  [62]
-LaTeX Info: Symbol \textminus not provided by
-            font family aer in TS1 encoding.
-            Default family used instead on input line 108.
-LaTeX Info: Symbol \textminus not provided by
-            font family aer in TS1 encoding.
-            Default family used instead on input line 108.
-LaTeX Info: Symbol \textminus not provided by
-            font family aer in TS1 encoding.
-            Default family used instead on input line 108.
- [63]
 LaTeX Info: Symbol \textminus not provided by
             font family aer in TS1 encoding.
             Default family used instead on input line 154.
@@ -1169,7 +1178,7 @@ LaTeX Info: Symbol \textminus not provided by
 LaTeX Info: Symbol \textminus not provided by
             font family aer in TS1 encoding.
             Default family used instead on input line 156.
-) [64] (./thesis_v2_base.bbl [65
+) [63] (./thesis_v2_base.bbl [64
 
 
 
@@ -1179,10 +1188,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--60
 astrophysics /
  []
 
-) [66] (./thesis_v2_base.aux (./thesis_front.aux) (./thesis_abs.aux)
+) [65] (./thesis_v2_base.aux (./thesis_front.aux) (./thesis_abs.aux)
 (./thesis_preface.aux) (./v2_introduction.aux) (./v2_datasets.aux)
 (./v2_tools.aux) (./v2_geolocator.aux) (./v2_angler.aux) (./v2_remarks.aux)
 (./v2_appendix.aux))
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
 
 LaTeX Warning: There were undefined references.
 
@@ -1191,10 +1203,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20524 strings out of 480204
- 324967 string characters out of 5895010
+ 20522 strings out of 480204
+ 325074 string characters out of 5895010
  860149 words of memory out of 5000000
- 37635 multiletter control sequences out of 15000+600000
+ 37634 multiletter control sequences out of 15000+600000
  520209 words of font info for 124 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  74i,17n,77p,1264b,3520s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1215,9 +1227,9 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/
 public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1200.pfb>
-Output written on thesis_v2_base.pdf (70 pages, 6670523 bytes).
+Output written on thesis_v2_base.pdf (69 pages, 6743620 bytes).
 PDF statistics:
- 1095 PDF objects out of 1200 (max. 8388607)
+ 1092 PDF objects out of 1200 (max. 8388607)
  369 named destinations out of 1000 (max. 500000)
- 551 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 556 words of extra memory for PDF output out of 10000 (max. 10000000)
 
