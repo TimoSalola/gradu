@@ -152,7 +152,7 @@ Visualization of the function is shown in \ref{fig_simulation_fitness} where sim
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\linewidth]{pics/measured_vs_simulated}
-\figcaption{Visualization of fitness estimation.}
+\figcaption{Visualization of fitness function.}
 \label{fig_simulation_fitness}
 \end{figure}
 
@@ -234,38 +234,39 @@ If a Fibonacci lattice or some other discretization method is used, evaluating t
 
 \newpage
 \section{Solving panel angles}
-Now that the geographic location and multiplier value of installation are known to be solvable and fitness functions have been defined, the next step is solving the panel angles. Th
+Now that the geographic location and multiplier value of installation are known to be solvable and fitness functions have been defined, the next step is solving the panel angles. The simple method is evaluating all points on a sufficiently dense lattice and choosing the point with the lowest delta value.
+
+Figure \ref{fig_polar10} contains 10 fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$.
 
 
-is to solve the panel installation angles. The chosen method relies on splitting angle space into $n$ discrete points and evaluatin each of their fitness by calculating an error value. Here the angle space was split into 10 discrete points with fibonacci lattice \ref{angle_space_discretization} and the fitness of each point was evaluated with area error \ref{areaerror} and multiplier matching \ref{function_multipliermatch} functions. %The tilt-azimuth pair with the lowest error value was 31 
 
+
+%is to solve the panel installation angles. The chosen method relies on splitting angle space into $n$ discrete points and evaluatin each of their fitness by calculating an error value. Here the angle space was split into 10 discrete points with fibonacci lattice \ref{angle_space_discretization} and the fitness of each point was evaluated with area error \ref{areaerror} and multiplier matching \ref{function_multipliermatch} functions. %The tilt-azimuth pair with the lowest error value was 31 
 
 
 \begin{figure}[h]
 \begin{floatrow}
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/polarplot10}
-  
-  
-}{%
-\label{fig_polar10}
-  \caption{Polar plot of test points for a single day of data from FMI Kumpula dataset.}%
+  \includegraphics[width=1\linewidth]{pics/10p_fibo_fit_text}
+}{
+  \caption{Polar plot of test points for a single day of data from FMI Kumpula dataset.}
+  \label{fig_polar10}
 }
 \capbtabbox{%
   \begin{tabular}{c|c|c} \hline
 
-Tilt & Azimuth & Error\\
+Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 \hline
-18.19 & 291.25 & 3785693.23\\
-\textbf{31.79} & \textbf{153.74} & \textbf{265843.23}\\
-41.41 & 16.23 & 4331163.39\\
-49.46 & 238.72 & 4861757.21\\
-56.63 & 101.22 & 3811371.79\\
-63.26 & 323.71 & 7196389.58\\
-69.51 & 186.2 & 1795822.66\\
-75.52 & 48.69 & 5985516.23\\
-81.37 & 271.18 & 7403298.37\\
-87.13 & 133.68 & 2957569.38\\
+18.19 & 291.25 & 3128\\
+\textbf{31.79} & \textbf{153.74} & \textbf{369}\\
+41.41 & 16.23 & 3873\\
+49.46 & 238.72 & 4183\\
+56.63 & 101.22 & 3356\\
+63.26 & 323.71 & 6888\\
+69.51 & 186.2 & 1759\\
+75.52 & 48.69 & 5814\\
+81.37 & 271.18 &  6626\\
+87.13 & 133.68 & 2938\\
 \hline\hline
 \end{tabular}
 }{%
