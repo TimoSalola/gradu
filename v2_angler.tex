@@ -151,7 +151,7 @@ Visualization of the function is shown in \ref{fig_simulation_fitness} where sim
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\linewidth]{pics/measured_vs_simulated}
+\includegraphics[width=0.8\linewidth]{pics/halfdome} % WAS pics/measured_vs_simulated
 \figcaption{Visualization of fitness function.}
 \label{fig_simulation_fitness}
 \end{figure}
@@ -236,7 +236,7 @@ If a Fibonacci lattice or some other discretization method is used, evaluating t
 \section{Solving panel angles}
 Now that the geographic location and multiplier value of installation are known to be solvable and fitness functions have been defined, the next step is solving the panel angles. The simple method is evaluating all points on a sufficiently dense lattice and choosing the point with the lowest delta value.
 
-Figure \ref{fig_polar10} contains 10 fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$.
+Figure \ref{fig_polar10} contains 10 fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$. Center angle error as per \ref{errorangle} is 18.17$^\circ$.
 
 
 
@@ -247,7 +247,7 @@ Figure \ref{fig_polar10} contains 10 fibonacci lattice points and their normaliz
 \begin{figure}[h]
 \begin{floatrow}
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/10p_fibo_fit_text}
+  \includegraphics[width=1\linewidth]{pics/halfdome} % WAS pics/10p_fibo_fit_text
 }{
   \caption{Polar plot of test points for a single day of data from FMI Kumpula dataset.}
   \label{fig_polar10}
@@ -275,6 +275,20 @@ Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 \end{floatrow}
 \end{figure}
 
+The fit achieved in \ref{fig_polar10} is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a fibonnacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$ , delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can from a minute up to several hours.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{pics/10k_new_model} % WAS pics/measured_vs_simulated
+\figcaption{Results of a 10 000 datapoint lattice fitting against a single day from FMI Helsinki dataset. Center angle error between the found best fit and known installation angles is 0.3659 degrees$^\circ$.}
+\label{10k_fits_new_helsinki}
+\end{figure}
+
+
+
+%# Best fit was tilt: 14.79 azimuth: 136.2 fitness:133.3 10k lattice result !
+
+
 
 
 
@@ -286,47 +300,16 @@ Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 
 %In \ref{fig_polarplot_13days} the polar plot is a result of taking the 13 best days from FMI Kumpula dataset year 2018 and using a fibonacci lattice with 500 test points. The most common best fit was [27.5$^\circ$, 150.8$^\circ$] with 5 occurances followed by [24.1$^\circ$, 138.4$^\circ$] with 4 days. These values are close to the 
 
-\begin{figure}[h]
-\begin{floatrow}
-\ffigbox{
-  \includegraphics[width=0.95\linewidth]{pics/scatter_multiyear}
-}{
-  \caption{Best fits for multiple cloud free days from FMI Kumpula dataset.}
-  \label{fig_polar_multiyear}
-}
-\ffigbox{%
- \includegraphics[width=0.95\linewidth]{pics/scatter_multiyear_summer}
-}{%
-\caption{Best fits when day range is restricted to days 140-220.}
-  \label{fig_polar_multiyear_summer}
- 
-}
-\end{floatrow}
-\end{figure}
 
-As all of the estimates converge on two neighboring points, the final step is increasing the lattice resolution further. With 10 000 point lattice, the cluster tightened further \ref{fig_polar_multiyear_helsinki10k}. Out of the 22 days, 7/22 or 32\% had best fit at [19.34, 136.87] with error of 4.38 degrees and 6/22 or 27\% at [17.74, 135.06] with error of 2.74 degrees. Rest of the best fits were distributed in smaller clusters near these points. The lowest angle distance best fit was [17.09, 130.32] with angle distance of 2.46 degrees. As the angle distance errors are higher than the discretization resolution and as the predicted angles are systematically biased, it would seem that the error is caused by the solar irradiance model or model fitting and not angle space discretization.
+
+
+
+%As all of the estimates converge on two neighboring points, the final step is increasing the lattice resolution further. With 10 000 point lattice, the cluster tightened further \ref{fig_polar_multiyear_helsinki10k}. Out of the 22 days, 7/22 or 32\% had best fit at [19.34, 136.87] with error of 4.38 degrees and 6/22 or 27\% at [17.74, 135.06] with error of 2.74 degrees. Rest of the best fits were distributed in smaller clusters near these points. The lowest angle distance best fit was [17.09, 130.32] with angle distance of 2.46 degrees. As the angle distance errors are higher than the discretization resolution and as the predicted angles are systematically biased, it would seem that the error is caused by the solar irradiance model or model fitting and not angle space discretization.
 
 
 %As the angle distance errors are higher than the discretization resolution and as the results seem biased, the errors of the estimation algorithm would seem to be caused by inaccuracies in model fitting and not angle space discretization.
 
 
-
-\begin{figure}[h]
-\begin{floatrow}
-\ffigbox{
-  \includegraphics[width=0.95\linewidth]{pics/10khelsinki}
-}{
-  \caption{Best fits with 10 000 sample Fibonacci lattice and 22 days from FMI Kumpula dataset. Multiple years were used, day range restricted to 140-220. Actual installation angles were 15 degrees tilt, 135 azimuth.}
-  \label{fig_polar_multiyear_helsinki10k}
-}
-\ffigbox{%
- \includegraphics[width=0.95\linewidth]{pics/kuopio10kfitsplot}
-}{%
-\caption{10 000 sample Fibonacci lattice and 16 days from FMI Kuopio dataset. Multiple years were used, day range restricted to 140-220. Actual installation angles were 15 degrees tilt, 217 azimuth.}
-  \label{kuopio10kfitsplot}
-}
-\end{floatrow}
-\end{figure}
 
 
 %\begin{figure}[h]
