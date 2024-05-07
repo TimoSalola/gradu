@@ -413,76 +413,81 @@ Figures \ref{10khelsinkiplot} and \ref{10kkuopioplot} shows that the models base
 
 
 
-\begin{figure}[h]
-\caption{Comparison between a single day of measurements and two simulations. One with known installation angles and one with best found fit. Day is from FMI Kumpula dataset with reported installation angles of $15^\circ$ and $135^\circ$ degrees. Best fit at $19.34^\circ$, $136.87^\circ$}
-\centering
-\includegraphics[width=0.6\textwidth]{pics/10kfitshelsinkiplot}
-\label{10khelsinkiplot}
-\end{figure}
 
 
-\begin{figure}[h]
-\caption{Comparison for FMI Kuopio installation. Panel angles are $15^\circ$ and $217^\circ$ degrees. Best found fit at $19.34^\circ$, $136.87^\circ$
-}
-\centering
-\includegraphics[width=0.6\textwidth]{pics/10kfitskuopioplots}
-\label{10kkuopioplot}
-\end{figure}
+\section{Solving panel angles iteratively}
+The exhaustive search used in earlier section suggest that the method is capable of estimating panel installation angles accurately. However evaluating 10 000 point lattices is somewhat inelegant and this can be avoided by using multiple less dense lattices iterarively if the fitness space satisfies a couple of requirements.
+
+The first is that the fitness space should be smooth. This smoothness doesn't have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if their size is small enough not to be observable to the iterative lattices. Anothe requirement is that the fitness base should contain as few basin or bowl sections as possible with the best fit being the minimum point of the largest and deepest basin.
+
+The exhaustive search visualizations show that the gradient visible in the fitness space is smooth enough not to result in visible noise patterns in the figure \ref{10k_fits_new_helsinki}. This may not be true for all cases but as long as the selected clear cloud free day and the simulation do not both contain a fine 
 
 
-\section{Fast panel angle solving}
-Solving panel angles by exhaustively testing 10 000 possible grid points takes up to an hour of computation time on the test system. This is not a limiting factor in research code, but exhaustive searches are inelegant compared to more intelligent approaches. Geometric intuition would suggest that the surface created by panel angle pairs and fitness values would resemble a downwards pointing cone-like shape where the best fit is the peak of the cone. If this is true, searching the whole angle space is not necessary as a gradient descent algorithm can be used to approximate the direction in which the best fit resides.
 
-Whether the cone assumption is true can be visually examined by plotting the fitness values and observing the resulting heatmap. In \ref{fig_cone_shape}, the region where the global best fit resides is clearly the global minimum, but there appears to be a local minimum in the top part of the plot, near tilt $90^\circ$, azimuth $20^\circ$. Having more than one local minimum complicates efficient optimization but optimization is still feasible.
+ In computer science the following method would perhaps be classified as a divide-and-conquer algorithm where as mathematicians would call it gradient search.
+
+\noindent \textbf{Iterative panel angle estimation algorithm}
+\begin{enumerate}
+	\item Choose a cloud free day from the dataset for evaluation.
+  \item Choose a starting or "center" point from the angle space. This can be either the best result from a low density lattice or a fixed point such as tilt 45$^\circ$ azimuth 180$^\circ$.
+  \item Evaluate the fitness at the center point and store that as the center point fitness.
+  \item Choose a few points near this center point within a given distance and evaluate their fitness. If any of the neighboring points results in a better fit than the center point, this point will then be chosen as the new center point.
+  \item Repeat steps 3 and 4 until step 4 does not find a better fit. When this happens, decrease the distance used for the local lattice in step 4.
+  \item Repeat steps 3,4 and 5 for a set number of times. Last center point is the best iteratively found fit.
+\end{enumerate}
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.6\linewidth]{pics/10kfitshelsinki}
-\figcaption{Fitness heatmap.}
-\label{fig_cone_shape}
-\end{figure}
-
-\subsection{Gradient search}
-As the fitness surface is not defined by an easy to derivate multi parameter equation, directly solving for points where gradient reaches zero is challenging. However the gradient at a given point can still be numerically estimated and by taking steps in the direction of the gradient vector, local minimum can be found.
-
-In x-y coordinate space, the numerical gradient for point 
-
-\begin{align}
-	\frac{\partial f}{\partial x}  &= f(p_1+x) - f(p_1)\\
-	\frac{\partial f}{\partial y}  &= f(p_1+y) - f(p_1) \\
-	\nabla f &= \begin{bmatrix}
-	\frac{\frac{\partial f}{\partial x}}{\frac{\partial f}{\partial y}}
-	\end{bmatrix} 
-\end{align}
-
-% \frac{\partial f}{\partial x} \end{bmatrix} 
-
-% \nabla f &= \begin{bmatrix} \frac{\partial f}{\partial x \frac{\partial f}{\partial y}\end{bmatrix} 
-
+\noindent Step 4 is the first non-trivial step in the algorithm. The selection of neighboring points can be done in multiple ways, the cross pattern search method shown in figure \ref{fig_iterative_visual_1} is based first transforming the starting angle tilt 45$^\circ$  and azimuth 270$^\circ$ to a cartesian coordinate plane point and the generatin 4 nearby cartesian plane points at distance of 0.3 which are then transformed back into angle space. The equations used for space transformations are \ref{angle_space_to_unit_circle} and \ref{unit_circle_to_angle_space}. This space transformation method results in visually pleasing plots and the cartesian distance of 0.3 is easily adjustable in step 5 of algorithm.
 
 \newpage
-\subsection{Possible issues and further development ideas}
 
-%Graphs \ref{fig_polar_multiyear_helsinki10kplot} and \ref{fig_polar_multiyear_kuopio10kplot} show that the found best fits are better fits for the data than simulations done with correct parameters. This would suggest that the model fitting and discretization both work as intended, but that the model being fitted does not work as intended. In general, the shape of the model becomes sharper when the panel tilt is near optimal in respect to sun elevation and broader when tilt deviates. This sharpening or broadening bears some reseblense to the error caused by not taking panel reflections into account and this could explain why predicted tilt angles are higher than reported installation angles. Developing a correction algorithm may be feasible, but replacing the plane of array irradiance model with a physically accurate solar power generation model is a better option.
+\noindent \textbf{Unit circle to angle space equations}
 
-%As the method shown earlier relies on model fitting, the accuracy of the model influences prediction accuracy. In general, the shape of the model becomes sharper when the panel tilt is near optimal in respect to sun elevation and broader when tilt deviates. This sharpening or broadening bears some reseblense to the error caused by not taking panel reflections into account and this could explain why predicted tilt angles are higher than reported installation angles. Developing a correction algorithm may be feasible, but replacing the plane of array irradiance model with a physically accurate solar power generation model is a better option.
+\begin{equation}
+\begin{split}
+\label{unit_circle_to_angle_space}
+d &= x^2+y^2\\
+Tilt &= \sqrt{d}*90^\circ\\
+Azimuth &= tan^{-1}2(x/d, y/d)
+\end{split}
+\end{equation}
+
+\noindent \textbf{Angle space to unit circle equations}
+\begin{equation}
+\begin{split}
+\label{angle_space_to_unit_circle}
+d &= Tilt/90^\circ \\
+x &= cos(Azimuth)d \\
+y &= sin(Azimuth)d \\
+\end{split}
+\end{equation}
+
+\vspace{5mm}
 
 
-The algorithm steps of cloud free day detection and lattice generation are computationally fast but evaluating a high density lattice for multiple days can take several minutes. For example, the time required for the generation of \ref{fig_polar_multiyear_summer} consist of 9 seconds of data loading and preprocessing, 1 second of cloud free day detection and 11 minutes of angle pair evaluation. With 22 days and 1000 points per day, the resulting 22 000 evaluations were done at the average speed of 33 evaluations per second. This comparably long processing time is due to inefficient code but the algorithms speed can also be improved by more intelligent latticing. The general location of the best fit could be solved with a low density lattice and a local high density lattice could then be used to estimate a higher accuracy angle pair. Combining code optimizations and localized angle space lattices could reduce the computation time significantly.
 
 
 
-
-
-
-
-
-
-
-
-
-
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{pics/iterative_1_step}
+         \caption{Iterative best fit search after 1 cross pattern search.}
+         \label{fig_iterative_1_step}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{pics/iterative_6_step}
+         \caption{Iterative best fit search after 6 cross pattern searches.}
+         \label{fig_iterative_6_step}
+     \end{subfigure}
+     \hfill
+     
+\caption{Visualization of iterative best fit search algorithm. Numbers next to markers indicate that a point was the best found during n:th cross pattern search. Number 5 is missing from \ref{fig_iterative_6_step} as no new best fit was found, resulting in search distance deacrease. Red circle marks the best found fit.}
+     \label{fig_iterative_visual_1}
+\end{figure}
 
 
 
