@@ -221,9 +221,7 @@ Using the correct lattice density is important for using exhaustive search algor
 
 With \textit{in-steps-of-n} lattices, the main benefit is easy readibility. If the lattice is given one point for latitudinal and longitudinal degree, resulting in $360*90=32400$ points, then the lattice can be aligned so that each tilt and azimuth degree pair where angles are integers is tested. This discretization makes the results easily understanble as if the known installation angles are given as integers, a point representing the exact known installation angles already exists on the lattice. The same applies for lower density in \textit{in-steps-of-n} lattices.
 
-If a Fibonacci lattice or some other discretization method is used, evaluating the performance of the fitting algorithm is not as easy. With an $n$ point Fibonacci lattice the distance between lattice points varies slightly and and it may be difficult to estimate where the closest points to the known installation angles are.
-
-
+If a Fibonacci lattice or some other discretization method where lattice points do not fall on angle space integer grid lines is used, evaluating the performance of the fitting algorithm can become somewhat challenging. For example a 1000 point Fibonacci lattice with a delta of 5 degrees is not as descriptive of a result as a delta of 5 degrees on a 1 degree \textit{in-steps-of-n} lattice.
 
 
 %The density of lattices is an important measurable charasteristic which proves useful during the optimization of angle estimation algorithm. The most useful metric would be the sphere center angle distance between neighboring points. This would be useful as it can be used for determining whether errors in predictions are lattice or function fitting related. For example, if the lattice neighbors are approximately 1 degree away from oneanother and the predicted angle is 5 degrees off from the known installation angle, then the error is caused by model fitting and not lattice density as there must have been multiple lattice points closer to the known angle point than the discovered best fit. However if grid density is near to or lower than angle estimation error, the lattice is likely to be a contriburing to angle estimation errors.
@@ -247,7 +245,7 @@ Figure \ref{fig_polar10} contains 10 fibonacci lattice points and their normaliz
 \begin{figure}[h]
 \begin{floatrow}
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/halfdome} % WAS pics/10p_fibo_fit_text
+  \includegraphics[width=1\linewidth]{pics/10p_fibo_fit_text} % WAS pics/10p_fibo_fit_text
 }{
   \caption{Polar plot of test points for a single day of data from FMI Kumpula dataset.}
   \label{fig_polar10}
