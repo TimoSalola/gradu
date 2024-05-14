@@ -278,7 +278,7 @@ The fit achieved in \ref{fig_polar10} is not very good and better results can be
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\linewidth]{pics/10k_new_model} % WAS pics/measured_vs_simulated
-\figcaption{Results of a 10 000 datapoint lattice fitting against a single day from FMI Helsinki dataset. Center angle error between the found best fit and known installation angles is 0.3659 degrees$^\circ$.}
+\figcaption{Results of a 10 000 datapoint lattice fitting against a single day from FMI Helsinki dataset. Center angle error between the found best fit and known installation angles is 0.3659$^\circ$.}
 \label{10k_fits_new_helsinki}
 \end{figure}
 
@@ -360,69 +360,69 @@ The fit achieved in \ref{fig_polar10} is not very good and better results can be
 
 \newpage
 \subsection{Evaluation of exhaustive search results}
-The estimated installation angles installations are fairly good. A delta of less than $4.5^\circ$ as was achieved with FMI Kumpula is small enough to be a result of measurement or rounding error. The estimates for FMI Kuopio are off by more than 10 degrees which is less encouraging. As the reported angles for FMI Kuopio were $15^\circ$ and $217^\circ$, it would seem like the angle measurements were rounded to nearest degree. This would eliminate the reporting accuracy as a plausible cause for the estimation errors and thus either there has been a reporting error or that the installation angle estimation algorithms are not performing as well for FMI Kuopio dataset.
+The results of the exhaustive search algorithm are good for the Helsinki dataset. Angle deltas such as seen in \ref{10k_fits_new_helsinki} are likely to be irrelevant for analysis purposes and a delta of 0.37$^\circ$ is lower than the single digit precision of reported installation angles. By using the same method and plotting the best fits for several cloud free days from one dataset, the found best fits cluster tightly around the known installation angles as seen in figures \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020}. The years 2018 and 2020 were chosen for higher number of days passing the set cloud free day selection threshold.
 
+
+\begin{figure}[!h]
+\begin{floatrow}
+\ffigbox{%
+  \includegraphics[width=1\linewidth]{pics/FMI_helsinki_2018} % WAS pics/10p_fibo_fit_text
+}{
+  \caption{1000 point exhaustive search on 15 cloud free days from FMI Helsinki dataset using year 2018.}
+  \label{fig_fmi_helsinki_1000_multi_day_2018}
+}
+
+\ffigbox{%
+  \includegraphics[width=1\linewidth]{pics/FMI_helsinki_2020} % WAS pics/10p_fibo_fit_text
+}{
+  \caption{1000 point exhaustive search on 16 cloud free days from FMI Helsinki dataset using year 2020.}
+  \label{fig_fmi_helsinki_1000_multi_day_2020}
+}
+\end{floatrow}
+\end{figure}
+
+Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2017} and \ref{fig_fmi_kuopio_1000_multi_day_2018} clearly indicate that estimations are converging several degrees off from the known installation angles. In the more dense 10000 point lattice used for the year 2017 the mean of tilt and azimuth predictions is 26.76$^\circ$ and 201.11$^\circ$, resulting in a center angle delta of 13$^\circ$. 
+
+The exact reason for this significant delta is not known and there could be multiple contributing factors. One possible explanation is panel shading which is more likely to occur when the Sun is near the horizon. This causes a proportionally higher energy output loss during first and last hours of the day, resulting in a more narrow power generation plot shape. This \textit{sharpness} is also influced by the tilt angle of an installation as was previously seen in figure \ref{fig_poa_different_parameters} and thus the error in the estimated tilt angle could be partially caused by either panel self shadowing or shadowing caused by other stuctures near the PV panels.
+
+Similar patterns occur with all of the years from FMI Helsinki and Kuopio datasets where estimated angles form clusters in angle-space. With Helsinki the delta between known installation angles and estimations is minimal where as with the Kuopio dataset the cluster is larger and offset by a bias of approximately 13$^\circ$.
+
+
+%average delta angle: 12.956
+%Average tilt:26.76 azimuth:201.11 fitness290
 
 \begin{figure}[h]
 \begin{floatrow}
-\capbtabbox{%
-  \begin{tabular}{r|c|c|c} \hline
-\multicolumn{4}{c}{FMI Kumpula}\\
-\hline
-n & Tilt & Azimuth & Error\\
-\hline
-7 & $19.34^\circ$ & $136.87^\circ$ & $4.38^\circ$\\
-6 & $17.74^\circ$ & $135.06^\circ$ & $2.74^\circ$\\
-4 & $19.92^\circ$ & $141.60^\circ$ & $5.30^\circ$\\
-2 & $21.37^\circ$ & $143.41^\circ$ & $6.87^\circ$\\
-1 & $21.37^\circ$ & $143.41^\circ$ & $6.87^\circ$\\
-1 & $17.09^\circ$ & $130.32^\circ$ & $2.46^\circ$\\
-
-\hline\hline
-\end{tabular}
-}{%
-  \caption{Estimation results table for FMI Kumpula.}
+\ffigbox{%
+  \includegraphics[width=1\linewidth]{pics/Kuopio2017} % WAS pics/10p_fibo_fit_text
+}{
+  \caption{10000 point exhaustive search on 5 cloud free days from FMI Kuopio dataset using year 2017.}
+  \label{fig_fmi_kuopio_10000_multi_day_2017}
 }
-\capbtabbox{%
-  \begin{tabular}{c|c|c|c} \hline
-\multicolumn{4}{c}{FMI Kuopio}\\
-\hline
-n & Tilt & Azimuth & Error\\
-\hline
-3 & $27.07^\circ$ & $200.24^\circ$ & $13.37^\circ$\\
-3 & $30.50^\circ$ & $198.01^\circ$ & $16.96^\circ$\\
-2 & $28.83^\circ$ & $199.13^\circ$ & $15.21^\circ$\\
-2 & $32.09^\circ$ & $196.89^\circ$ & $18.65^\circ$\\
-1 & $34.52^\circ$ & $197.58^\circ$ & $20.90^\circ$\\
-1 & $34.52^\circ$ & $197.58^\circ$ & $20.90^\circ$\\
-1 & $35.07^\circ$ & $194.65^\circ$ & $21.86^\circ$\\
 
-
-\hline\hline
-\end{tabular}
-}{%
-  \caption{Estimation results table for FMI Kuopio.}
+\ffigbox{%
+  \includegraphics[width=1\linewidth]{pics/FMI_kuopio_2018} % WAS pics/10p_fibo_fit_text
+}{
+  \caption{1000 point exhaustive search on 18 cloud free days from FMI Kuopio dataset using year 2018.}
+  \label{fig_fmi_kuopio_1000_multi_day_2018}
 }
 \end{floatrow}
 \end{figure}
 
 
-Figures \ref{10khelsinkiplot} and \ref{10kkuopioplot} shows that the models based on best found fits are better fits than simulations done with the known parameters. This is true for both Helsinki and Kuopio datasets. This would suggest that the model fitting works as intended and that either the model is inaccurate or there is an error in reported panel angles. The more likely cause of the two is the the solar irradiance model and for some undetermined reason the error of the model is more significant for the Kuopio installation. Possible causes could be related to lower sun angles resulting in higher reflective losses or shadowing during last production hours which would also explain the uneven structure visible in the last non-zero hours in \ref{10kkuopioplot}.
-
-
-
-
+\newpage
 
 \section{Solving panel angles iteratively}
 The exhaustive search used in earlier section suggest that the method is capable of estimating panel installation angles accurately. However evaluating 10 000 point lattices is somewhat inelegant and this can be avoided by using multiple less dense lattices iterarively if the fitness space satisfies a couple of requirements.
 
-The first is that the fitness space should be smooth. This smoothness doesn't have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if their size is small enough not to be observable to the iterative lattices. Anothe requirement is that the fitness base should contain as few basin or bowl sections as possible with the best fit being the minimum point of the largest and deepest basin.
-
-The exhaustive search visualizations show that the gradient visible in the fitness space is smooth enough not to result in visible noise patterns in the figure \ref{10k_fits_new_helsinki}. This may not be true for all cases but as long as the selected clear cloud free day and the simulation do not both contain a fine 
+The first is that the fitness space should be smooth. This smoothness doesn't have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if their size is small enough not to be observable to the iterative lattices. Another requirement is that the fitness space should contain as few convergence points and their respective basins as possible. These basins are regions in fitness space which are defined by a convergence point and their surrounding regions where the slope of the space leads to the respective convergence point. The exhaustive search visualizations show that the gradient visible in the fitness space is smooth enough not to result in visible noise patterns in the figure \ref{10k_fits_new_helsinki}. %This may not be true for all cases but as long as the selected clear cloud free day and the simulation do not both contain a fine
 
 
+In computer science the following method would perhaps be classified as a divide-and-conquer algorithm where as mathematicians would call it gradient search.
 
- In computer science the following method would perhaps be classified as a divide-and-conquer algorithm where as mathematicians would call it gradient search.
+
+
+ 
 
 \noindent \textbf{Iterative panel angle estimation algorithm}
 \begin{enumerate}
