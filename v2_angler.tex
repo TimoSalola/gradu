@@ -1,13 +1,8 @@
 \chapter{Estimating panel angles}
-Solar panel installation angles are a large factor in deciding the energy output of a PV system. If panel angles can be freely chosen during planning and installation phases, it can make sense to either optimize for total power generation or power generation during peak consumption hours. This means that even if installation angles could be freely chosen, installation angles are unlikely to be the same for every system in the same geographical region. Panel angles may also be restricted by installation sites and mounting types.
+Solar panel installation angles are a large factor in deciding the energy output of a PV system. If panel angles can be freely chosen during planning and installation phases, it can make sense to either optimize for total power generation or power generation during peak consumption hours. This means that even if installation angles could be freely chosen, installation angles are unlikely to be the same for every system in the same geographical region. Panel angles may also be restricted by installation sites and mounting types. 
 
-% Panel racks have to be installed based on the available area 
 
-%Installation type also plays a factor in choosing the panel angles. Panel angles may be restricted by 
-
- %In so called flush rooftop installations, the panels are installed to run along the roof and so the angles can not be freely chosen. Panels can also be rack mounted and these racks tend to be installed and oriented based on the available area as is the case with \ref{fig_fmikumpula_panels}. Due to the forementioned reasons, panel angles vary from installation to installation.
-
-One reason for lacking of faulty metadata is that panel angles can be difficult to measure accurately. The tilt angle of the panels or the angle between the panel normal and zenith(the point directly above) can easily be measured with an angle ruler and a bubble level, but the azimuth angle of the panels is much harder to measure with the same degree of accuracy. If an accurate compass is used and the difference between the magnetic north and the geographic north is taken into account, metal structures and electrical systems nearby can still distort local magnetic fields enough to cause errors in measurements. The challenges in taking accurate measurements are not insurmountable, but they may contribute to the inaccuracies and the lack of available information in PV installation parameter metadata. 
+One reason for lacking or faulty metadata is that panel angles can be difficult to measure accurately. The tilt angle of the panels or the angle between the panel normal and zenith can easily be measured with an angle ruler and a bubble level, but the azimuth angle of the panels is much harder to measure with the same degree of accuracy. If an accurate compass is used and the difference between the magnetic north and the geographic north is taken into account, metal structures and electrical systems nearby can still distort local magnetic fields enough to cause errors in measurements. The challenges in taking accurate measurements are not insurmountable, but they may contribute to the inaccuracies and the lack of available information in PV installation parameter metadata. 
 
 The space of possible panel installation angles can be thought as a half unit sphere in a spherical coordinate system where each point on the surface represents a direction to which the normal of the solar panels could be directed towards. A visualization of parameter space in 3D and 2D is shown in \ref{fig_halfdome} and \ref{fig_anglespace1}. The 3 dots in the subfigure \ref{fig_anglespace1} mark the zenit for which azimuth is not well defined(red), the installation angles of FMI Helsinki installation azimuth $135^\circ$ tilt $15^\circ$(blue) and a close to power generation maximized installation with directly south facing panels with the tilt of $45^\circ$(black).
 
@@ -79,6 +74,7 @@ Alternative approaches can also be chosen as the function or functions for measu
 
 \noindent The two points and the origin form an isoceles triangle with the sides from the origin to the vector end points having the length of 1 while the distance between the vector end points is the same as d.
 
+\newpage
 \noindent As the lengths of three sides are known, the angles of the triangle can be calculated with the cosine rule. 
 \begin{align}
 	a^2 &= b^2 + c^2 - 2bc \cos(A)
@@ -132,13 +128,13 @@ Where
 \section{Simulation fitness function}
 \label{section_simulation_error_function}
 
-The earlier model error function defined in \ref{pv_model_delta} can be re-used as the simulation fitness function. By then computing multiple simulations with different panel angles and choosing the simulation with the best fitness, meaning lowest delta value, the panel angle values can be estimated.
+The earlier model error function defined in \ref{pv_model_delta} can be re-used here as the simulation fitness function. By then computing multiple simulations with different panel angles and choosing the simulation with the best fitness, meaning lowest delta value, the panel angle values can be estimated.
 
 \vspace{6mm}
 \noindent\textbf{Simulation fitness function}
 \begin{equation}
 \begin{split}
-\label{pv_model_delta}
+\label{pv_model_delta_v2}
 Delta_{model} = \sum_{t=1}^{1440} |P_{measured}(t) - P_{simulated}(t)| /1440
 \end{split}
 \end{equation}
@@ -151,22 +147,12 @@ Visualization of the function is shown in \ref{fig_simulation_fitness} where sim
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\linewidth]{pics/halfdome} % WAS pics/measured_vs_simulated
+\includegraphics[width=0.85\linewidth]{pics/measured_vs_simulated} % WAS pics/measured_vs_simulated
 \figcaption{Visualization of fitness function.}
 \label{fig_simulation_fitness}
 \end{figure}
 
 
-
-
-%The earlier simulation error function defined in \ref{pv_model_delta} can be used for evaluating how well a simulated power output curve fits measured power data. By then simulating the power output with several installation parameters and 
-
-
-%By simulating power generation with different parameter combinations and choosing the set of parameters with the lowest delta value, 
-
-
-
-%Simulation error function measures how much the predicted power generation values vary from the measured power generation values. The purpose of the simulation error function is to be able to generate a single numerical value which describes how well a certain parameter combination models the measurements. By then testing out multiple parameter combinations, the combination with the lowest simulation error function value should be the best fit and the parameters used for the simulation should be within a small error of the physical parameters of the solar PV installation. In \ref{fig_error} the error between a cloud free day and randomly chosen set of wrong simulation parameters is visualized.
 
 
 \newpage
@@ -217,24 +203,18 @@ $x$, $y$ and $z$ are the corresponding cartesian coordinates.
 
 \newpage
 \subsection{Importance of lattice density}\label{ss_lattice_density}
-Using the correct lattice density is important for using exhaustive search algorithms for panel angle estimation. Regardless of the lattice point count, a discrete lattice is unlikely to ever include the best fit in the whole $\mathbb{R}^2$ parameter subspace. This means that if the lattice density is low, distance between best fit and closest lattice points can result in significant errors. However as incresing the lattice density increases the computational cost of angle estimation, choosing a good density is an optimization problem.
+Using the correct lattice density is important for using exhaustive search algorithms for panel angle estimation. Regardless of the lattice point count, a discrete lattice is unlikely to ever include the best fit in the whole $\mathbb{R}^2$ parameter subspace. This means that lattices of a sufficient density should be used in order to guarantee that a lattice point exists near to the optimal fit. However as incresing the lattice density increases the computational cost of angle estimation, choosing a good density becomes an optimization problem.
 
-With \textit{in-steps-of-n} lattices, the main benefit is easy readibility. If the lattice is given one point for latitudinal and longitudinal degree, resulting in $360*90=32400$ points, then the lattice can be aligned so that each tilt and azimuth degree pair where angles are integers is tested. This discretization makes the results easily understanble as if the known installation angles are given as integers, a point representing the exact known installation angles already exists on the lattice. The same applies for lower density in \textit{in-steps-of-n} lattices.
+Lattice densities behave differently in different latticing patterns. With \textit{in-steps-of-n} lattices, the main benefit is easy readibility. If the lattice is given one point for latitudinal and longitudinal degree, resulting in $360*90=32400$ points, then the lattice can be aligned so that each tilt and azimuth degree pair where angles are integers is tested. This discretization makes the results easily understanble as if the known installation angles are given as integers, a point representing the exact known installation angles already exists on the lattice.
 
-If a Fibonacci lattice or some other discretization method where lattice points do not fall on angle space integer grid lines is used, evaluating the performance of the fitting algorithm can become somewhat challenging. For example a 1000 point Fibonacci lattice with a delta of 5 degrees is not as descriptive of a result as a delta of 5 degrees on a 1 degree \textit{in-steps-of-n} lattice.
+With Fibonacci lattices and other lattice patterns in which lattice points may appear to be at seemingly random coordinates, evaluation of search algorithms is more difficult without visual aid. For example, in a 1000 point Fibonacci lattice the closest point to an arbitrary angle space coordinate is not obvious nor is the center angle distance between datapoints in the lattice as intuitive as with in-steps-of lattices.
 
-
-%The density of lattices is an important measurable charasteristic which proves useful during the optimization of angle estimation algorithm. The most useful metric would be the sphere center angle distance between neighboring points. This would be useful as it can be used for determining whether errors in predictions are lattice or function fitting related. For example, if the lattice neighbors are approximately 1 degree away from oneanother and the predicted angle is 5 degrees off from the known installation angle, then the error is caused by model fitting and not lattice density as there must have been multiple lattice points closer to the known angle point than the discovered best fit. However if grid density is near to or lower than angle estimation error, the lattice is likely to be a contriburing to angle estimation errors.
-
-%Calculating neighborign center angle distances for both \textit{in-steps-of-n} and Fibonacci lattices is somewhat challenging. In \textit{in-steps-of-n}, the value \textit{n} can be used as an estimate for max center angle distance as \textit{n} will always be the tilt distance to the nearest neighbor with different tilt angle. With Fibonacci lattices the easiest way of estimating center angle distances is taking the coordinates of the first two lattice points and calculating their center angle distance with earlier error equation \ref{errorangle}. These first two points should be used as Fibonacci lattice points are distributed on a single arm spiral pattern, resulting in later sequential points being further from one another.
-
-%Another method for calculating Fibonacci lattice point distances is dividing the surface area of the angle space by the amount of calculated lattice points. This area-per-point value could then be used in order to estimate how far points are from oneanother on average. In later sections, the first two points derived distance will be used.
 
 \newpage
 \section{Solving panel angles}
-Now that the geographic location and multiplier value of installation are known to be solvable and fitness functions have been defined, the next step is solving the panel angles. The simple method is evaluating all points on a sufficiently dense lattice and choosing the point with the lowest delta value.
+Now that the geographic location and the multiplier values of installations are known to be solvable and fitness functions have been defined, the next step is solving the panel angles. The simple method is evaluating all points on a sufficiently dense lattice and choosing the point with the lowest delta value.
 
-Figure \ref{fig_polar10} contains 10 fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and it had a delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$. Center angle error as per \ref{errorangle} is 18.17$^\circ$.
+Figure \ref{fig_polar10} contains 10 Fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and it had a delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$. Center angle error as per \ref{errorangle} is 18.17$^\circ$.
 
 
 
@@ -273,7 +253,7 @@ Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 \end{floatrow}
 \end{figure}
 
-The fit achieved in \ref{fig_polar10} is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a fibonnacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$ , delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can from a minute up to several hours.
+The fit achieved in \ref{fig_polar10} is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$ , delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can from a minute up to several hours.
 
 \begin{figure}[h]
 \centering
@@ -362,7 +342,16 @@ The fit achieved in \ref{fig_polar10} is not very good and better results can be
 \subsection{Evaluation of exhaustive search results}
 The results of the exhaustive search algorithm are good for the Helsinki dataset. Angle delta values as low as achieved in \ref{10k_fits_new_helsinki} are likely to be irrelevant for analysis purposes and a delta of 0.37$^\circ$ is lower than the single digit precision of reported installation angles.
 
-The next verification step is using the algorithm on multiple days from the same dataset and checking the spread pattern. This was done for a set of days from 2018 and 2020, resulting in scatter patterns shown in \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020}. The tight clustering visible in both figures suggest that the  
+The next verification step is using the algorithm on multiple days from the same dataset and checking the spread pattern. This was done on sets of days with both Helsinki and Kuopio datasets. Figures \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020} display the tight scatter patterns in the Helsinki predictions. For the tight grouping in the 2018 figure the average tilt of 13.89$^\circ$ and azimuth of 130.81$^\circ$ are close reported angles of 15$^\circ$ tilt and 135$^\circ$ azimuth. And with year 2019 where the scatter pattern is wider, the average of the results is 14.17$^\circ$ tilt, 132.62$^\circ$ azimuth which is even closer to the known installation angles.
+
+%years such as 2019 where the scatter pattern is wider, the average of the results
+
+%and center angle delta of X$^\circ$ 
+
+% Average tilt:13.4 azimuth:128.06 fitness111 helsinki 2017
+% Average tilt:13.89 azimuth:130.81 fitness84 Helsinki 2018
+% Average tilt:14.17 azimuth:132.62 fitness117 Helsinki 2019
+% The tight clustering visible in both figures suggest that the  
 
 
 
@@ -372,26 +361,29 @@ The next verification step is using the algorithm on multiple days from the same
 \begin{figure}[!h]
 \begin{floatrow}
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/FMI_helsinki_2018} % WAS pics/10p_fibo_fit_text
+  	\includegraphics[width=1\linewidth]{pics/Helsinki2018}
 }{
-  \caption{1000 point exhaustive search on 15 cloud free days from FMI Helsinki dataset using year 2018.}
-  \label{fig_fmi_helsinki_1000_multi_day_2018}
-}
+  	\caption{10000 point exhaustive search on 15 cloud free days from FMI Helsinki dataset using year 2018.}
+  	\label{fig_fmi_helsinki_1000_multi_day_2018}
+}	
 
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/FMI_helsinki_2020} % WAS pics/10p_fibo_fit_text
+  \includegraphics[width=1\linewidth]{pics/Helsinki2019}
 }{
-  \caption{1000 point exhaustive search on 16 cloud free days from FMI Helsinki dataset using year 2020.}
+  \caption{10000 point exhaustive search on 8 cloud free days from FMI Helsinki dataset using year 2019.}
   \label{fig_fmi_helsinki_1000_multi_day_2020}
 }
 \end{floatrow}
 \end{figure}
 
-Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2017} and \ref{fig_fmi_kuopio_1000_multi_day_2018} clearly indicate that estimations are converging several degrees off from the known installation angles. In the more dense 10000 point lattice used for the year 2017 the mean of tilt and azimuth predictions is 26.76$^\circ$ and 201.11$^\circ$, resulting in a center angle delta of 13$^\circ$. 
+Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2018} and \ref{fig_fmi_kuopio_10000_multi_day_2020} clearly indicate that estimations are converging several degrees off from the known installation angles.
+
+
+%In the more dense 10000 point lattice used for the year 2017 the mean of tilt and azimuth predictions is 26.76$^\circ$ and 201.11$^\circ$, resulting in a center angle delta of 13$^\circ$. 
 
 The exact reason for this significant delta is not known and there could be multiple contributing factors. One possible explanation is panel shading which is more likely to occur when the Sun is near the horizon. This causes a proportionally higher energy output loss during first and last hours of the day, resulting in a more narrow power generation plot shape. This \textit{sharpness} is also influced by the tilt angle of an installation as was previously seen in figure \ref{fig_poa_different_parameters} and thus the error in the estimated tilt angle could be partially caused by either panel self shadowing or shadowing caused by other stuctures near the PV panels.
 
-Similar patterns occur with all of the years from FMI Helsinki and Kuopio datasets where estimated angles form clusters in angle-space. With Helsinki the delta between known installation angles and estimations is minimal where as with the Kuopio dataset the cluster is larger and offset by a bias of approximately 13$^\circ$.
+%Similar patterns occur with all of the years from FMI Helsinki and Kuopio datasets where estimated angles form clusters in angle-space. With Helsinki the delta between known installation angles and estimations is minimal where as with the Kuopio dataset the cluster is larger and offset by a bias of approximately 13$^\circ$.
 
 
 %average delta angle: 12.956
@@ -400,17 +392,17 @@ Similar patterns occur with all of the years from FMI Helsinki and Kuopio datase
 \begin{figure}[h]
 \begin{floatrow}
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/Kuopio2017} % WAS pics/10p_fibo_fit_text
+  \includegraphics[width=1\linewidth]{pics/Kuopio2018} % WAS pics/10p_fibo_fit_text
 }{
-  \caption{10000 point exhaustive search on 5 cloud free days from FMI Kuopio dataset using year 2017.}
-  \label{fig_fmi_kuopio_10000_multi_day_2017}
+  \caption{10000 point exhaustive search on 18 cloud free days from FMI Kuopio dataset using year 2018.}
+  \label{fig_fmi_kuopio_10000_multi_day_2018}
 }
 
 \ffigbox{%
-  \includegraphics[width=1\linewidth]{pics/FMI_kuopio_2018} % WAS pics/10p_fibo_fit_text
+  \includegraphics[width=1\linewidth]{pics/Kuopio2019} % WAS pics/10p_fibo_fit_text
 }{
-  \caption{1000 point exhaustive search on 18 cloud free days from FMI Kuopio dataset using year 2018.}
-  \label{fig_fmi_kuopio_1000_multi_day_2018}
+  \caption{1000 point exhaustive search on 10 cloud free days from FMI Kuopio dataset using year 2020.}
+  \label{fig_fmi_kuopio_10000_multi_day_2020}
 }
 \end{floatrow}
 \end{figure}
@@ -418,12 +410,14 @@ Similar patterns occur with all of the years from FMI Helsinki and Kuopio datase
 
 \newpage
 
+\clearpage
+
 \section{Solving panel angles iteratively}
 The exhaustive search used in earlier section suggest that the method is capable of estimating panel installation angles accurately. However evaluating 10 000 point lattices is somewhat inelegant and this can be avoided by using multiple less dense lattices iterarively if the fitness space satisfies some requirements.
 
-The first requirement is that the fitness space should be smooth. This smoothness doesn't have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if the noise pattern is not observable in the iterative lattices. Based on an earlier figure generated by exhaustive search \ref{10k_fits_new_helsinki}, this requirement would appear to be met.
+The first requirement is that the fitness space should be smooth. This smoothness does not have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if the noise pattern is not observable in the iterative lattices. Based on an earlier figure generated by exhaustive search \ref{10k_fits_new_helsinki}, this requirement would appear to be met.
 
-Second requirement is that the fitness space should contain as few convergence points and their respective basins as possible. These basins are regions in fitness space which are defined by a convergence point and their surrounding regions where the slope of the space leads to the respective convergence point. The region around best found fit in \ref{10k_fits_new_helsinki} forms a large basin but there would also appear to be a second converge point at azimuth 0$^\circ$ tilt 90$^\circ$.
+Second requirement is that the fitness space should contain as few convergence points and their respective basins as possible. These basins are regions in fitness space which are defined by a convergence point and their surrounding regions where the slope of the space leads to the respective convergence point. The region around best found fit in \ref{10k_fits_new_helsinki} forms a large basin but there would also appear to be a second converge point somewhere around azimuth 0$^\circ$ tilt 90$^\circ$.
 
  
 

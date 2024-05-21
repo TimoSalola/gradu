@@ -14,13 +14,13 @@ A level-1 auxiliary file: v2_remarks.aux
 A level-1 auxiliary file: v2_appendix.aux
 Database file #1: example_refs.bib
 Warning--entry type for "medium_fibolat_equation" isn't style-file defined
---line 26 of file example_refs.bib
+--line 45 of file example_refs.bib
 Warning--entry type for "sandia_poa_ghi" isn't style-file defined
---line 80 of file example_refs.bib
+--line 99 of file example_refs.bib
 Warning--entry type for "sandia_poa_dni" isn't style-file defined
---line 86 of file example_refs.bib
+--line 105 of file example_refs.bib
 Warning--entry type for "sandia_poa_dhi" isn't style-file defined
---line 92 of file example_refs.bib
+--line 111 of file example_refs.bib
 Warning--I didn't find a database entry for "github_source"
 Warning--there's no year in sandia_poa_dhi
 Warning--there's no year in sandia_poa_dni
@@ -31,43 +31,43 @@ Warning--empty school in king2004
 Warning--there's no year in medium_fibolat_equation
 You've used 14 entries,
             2422 wiz_defined-function locations,
-            640 strings with 7109 characters,
-and the built_in function-call counts, 2941 in all, are:
-= -- 307
-> -- 135
+            643 strings with 7132 characters,
+and the built_in function-call counts, 3165 in all, are:
+= -- 336
+> -- 145
 < -- 0
-+ -- 52
-- -- 38
-* -- 259
-:= -- 479
++ -- 55
+- -- 41
+* -- 279
+:= -- 519
 add.period$ -- 14
 call.type$ -- 14
 change.case$ -- 0
 chr.to.int$ -- 0
 cite$ -- 19
-duplicate$ -- 121
-empty$ -- 276
-format.name$ -- 38
-if$ -- 680
+duplicate$ -- 129
+empty$ -- 295
+format.name$ -- 41
+if$ -- 733
 int.to.chr$ -- 0
 int.to.str$ -- 14
-missing$ -- 1
-newline$ -- 59
-num.names$ -- 13
+missing$ -- 0
+newline$ -- 60
+num.names$ -- 14
 pop$ -- 35
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
 skip$ -- 48
 stack$ -- 0
-substring$ -- 135
-swap$ -- 33
+substring$ -- 162
+swap$ -- 35
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 5
-while$ -- 20
+while$ -- 22
 width$ -- 16
-write$ -- 129
+write$ -- 133
 (There was 1 error message)

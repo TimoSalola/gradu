@@ -40,31 +40,16 @@ $2018-05-30 $ $23:59$ & $1439$ & $0.0$\\
 \label{table_poa_simulated_format}
 \end{table}
 
-%\section{PVlib POA python function} % , parameter space and computational requirements}
-%Taking a look at the code responsible for the plane of array irradiance simulations can give some insights into the behavior of the estimations and problem of parameter estimation. The  python function responsible for simulating plane of array irradiance values over a day is defined with the header \ref{poa_header}. In this header we can see that the function takes 7 inputs each of which is mandatory, meaning that when the functions is used as a tool for parameter estimation, some of the parameters have to be guessed or randomly assigned.
+
+\subsection{PVlib POA function inputs} 
+%PVlib plane of array irradiance can be simulated with 
 
 %\begin{lstlisting}[caption={PVlib POA simulation function header.}, label={poa_header}]
-%def get_irradiance_with_multiplier(year, day, latitude, longitude, tilt, azimuth, multiplier):
+%def get_irradiance(year, day, lattitude, longitude, tilt, azimuth):
 %\end{lstlisting}
 
 
-
-
-
-
-
-%The following python code is a function which adds the ability to scale the power values of PVlib POA simulations. This ability is needed as by default PVlib simulates the amount of energy radiated towards an imaginary square meter sized solar panel with given coordinates, timestamp and installation angles and as such the power values have to be scaled in order to match the surface areas and efficiency of real installations. The code itself does not tell much of the mathematics used for the simulation, but it can be used to show the input parameters required by the POA simulation function. Each of the 6 parameters is mandatory, meaning that if latitude, longitude, day or any other parameter is left out when the function is called, this will raise an error upon code execution. This means that when the functions is used as a tool for parameter estimation, some of the parameters have to be guessed or randomly assigned. 
-
-%This wrapper shows that six input variables are used for generating a day long POA simulation. The functions requires these parameters, meaning that python will raise an error if the function is called without the necessary 6 inputs. This means that when the function $get\_irradiance\_with\_multiplier()$ is used as a tool to solve the parameters of a system, up to 5 parameters may have to be guessed or assigned random values. The parameters and their ranges are as follows:
-\subsection{Python function and input parameters} 
-In the thesis code, the irradiance simulation function is declared with the following function header.
-
-\begin{lstlisting}[caption={PVlib POA simulation function header.}, label={poa_header}]
-def get_irradiance(year, day, lattitude, longitude, tilt, azimuth):
-\end{lstlisting}
-
-
-\noindent The following listing contains the parameters of the plane of array irradiance function and their domains.
+\noindent The following listing contains the relevant parameters of the plane of array irradiance function and their domains.
 %The POA simulation function accepts real --or integer as is the case with the day parameter-- valued parameters in the ranges listed below. 
 
 \begin{itemize}
@@ -80,83 +65,21 @@ def get_irradiance(year, day, lattitude, longitude, tilt, azimuth):
 
 \vspace{3mm}
 \noindent
-The day and year parameters can be assumed to be always known and this leaves four unknown system parameters. If each parameter combination results in an unique output, the likely system parameters can be solved by exhaustively searching the parameter space and comparing the resulting output data to known power generation data.
+The day and year parameters can be assumed to be always known as datasets include timestamps and this leaves four unknown system parameters. These four parameters span a 4D parameter space of possible PV installations. The size of this parameter space is connected to the difficulty of the parameter estimation problem. As the parameters are in $\mathbb{R}$, the amount of sensible combinations is the product of the discretization of each of the parameter ranges. Tilt and azimuth parameters can be discretized as integers, resulting in $90*360$ or $32400$ unique angle space points. The geographic latitude and longitude coordinates are somewhat harder to discretize. In an arbitrary 0.1 degree geographic discretization there would be $1800*3600$ or 6480000 coordinate combinations. The product of these two sums results in $2*10^{11}$ unique parameter combinations.
 
-The combination of these four parameters and their ranges can be thought to form a subspace in four-dimensional Euclidean space. This so-called parameter space and its "volume" are both concepts that can be used for analyzing the difficulty of parameter estimation problems, behavior of parameter estimation functions and their efficiency. In general, the more parameters and thus dimensions there are, the larger the resulting parameter space is and the harder the problem becomes. And the more parameters an algorithm is attempting to solve at once, the slower the algorithm can be expected to be. If each parameter is discretized to 20 evenly spaced values, solving all the 4 parameters at once by testing out every possible combination would require evaluating $20^4$ or 160 000 unique combinations. However if the parameters could be solved one by one, isolted from the influence of other parameters, there would only be $20*4$ or 80 unique combinations, a reduction of 2000 to 1. This highlights how important it is to break larger problems into smaller problems whenever possible.
+A parameter space this large is difficult to examine exhaustively. Even a system capable of evaluating 100 000 angle space points per second would need approximately 23 days in order to evaluate all of the possible combinations. However if the parameters can be solved in isolation from oneanother, the required computational time would decrease significantly. Instead of $90*360*1800*36000$, there would be $90+360+1800+3600$ combinations to evaluate. This highlights how important it is to break problems into smaller pieces whenever possible and much of this thesis focuses on how this can be done with solar PV parameter estimation. 
 
-
-
-%\noindent The combination of these parameters and their ranges can be thought to form a subspace in seven-dimensional Euclidean space, or six dimensional if year and day are combined into a date variable. This so-called parameter space and its "volume" are both concepts that can be used for analyzing the difficulty of parameter estimation problems, behavior of parameter estimation functions and their efficiency. In general, the more parameters and thus dimensions there are, the larger the resulting parameter space is and the harder the problem becomes. And the more parameters an algorithm is attempting to solve at once, the slower the algorithm can be expected to be.
-
-%With solar PV installation parameter estimation, there are 5 unknown parameters as the year and day parameters are always known. If each of the remaining parameters is discretized to 20 evenly spaced values, solving all the 5 parameters at once by testing out every possible combination would require evaluating $20^5$ or 3.2 million unique combinations. However if the parameters could be solved one by one, isolted from the influence of other parameters, there would only be $20*5$ or 100 unique combinations, a reduction of 32000 to 1. This highlights how important it is to break larger problems into smaller problems whenever possible.
-
-%In the worst case where none of the 6 parameters are known and each of the parameter space axes are discretized to $n$ unique evenly spaced values, then the amount of possible combinations is $n^6$. 
-
-%The exponent of 6 may seem insignificant, but even with a crude space discretization where $n$ is chosen to be 20 would result in 64 million combinations. If testing out one parameter combination were to take a second of computing time, testing out each of the 64 million combinations would require more than 700 days of non-stop computing. Luckily the day parameter is always known and thus $n^6$ drops into $n^5$ but even then the size of the parameter space is enormous.
-
-%Thus the goal of the parameter estimation functions should be to reduce the freedom of movement in the parameter space as efficiently as possible, eventually restricting the parameter space into an individual point which corresponds to the installation parameters of the system.
-
-
-%This means that when unknown parameters of a multi parameter function are being solved, emphasis should be placed on solving the parameters one by one
-
-
-%In best case scenario, one or more of these parameters can be locked to a specific value. This decreases the volume of the parameter space and the goal 
-
-
-%the amount of different parameter combinations that may have to be tested while the installation parameters are being solved. 
-
-
-
-%The amount of dimensions is relevant as if $n$ discrete values are chosen for each parameter, the total amount of different parameter combinations would be $n^6$. Luckily the day parameter is always known and thus there are only 5 free dimensions, but this still results in a fairly large parameter space. Even a crude discretization with 20 values per dimension would still result in $20^5$ or 3.2 million different parameter combinations. 
-
-%The amount of parameter combinations is relevant as some problems may prove to be difficult to solve intelligently. In these cases, testing out every parameter combination may be the only option. However exhausting the parameter space may not be viable if the space is extremely large.
-
-
-%With extremely large parameter spaces even this method may become unviable as the computing time and energy required 
-
-
-
-
-%In theory, if we could design a function which could determine if the POA simulation and the real world measurements match, then it would be possible to test out every possible parameter combination until the correct set of parameters was found. In practice however, this would not be adviseable or in some cases even possible as the parameter space is enormous. In the case where the range of each parameter was split into equidistant points, each of which had to be tested for, in total there would be $20^5$ or 3.2 million different sets of parameters. If testing out one set of parameters would take about a second of computing time, then the complete set of 3.2 million unique parameter combinations would require almost 40 days of non stop computations.
-
-
-
-
-%The following python code generates a scaled POA curve for a day of data with given input parameters. As the code is a wrapper for the more complex $get\_irradiance$ fuction, it can be written with just a few lines of code and it should highlight the parameters used by the PVlib simulation function. The 6 necessary parameters are latitude, longitude, day, tilt, facing(azimuth) and multiplier. This means that the parameter space of the POA model is a 6 component vector. Luckily the day can be assumed to be always known and as such there are only 5 unknown parameters which span the parameter space.
-
-
-%def get_irradiance(lat, lon, day, tilt, facing):
-
-%This thesis uses a plane of array irradiance simulation function from the python library pvlib to simulate the energy output of solar pv installations. The inputs of said function are the geographic location of the installation, timestamp and panel installation angles. And the output of the function is a python pandas dataframe, a table-like entity with timestamps as indices and watts per square meter as the indexed data. 
-
-
-
-%According to the PVlib documentation, the plane of array irradiance function returns multiple different power values. Out of these the "poa_global" is a watts per square meter estimation of the direct and indirect diffuse light that would hit a solar panel with the given coordinates, date and panel angles. A such model 
-
-% https://pvlib-python.readthedocs.io/en/v0.9.0/generated/pvlib.irradiance.poa_components.html
-
-
-
-%describes the amount of direct and indirect radiation which would hit the surface of a solar panel at given coordiantes, date and panel angles. Note that it does not take into account the reflectivity of the panels, efficiency loss due to heat or a multitude of other factors and the lack of these features will introduce some errors in the results. 
- 
-% TODO REWRITE END
-
-%In addition, the pvlib poa function included in the appendix \ref{pvlib_poa_code} does not take into account the panel surface area and thus an additional function \ref{pvlib_poa_multiplier_code} was written. And unless otherwise denoted, the POA function \ref{pvlib_poa_code} will be assumed to be a black box function, meaning that the exact behavior of the pvlib function is expected to be unknown.
 
 \newpage
 \section{PVlib POA evaluation}
 
-Before implementing the parameter estimation functions, the POA simulations should be tested against known measurement data. Figure \ref{fig-multidaypoavsmeasurements} indicates that in clear sky conditions the pvlib irradiance model is following real world measurements closely with a few exceptions. During cloudy days, the measurements can be seen to exceed the power generation estimated by the model. The cause for this increase is likely to be caused by the additional sunlight reflected from clouds towards solar panels in partly cloudy weather conditions and it shows that cloud induced noise can be positive as well as negative. 
+Before implementing the parameter estimation functions, the POA simulations should be tested against known measurement data. Figure \ref{fig-multidaypoavsmeasurements} displays that in clear sky conditions the pvlib irradiance model is following real world measurements closely with a few exceptions. And during cloudy days the measurements are often lower than the clear sky model would indicate, but they can also peak higher than they would during cloud free days. These increases of power generation above clear sky estimated power are likely to be caused by the additional sunlight reflected from clouds towards solar panels in partly cloudy weather conditions and it shows that cloud induced noise can be positive as well as negative. 
 
-%There is also some deviation visible in the power values of first and last non-zero hours which may prove to be an issue in later stages.
 
-%The same figure shows the importance of finding clear sky days as the only charasteristic in the measurement plots which seems to be consistent between the cloud free and cloudy days seems to the timing of the first and last non-zero minutes. In the 240th day for example, most of the measurements are either higher or lower than the estimated values, but the first and last non-zero minutes seem to align with the first and last non-zero minutes of POA simulations. On the 70th and 150th day, the difference between the modeled and measured first and last non-zero minutes is visible on the graph. Whether this difference is significant will depend on the algorithms applied.
-
-% Proper evaluation of the irradiance model is not the topic of the thesis and as such 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\linewidth]{pics/multiday_vs_neat}
+\includegraphics[width=0.9\linewidth]{pics/multiday_vs_neat}
 \figcaption{Power output of FMI Kumpula PV installation and the pvlib POA simulation computed with the parameters \ref{table_fmi_helsinki_kuopio_parameters}. Horizontal axis on the graphs corresponds to time and vertical axis marks the estimated power values. The purpose of the graphs is to display the different shapes and deviations from POA models and thus axis names and numbers were left out. Upper row contains randomly selected days while as the lower row has days chosen by a clear sky algorithm mentioned in chapter \ref{clearskyalgo_chapter}. Measurements are from 2017. POA irradiance values were multiplied by 20 in order to match the curves values on power axis.}
 \label{fig-multidaypoavsmeasurements}
 \end{figure}
@@ -185,7 +108,7 @@ Before implementing the parameter estimation functions, the POA simulations shou
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.8\linewidth]{pics/poa_eval_new_crop}
+\includegraphics[width=0.9\linewidth]{pics/poa_eval_new_crop}
 \figcaption{Influence of changes in PVlib simulation parameters on generated power output curves. Control shows FMI Helsinki measurements and simulation with the same parameters as the Helsinki installation. Simulated power values are multiplied by 19 in order to match values on y-axis.}
 \label{fig_poa_different_parameters}
 \end{figure}
@@ -194,7 +117,7 @@ By varying the different simulation parameters as shown in figure \ref{fig_poa_d
 
 In the exact opposite case where every measureable property of irradiance plots is affected by every input parameter, solving the parameters would be much harder or even impossible. For example if all of the parameters influenced the same traits to different extents and the system was not bijective, multiple parameter combinations could result in the same simulated power graph. In a such system there would not be a single solution but rather a set of possible solutions.
 
-The problem of solving installation parameters lies somewhere in between the two extremes. The longitude parameter would seem to shift the curve along the time axis where as tilt and azimuth parameters do not affect the first or last non-zero minutes but they do affect the shape of the curve. Observations of parameter to trait interactions are listed on table \ref{table_traits}.
+The problem of solving installation parameters would appear to be somewhere in between the two extremes. The longitude parameter would seem to shift the curve along the time axis where as tilt and azimuth parameters do not affect the first or last non-zero minutes but they do affect the shape of the curve. Observations of parameter to trait interactions are listed on table \ref{table_traits}.
 
 
 
@@ -308,7 +231,7 @@ The problem of solving installation parameters lies somewhere in between the two
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\linewidth]{pics/uml2}
-\captionsetup{labelformat=empty}
+%\captionsetup{labelformat=empty}
 \figcaption{Original POA-based PV model and the improved model with reflection and temperature estimation.}
 \label{fig-pv_model}
 \end{figure}
@@ -491,7 +414,7 @@ For unknown PV systems, the unknown $P_{rated}$ value can be estimated by compar
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\linewidth]{pics/areamatching2}
+\includegraphics[width=0.7\linewidth]{pics/areamatching2}
 \figcaption{Measurement data from FMI Helsinki dataset, POA irradiance simulation was computed with FMI Kumpula coordinates and installation angle parameters.}
 \label{fig_area_match}
 \end{figure}
@@ -510,10 +433,10 @@ Delta_{model} = \sum_{t=1}^{1440} |P_{measured}(t) - P_{simulated}(t)| /1440
 \end{split}
 \end{equation}
 
-\noindent The delta value represents a normalized per minute deviation between the model and the meausred data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
+\noindent The delta value represents a normalized per minute deviation between the model and the meausred data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power regardless of the time of day and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
 
 
-Delta values for detected cloud free days for FMI Helsinki installation are on average 244 for the POA model and 145 for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487 and improved model 320 with 42 day dataset. This shows that the improved PV model is more accurate for PV estimation than the POA model.
+Delta values for detected cloud free days for FMI Helsinki installation are on average 244 for the POA model and 145 for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487 and improved model 320 with 42 day dataset. This would indicate that the improved PV model is a better approximation for clear sky PV output than the PVlib POA model.
 
 
 \begin{figure}[h]
