@@ -4,7 +4,7 @@ Solar panel installation angles are a large factor in deciding the energy output
 
 One reason for lacking or faulty metadata is that panel angles can be difficult to measure accurately. The tilt angle of the panels or the angle between the panel normal and zenith can easily be measured with an angle ruler and a bubble level, but the azimuth angle of the panels is much harder to measure with the same degree of accuracy. If an accurate compass is used and the difference between the magnetic north and the geographic north is taken into account, metal structures and electrical systems nearby can still distort local magnetic fields enough to cause errors in measurements. The challenges in taking accurate measurements are not insurmountable, but they may contribute to the inaccuracies and the lack of available information in PV installation parameter metadata. 
 
-The space of possible panel installation angles can be thought as a half unit sphere in a spherical coordinate system where each point on the surface represents a direction to which the normal of the solar panels could be directed towards. A visualization of parameter space in 3D and 2D is shown in \ref{fig_halfdome} and \ref{fig_anglespace1}. The 3 dots in the subfigure \ref{fig_anglespace1} mark the zenit for which azimuth is not well defined(red), the installation angles of FMI Helsinki installation azimuth $135^\circ$ tilt $15^\circ$(blue) and a close to power generation maximized installation with directly south facing panels with the tilt of $45^\circ$(black).
+The space of possible panel installation angles can be thought as a half unit sphere in a spherical coordinate system where each point on the surface represents a direction to which the normal of the solar panels could be directed towards. A visualization of parameter space in 3D and 2D is shown in Subfigures \ref{fig_halfdome} and \ref{fig_anglespace1}. The 3 dots in the subfigure \ref{fig_anglespace1} mark the zenit for which azimuth is not well defined(red), the installation angles of FMI Helsinki installation azimuth $135^\circ$ tilt $15^\circ$(blue) and a close to power generation maximized installation with directly south facing panels with the tilt of $45^\circ$(black).
 
 
 \begin{figure}[h]
@@ -128,7 +128,7 @@ Where
 \section{Simulation fitness function}
 \label{section_simulation_error_function}
 
-The earlier model error function defined in \ref{pv_model_delta} can be re-used here as the simulation fitness function. By then computing multiple simulations with different panel angles and choosing the simulation with the best fitness, meaning lowest delta value, the panel angle values can be estimated.
+The earlier model delta function defined as Equation \ref{pv_model_delta} can be re-used here as the simulation fitness Equation \ref{pv_model_delta_v2}. By then computing multiple simulations with different panel angles and choosing the simulation with the best fitness, meaning lowest delta value, the panel angle values can be estimated.
 
 \vspace{6mm}
 \noindent\textbf{Simulation fitness function}
@@ -141,8 +141,7 @@ Delta_{model} = \sum_{t=1}^{1440} |P_{measured}(t) - P_{simulated}(t)| /1440
 
 \noindent As the function normalizes delta values by division with 1440, the delta for shorter days is lower than the delta for comparable long days. This should not matter for parameter estimation as the algorithm works by minimizing delta for each day independently. 
 
-Visualization of the function is shown in \ref{fig_simulation_fitness} where simulation with tilt of 90 degrees and azimuth of 135 is tested against known power measurements from a day in FMI Helsinki dataset, resulting in an average delta of 2959.5 W delta per minute.
-
+Visualization of the function is shown in Figure \ref{fig_simulation_fitness} where simulation with tilt of 90$^\circ$ and azimuth of 135$^\circ$ is tested against known power measurements from a day in FMI Helsinki dataset, resulting in an average delta of 2959.5 W delta per minute.
 
 
 \begin{figure}[h]
@@ -157,7 +156,7 @@ Visualization of the function is shown in \ref{fig_simulation_fitness} where sim
 
 \newpage
 \section{Angle space discretization}\label{angle_space_discretization}
-The next step is angle space discretization. The panel angles are denoted with a doublet of tilt and azimuth values, ranging from 0 to 90 and 0 to 360 respectively. If the tilt and azimuth axes are discretized individually in steps of 5 so that tilt is [0, 5, 10, 15... 90] and azimuth [0, 5, 10, 15... 355], the permuations of these tilt and azimuth values create an even grid in the euclidean projection of angle space where x = tilt, y = azimuth. However as the physical phenomena represented by the angle values is not a point on a flat plane but a point on a half-sphere surface, this results in an uneven discretization seen in figure \ref{fig_5step}. 
+The next step is angle space discretization. The panel angles are denoted with a doublet of tilt and azimuth values, ranging from 0 to 90 and 0 to 360 respectively. If the tilt and azimuth axes are discretized individually in steps of 5 so that tilt is [0, 5, 10, 15... 90] and azimuth [0, 5, 10, 15... 355], the permuations of these tilt and azimuth values create an even grid in the euclidean projection of angle space where x = tilt, y = azimuth. However as the physical phenomena represented by the angle values is not a point on a flat plane but a point on a half-sphere surface, this results in an uneven discretization seen in Figure \ref{fig_5step}. 
 
 Sphere discretization problems are relevant for 3D graphics and real world problems involving geometry and so there are pre-existing methods available for discretization. One of the mathematically more elegant methods is the Fibonacci lattice which was used in a similar fashion in González 2009 \cite{Gonzlez}. The mathematical formulation of similar lattices is an older process and an earlier example is found in Vogel 1979\cite{fibolat_old}. The following mathematical notation for the lattice is based on a code sample included in a blog post by Vagner Seibert \cite{medium_fibolat_equation}.
 
@@ -214,7 +213,7 @@ With Fibonacci lattices and other lattice patterns in which lattice points may a
 \section{Solving panel angles}
 Now that the geographic location and the multiplier values of installations are known to be solvable and fitness functions have been defined, the next step is solving the panel angles. The simple method is evaluating all points on a sufficiently dense lattice and choosing the point with the lowest delta value.
 
-Figure \ref{fig_polar10} contains 10 Fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and it had a delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$. Center angle error as per \ref{errorangle} is 18.17$^\circ$.
+Figure \ref{fig_polar10} contains 10 Fibonacci lattice points and their normalized delta values. The best fit was at tilt 31.79$^\circ$, azimuth 153.79$^\circ$ and it had a delta value of 369W. The lattice density leaves large gaps between lattice points and this found best fit is the closest point to the known installation angles of 15$^\circ$ and 135$^\circ$. Center angle error as per Equation \ref{errorangle} is 18.17$^\circ$.
 
 
 
@@ -253,7 +252,7 @@ Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 \end{floatrow}
 \end{figure}
 
-\noindent The fit achieved in \ref{fig_polar10} is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$, delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can take up to several hours.
+\noindent The fit achieved with the 10 point lattice is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice show in Figure \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$, delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can take up to several hours.
 
 \begin{figure}[h]
 \centering
@@ -339,10 +338,10 @@ Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 
 
 \newpage
-\subsection{Results}
-The results of the exhaustive search algorithm are good for the Helsinki dataset. Angle delta values as low as achieved in \ref{10k_fits_new_helsinki} are likely to be irrelevant for analysis purposes and a delta of 0.37$^\circ$ is lower than the single digit precision of reported installation angles.
+%\subsection{Performance on single day estimation with Helsinki dataset}
+\noindent The results of the exhaustive search algorithm are excellent for the Helsinki dataset. Angle delta values as low as the achieved 0.37$^\circ$ are low enough to be within the assumed 1$^\circ$ precision of known installation angles. 
 
-The next verification step is using the algorithm on multiple days from the same dataset and checking the spread pattern. This was done on sets of days with both Helsinki and Kuopio datasets. Figures \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020} display the tight scatter patterns in the Helsinki predictions. For the tight grouping in the 2018 figure the average tilt of 13.89$^\circ$ and azimuth of 130.81$^\circ$ are close reported angles of 15$^\circ$ tilt and 135$^\circ$ azimuth. And with year 2019 where the scatter pattern is wider, the average of the results is 14.17$^\circ$ tilt, 132.62$^\circ$ azimuth which is even closer to the known installation angles. Fitness values or the per minute delta values are for the multi day 10 000 point evaluations were in the range of 76W to 117W for the Helsinki dataset.
+The next verification step is using the algorithm on multiple days from the same dataset and checking the spread pattern. This was done on sets of days with both Helsinki and Kuopio datasets. Figures \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020} display the tight scatter patterns in the Helsinki predictions. For the tight grouping in the 2018 figure the average tilt of 13.89$^\circ$ and azimuth of 130.81$^\circ$ are close reported angles of 15$^\circ$ tilt and 135$^\circ$ azimuth. And with year 2019 where the scatter pattern is wider, the average of the results is 14.17$^\circ$ tilt, 132.62$^\circ$ azimuth which are both even closer to the known installation angles. Fitness values or the per minute delta values are for the multi day 10 000 point evaluations were in the range of 76W to 117W for the Helsinki dataset.
 
 %years such as 2019 where the scatter pattern is wider, the average of the results
 
@@ -378,7 +377,7 @@ The next verification step is using the algorithm on multiple days from the same
 \end{floatrow}
 \end{figure}
 
-\noindent Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2018} and \ref{fig_fmi_kuopio_10000_multi_day_2020} clearly indicate that estimations are converging approximately 13 degrees off from the known installation angles. The reason for this significant delta is not known and there could be multiple contributing factors. One possible explanation is panel shading which is more likely to occur when the Sun is near the horizon. This causes a proportionally higher energy output loss during first and last hours of the day, resulting in a more narrow power generation plot shape. This \textit{sharpness} is also influced by the tilt angle of an installation as was previously seen in figure \ref{fig_poa_different_parameters} and thus the error in the estimated tilt angle could be partially caused by either panel self shadowing or shadowing caused by other stuctures near the PV panels.
+\noindent Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2018} and \ref{fig_fmi_kuopio_10000_multi_day_2020} clearly indicate that estimations are converging approximately 13 degrees off from the known installation angles. The reason for this significant delta is not known and there could be multiple contributing factors. One possible explanation is panel shading which is more likely to occur when the Sun is near the horizon. This causes a proportionally higher energy output loss during first and last hours of the day, resulting in a more narrow power generation plot shape. This \textit{sharpness} is also influced by the tilt angle of an installation as was previously seen in Figure \ref{fig_poa_different_parameters} and thus the error in the estimated tilt angle could be partially caused by either panel self shadowing or shadowing caused by other stuctures near the PV panels.
 
 %Similar patterns occur with all of the years from FMI Helsinki and Kuopio datasets where estimated angles form clusters in angle-space. With Helsinki the delta between known installation angles and estimations is minimal where as with the Kuopio dataset the cluster is larger and offset by a bias of approximately 13$^\circ$.
 
@@ -412,9 +411,9 @@ The next verification step is using the algorithm on multiple days from the same
 \section{Solving panel angles iteratively}
 The exhaustive search used in earlier section suggest that the method is capable of estimating panel installation angles accurately. However evaluating 10 000 point lattices is somewhat inelegant and this can be avoided by using multiple less dense lattices iterarively if the fitness space satisfies some requirements.
 
-The first requirement is that the fitness space should be smooth. This smoothness does not have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if the noise pattern is not observable in the iterative lattices. Based on an earlier figure generated by exhaustive search \ref{10k_fits_new_helsinki}, this requirement would appear to be met.
+The first requirement is that the fitness space should be smooth. This smoothness does not have to be perfect, fine patterns and details in the fitness space surface do not cause issues with iterative search algorithms if the noise pattern is not observable in the iterative lattices. Based on an earlier Figure \ref{10k_fits_new_helsinki} generated by exhaustive search, this requirement would appear to be met.
 
-Second requirement is that the fitness space should contain as few convergence points and their respective basins as possible. These basins are regions in fitness space which are defined by a convergence point and their surrounding regions where the slope of the space leads to the respective convergence point. The region around best found fit in \ref{10k_fits_new_helsinki} forms a large basin but there would also appear to be a second converge point somewhere around azimuth 0$^\circ$ tilt 90$^\circ$.
+Second requirement is that the fitness space should contain as few convergence points and their respective basins as possible. These basins are regions in fitness space which are defined by a convergence point and their surrounding regions where the slope of the space leads to the respective convergence point. The region around best found fit in Figure \ref{10k_fits_new_helsinki} forms a large basin but there would also appear to be a second converge point somewhere around azimuth 0$^\circ$ tilt 90$^\circ$.
 
  
 
@@ -458,7 +457,7 @@ Second requirement is that the fitness space should contain as few convergence p
 \subsection{Local lattice generation}
 The step 4 in the iterative panel angle solving algorithm detailed above is the first non-trivial step in the algorithm as it requires the generation of local lattices. One option would be to use a subsection of a Fibonnaci lattice, but generating large Fibonnacci lattices and utilizing only a small subsection would require unnecessary computation. 
 
-The method shown in \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using pattern \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
+The method shown in Subfigure \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with Equation \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using pattern from Equation \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
 
 \noindent \textbf{Angle space to unit disk equations}
 \begin{equation}
@@ -496,7 +495,7 @@ Azimuth &= tan^{-1}2(x/d, y/d)
 \pagebreak
 
 \subsection{Results}
-By using 30 iterations with initial search distance of 0.3 on a set of cloud free days from the FMI Helsinki and Kuopio dataset, scatter patterns \ref{iterative_multiday_helsinki2019} and \ref{iterative_multiday_kuopio2019} are generated. The center angle distances between known angles and cluster means for the Helsinki and Kuopio scatter patterns are 1.97$^\circ$ and 12.47$^\circ$ respectively. The Helsinki scatter pattern is marginally worse than the pattern achieved by exhaustive search algorithm were as results for Kuopio data seem to have a similar large bias as before with the exhaustive algorithm. Exact values vary depending on day smoothness requirements and chosen year.
+By using 30 iterations with initial search distance of 0.3 on a set of cloud free days from the FMI Helsinki and Kuopio dataset, scatter patterns shown in Figures \ref{iterative_multiday_helsinki2019} and \ref{iterative_multiday_kuopio2019} are generated. The center angle distances between known angles and cluster means for the Helsinki and Kuopio scatter patterns are 1.97$^\circ$ and 12.47$^\circ$ respectively. The Helsinki scatter pattern is marginally worse than the pattern achieved by exhaustive search algorithm were as results for Kuopio data seem to have a similar large bias as before with the exhaustive algorithm. Exact values vary depending on day smoothness requirements and chosen year.
 
 %Average tilt: 14.404 azimuth: 132.361
 %Fitness: 114.9164
@@ -538,19 +537,21 @@ By using 30 iterations with initial search distance of 0.3 on a set of cloud fre
      \label{fig_iterative_visual_1}
 \end{figure}
 
-\noindent One method for comparing the iterative method against the exhaustive is to compare the fitness values achieved by both methods. If for example the resulting fitness values are better for the exhaustive search, then there could be multiple convergence points in the basin of the fitness space and the iterative function could be converging on the wrong point. Where as if the iterative method achieves worse center angle distances and better fitness values than the exhaustive, the seemingly worse results of the iterative method would be a result of a better fit existing in the angle space which the Fibonnacci lattice points did not contain. By testing out individual days and sets of days, the difference between achieved fitness values with the different estimation methods do not seem to vary significantly. For the Helsinki dataset the fitness values are somewhere in the 75W to 120W range for both algorithms depending on chosen parameters, with even performance with both algorithms.
+\noindent One method for comparing the iterative method against the exhaustive is to compare the fitness values achieved by both methods. If for example the resulting fitness values are better for the exhaustive search, then there could be multiple convergence points in the basin of the fitness space and the iterative function could be converging on the wrong point. Where as if the iterative method achieves worse center angle distances and better fitness values than the exhaustive, the seemingly worse results of the iterative method would be a result of a better fit existing in the angle space which the Fibonnacci lattice points did not contain. 
+
+By testing out individual days and sets of days, the difference between achieved fitness values with the different estimation methods do not seem to vary significantly. For the Helsinki dataset the fitness values are somewhere in the 75W to 120W range for both algorithms depending on chosen parameters, with even performance with both algorithms. This is also visible in Figures \ref{measured_vs_simulated_vs_estimated} and \ref{measured_vs_simulated_vs_estimated_kuopio} where the curves generated by the results of both search methods are indistinguishable.
 
 %By using the year 2020 from the Helsinki dataset, filtering cloud free days with threshold of 1.5\% and accepting days 22 from day range of 120 to 250, the resulting fitness is 86W and center angle delta of 0.6$^\circ$. This means that the best found fit had an approximate deviation of 86W per minute. For the exhaustive search algorithm these fitness values were in the range of 76W to 117W.
 
 
 \subsection{Choosing between exhaustive and iterative angle estimation methods}
-Both methods are capable of achieving good to results depending on data quality and algorithm parameters. As there are multiple algorithm parameters and as the exhaustive is computationally expensive, it is difficult to prove that one method is better than the other. Each day in the datasets has an unique fitness space and parameters such as initial search distance, starting point and lattice point counts have a small and difficult to measure effects on the results of the algorithms.
+Both methods are capable of achieving good to results depending on data quality and algorithm parameters. As there are multiple algorithm parameters and as the exhaustive is computationally expensive, it is difficult to prove that one method is more accurate than the other. Each day in the datasets has an unique fitness space and parameters such as initial search distance, starting point and lattice point counts have a small and difficult to measure effects on the results of the algorithms.
 
-That being stated, the computational speed of the iterative method is much higher than that of exhaustive search algorithms. If 30 steps are used with a 4 point local lattice, estimating the panel angles for a single day require 121 simulations and comparisons. This means that approximately 83 days can be iteratively evaluated in the time it takes to exhaustively evaluate one day with a 10 000 point lattice. As the 30 step iterative search algorithm reaches search distances as low as $9e-6$, the iterative method is using finer precision than would practical and the speed of the iterative algorithm can be increased further by setting a search distance limit.
+That being stated, the computational speed of the iterative method is much higher than that of exhaustive search algorithms. If 30 steps are used with a 4 point local lattice, estimating the panel angles for a single day require 121 simulations and comparisons. This means that approximately 83 days can be iteratively evaluated in the time it takes to exhaustively evaluate one day with a 10 000 point lattice. As the 30 step iterative search algorithm reaches search distances as low as $9e-6$ units on the unit disk, the iterative method is using finer precision than would practical and the speed of the iterative algorithm can be increased further by setting a search distance limit.
 
-Instead of choosing one method, the two can also be combined and used together. An iterative method with 5 to 10 steps is enough to find the general location of the best fit and a local subsection of a dense Fibonnaci lattice could be used in order to search a subsection of the angle space. This would however increase the algorithm complexity for small potential gains.
+Instead of choosing one method, the two search methods can be combined and used together. An iterative method with 5 to 10 steps is enough to find the general location of the best fit and a local subsection of a dense Fibonnaci lattice could be used in order to search a subsection of the angle space. This would however increase the algorithm complexity for small potential gains.
 
-Figure \ref{measured_vs_simulated_vs_estimated} shows a comparison of fitting results for a single day. There the difference between pover curves is not significant regardless of the estimation method used and thus iterative method may be preferable. The difference between exhaustive and iterative search is likewise imperceivable in the example from FMI Kuopio dataset seen in figure \ref{measured_vs_simulated_vs_estimated_kuopio} despite the higher center angle distance achieved with both exhaustive and iterative methods in all earlier examples.
+Figure \ref{measured_vs_simulated_vs_estimated} shows a comparison of fitting results for a single day. There the difference between pover curves is not significant regardless of the estimation method used and thus iterative method may be preferable. The difference between exhaustive and iterative search is likewise imperceivable in the example from FMI Kuopio dataset seen in Figure \ref{measured_vs_simulated_vs_estimated_kuopio} despite the higher center angle distance achieved with both exhaustive and iterative methods in all earlier examples.
 
 
 \begin{figure}[!h]
