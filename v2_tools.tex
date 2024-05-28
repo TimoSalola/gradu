@@ -113,7 +113,7 @@ Before implementing the parameter estimation functions, the POA simulations shou
 \label{fig_poa_different_parameters}
 \end{figure}
 
-By varying the different simulation parameters as shown in figure \ref{fig_poa_different_parameters}, we can examine the relationships between parameters and power generation curves. This can help us understand if there are usable patterns in the data. In the best case scenario each of the simulation function inputs would affect one measureable property in the irradiance plots and their relationship would be bijective. To give an example, if the peak power minute was isolated from all other parameters than the longitude and the relationship between longitude and peak power minute was linear, it would be possible to solve the peak power minute to longitude function with just a few plane of array irradiance simulations.
+\noindent By varying the different simulation parameters as shown in figure \ref{fig_poa_different_parameters}, we can examine the relationships between parameters and power generation curves. This can help us understand if there are usable patterns in the data. In the best case scenario each of the simulation function inputs would affect one measureable property in the irradiance plots and their relationship would be bijective. To give an example, if the peak power minute was isolated from all other parameters than the longitude and the relationship between longitude and peak power minute was linear, it would be possible to solve the peak power minute to longitude function with just a few plane of array irradiance simulations.
 
 In the exact opposite case where every measureable property of irradiance plots is affected by every input parameter, solving the parameters would be much harder or even impossible. For example if all of the parameters influenced the same traits to different extents and the system was not bijective, multiple parameter combinations could result in the same simulated power graph. In a such system there would not be a single solution but rather a set of possible solutions.
 
@@ -446,10 +446,7 @@ Delta values for detected cloud free days for FMI Helsinki installation are on a
 \label{fig-poa_eval_simplecomplex}
 \end{figure}
 
-Figure \ref{fig-poa_eval_simplecomplex} shows what the improvement looks like in a best case scenario. The model can be seen to perform better during peak production hours and during the last productive hours. 
-
-
-The improved model would appear to be a more accurate approximation for PV generation than the POA model, but the POA model still has uses in applications where faster computation is beneficial or where only the timing of the first and last non-zero minutes matter. Which of these models is being used will be mentioned in each use case in the following chapters.
+\noindent Figure \ref{fig-poa_eval_simplecomplex} shows what the improvement looks like in a best case scenario. The model can be seen to perform better during peak production hours and during the last productive hours. This model would appear to be a more accurate approximation for PV generation than the POA model, but the POA model still has uses in applications where faster computation is beneficial or where only the timing of the first and last non-zero minutes matter. Which of these models is being used will be mentioned in each use case in the following chapters.
 
 
 %that the improved PV model performs better than the simple POA-model at 1000 minutes where the AOI is high and thus reflective losses from direct irradiance are significant. And during peak production minutes where the panel temperatures are likely high enough to cause thermal losses.

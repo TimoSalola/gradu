@@ -32,11 +32,15 @@
 \contentsline {section}{\numberline {5.3}Angle space discretization}{47}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Importance of lattice density}{49}{subsection.5.3.1}%
 \contentsline {section}{\numberline {5.4}Solving panel angles}{50}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Evaluation of exhaustive search results}{51}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.1}Results}{51}{subsection.5.4.1}%
 \contentsline {section}{\numberline {5.5}Solving panel angles iteratively}{54}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Conclusion}{57}{chapter.6}%
-\contentsline {chapter}{Appendix}{59}{chapter.6}%
-\contentsline {section}{\numberline {.1}Code samples}{59}{section.Alph0.1}%
-\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{59}{subsection.Alph0.1.1}%
-\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{62}{subsection.Alph0.1.2}%
-\contentsline {chapter}{References}{64}{section*.43}%
+\contentsline {subsection}{\numberline {5.5.1}Local lattice generation}{56}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Results}{57}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Choosing between exhaustive and iterative angle estimation methods}{58}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Further development ideas}{60}{subsection.5.5.4}%
+\contentsline {chapter}{\numberline {6}Conclusion}{61}{chapter.6}%
+\contentsline {chapter}{Appendix}{62}{chapter.6}%
+\contentsline {section}{\numberline {.1}Code samples}{62}{section.Alph0.1}%
+\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{62}{subsection.Alph0.1.1}%
+\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{65}{subsection.Alph0.1.2}%
+\contentsline {chapter}{References}{67}{section*.46}%

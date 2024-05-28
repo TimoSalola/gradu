@@ -253,7 +253,7 @@ Tilt$^\circ$ & Azimuth$^\circ$ & Delta(W)\\
 \end{floatrow}
 \end{figure}
 
-The fit achieved in \ref{fig_polar10} is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$ , delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can from a minute up to several hours.
+\noindent The fit achieved in \ref{fig_polar10} is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$, delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Depending on code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can take up to several hours.
 
 \begin{figure}[h]
 \centering
@@ -339,10 +339,10 @@ The fit achieved in \ref{fig_polar10} is not very good and better results can be
 
 
 \newpage
-\subsection{Evaluation of exhaustive search results}
+\subsection{Results}
 The results of the exhaustive search algorithm are good for the Helsinki dataset. Angle delta values as low as achieved in \ref{10k_fits_new_helsinki} are likely to be irrelevant for analysis purposes and a delta of 0.37$^\circ$ is lower than the single digit precision of reported installation angles.
 
-The next verification step is using the algorithm on multiple days from the same dataset and checking the spread pattern. This was done on sets of days with both Helsinki and Kuopio datasets. Figures \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020} display the tight scatter patterns in the Helsinki predictions. For the tight grouping in the 2018 figure the average tilt of 13.89$^\circ$ and azimuth of 130.81$^\circ$ are close reported angles of 15$^\circ$ tilt and 135$^\circ$ azimuth. And with year 2019 where the scatter pattern is wider, the average of the results is 14.17$^\circ$ tilt, 132.62$^\circ$ azimuth which is even closer to the known installation angles.
+The next verification step is using the algorithm on multiple days from the same dataset and checking the spread pattern. This was done on sets of days with both Helsinki and Kuopio datasets. Figures \ref{fig_fmi_helsinki_1000_multi_day_2018} and \ref{fig_fmi_helsinki_1000_multi_day_2020} display the tight scatter patterns in the Helsinki predictions. For the tight grouping in the 2018 figure the average tilt of 13.89$^\circ$ and azimuth of 130.81$^\circ$ are close reported angles of 15$^\circ$ tilt and 135$^\circ$ azimuth. And with year 2019 where the scatter pattern is wider, the average of the results is 14.17$^\circ$ tilt, 132.62$^\circ$ azimuth which is even closer to the known installation angles. Fitness values or the per minute delta values are for the multi day 10 000 point evaluations were in the range of 76W to 117W for the Helsinki dataset.
 
 %years such as 2019 where the scatter pattern is wider, the average of the results
 
@@ -351,6 +351,8 @@ The next verification step is using the algorithm on multiple days from the same
 % Average tilt:13.4 azimuth:128.06 fitness111 helsinki 2017
 % Average tilt:13.89 azimuth:130.81 fitness84 Helsinki 2018
 % Average tilt:14.17 azimuth:132.62 fitness117 Helsinki 2019
+% Average tilt:13.54 azimuth:128.78 fitness76 Helsinki 2020
+% Average tilt:15.04 azimuth:134.25 fitness90 Helsinki 2021
 % The tight clustering visible in both figures suggest that the  
 
 
@@ -363,25 +365,20 @@ The next verification step is using the algorithm on multiple days from the same
 \ffigbox{%
   	\includegraphics[width=1\linewidth]{pics/Helsinki2018}
 }{
-  	\caption{10000 point exhaustive search on 15 cloud free days from FMI Helsinki dataset using year 2018.}
+  	\caption{10 000 point exhaustive search on 15 cloud free days from FMI Helsinki dataset using year 2018.}
   	\label{fig_fmi_helsinki_1000_multi_day_2018}
 }	
 
 \ffigbox{%
   \includegraphics[width=1\linewidth]{pics/Helsinki2019}
 }{
-  \caption{10000 point exhaustive search on 8 cloud free days from FMI Helsinki dataset using year 2019.}
+  \caption{10 000 point exhaustive search on 8 cloud free days from FMI Helsinki dataset using year 2019.}
   \label{fig_fmi_helsinki_1000_multi_day_2020}
 }
 \end{floatrow}
 \end{figure}
 
-Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2018} and \ref{fig_fmi_kuopio_10000_multi_day_2020} clearly indicate that estimations are converging several degrees off from the known installation angles.
-
-
-%In the more dense 10000 point lattice used for the year 2017 the mean of tilt and azimuth predictions is 26.76$^\circ$ and 201.11$^\circ$, resulting in a center angle delta of 13$^\circ$. 
-
-The exact reason for this significant delta is not known and there could be multiple contributing factors. One possible explanation is panel shading which is more likely to occur when the Sun is near the horizon. This causes a proportionally higher energy output loss during first and last hours of the day, resulting in a more narrow power generation plot shape. This \textit{sharpness} is also influced by the tilt angle of an installation as was previously seen in figure \ref{fig_poa_different_parameters} and thus the error in the estimated tilt angle could be partially caused by either panel self shadowing or shadowing caused by other stuctures near the PV panels.
+\noindent Results for the Kuopio dataset are not nearly as good as the Helsinki predictions. Figures \ref{fig_fmi_kuopio_10000_multi_day_2018} and \ref{fig_fmi_kuopio_10000_multi_day_2020} clearly indicate that estimations are converging approximately 13 degrees off from the known installation angles. The reason for this significant delta is not known and there could be multiple contributing factors. One possible explanation is panel shading which is more likely to occur when the Sun is near the horizon. This causes a proportionally higher energy output loss during first and last hours of the day, resulting in a more narrow power generation plot shape. This \textit{sharpness} is also influced by the tilt angle of an installation as was previously seen in figure \ref{fig_poa_different_parameters} and thus the error in the estimated tilt angle could be partially caused by either panel self shadowing or shadowing caused by other stuctures near the PV panels.
 
 %Similar patterns occur with all of the years from FMI Helsinki and Kuopio datasets where estimated angles form clusters in angle-space. With Helsinki the delta between known installation angles and estimations is minimal where as with the Kuopio dataset the cluster is larger and offset by a bias of approximately 13$^\circ$.
 
@@ -394,14 +391,14 @@ The exact reason for this significant delta is not known and there could be mult
 \ffigbox{%
   \includegraphics[width=1\linewidth]{pics/Kuopio2018} % WAS pics/10p_fibo_fit_text
 }{
-  \caption{10000 point exhaustive search on 18 cloud free days from FMI Kuopio dataset using year 2018.}
+  \caption{10 000 point exhaustive search on 18 cloud free days from FMI Kuopio dataset using year 2018.}
   \label{fig_fmi_kuopio_10000_multi_day_2018}
 }
 
 \ffigbox{%
   \includegraphics[width=1\linewidth]{pics/Kuopio2019} % WAS pics/10p_fibo_fit_text
 }{
-  \caption{1000 point exhaustive search on 10 cloud free days from FMI Kuopio dataset using year 2020.}
+  \caption{10 000 point exhaustive search on 10 cloud free days from FMI Kuopio dataset using year 2020.}
   \label{fig_fmi_kuopio_10000_multi_day_2020}
 }
 \end{floatrow}
@@ -432,38 +429,7 @@ Second requirement is that the fitness space should contain as few convergence p
 \end{enumerate}
 
 
-\noindent Step 4 is the first non-trivial step in the algorithm. The selection of neighboring points can be done in multiple ways, the cross pattern search method shown in figure \ref{fig_iterative_visual_1} is based first transforming the starting angle tilt 45$^\circ$  and azimuth 270$^\circ$ to a cartesian coordinate plane point and the generatin 4 nearby cartesian plane points at distance of 0.3 which are then transformed back into angle space. The equations used for space transformations are \ref{angle_space_to_unit_circle} and \ref{unit_circle_to_angle_space}. This space transformation method results in visually pleasing plots and the cartesian distance of 0.3 is easily adjustable in step 5 of algorithm.
-
-\newpage
-
-\noindent \textbf{Unit circle to angle space equations}
-
-\begin{equation}
-\begin{split}
-\label{unit_circle_to_angle_space}
-d &= x^2+y^2\\
-Tilt &= \sqrt{d}*90^\circ\\
-Azimuth &= tan^{-1}2(x/d, y/d)
-\end{split}
-\end{equation}
-
-\noindent \textbf{Angle space to unit circle equations}
-\begin{equation}
-\begin{split}
-\label{angle_space_to_unit_circle}
-d &= Tilt/90^\circ \\
-x &= cos(Azimuth)d \\
-y &= sin(Azimuth)d \\
-\end{split}
-\end{equation}
-
-\vspace{5mm}
-
-
-
-
-
-\begin{figure}
+\begin{figure}[H]
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
@@ -480,9 +446,136 @@ y &= sin(Azimuth)d \\
      \end{subfigure}
      \hfill
      
-\caption{Visualization of iterative best fit search algorithm. Numbers next to markers indicate that a point was the best found during n:th cross pattern search. Number 5 is missing from \ref{fig_iterative_6_step} as no new best fit was found, resulting in search distance deacrease. Red circle marks the best found fit.}
+     
+\caption{Visualization of a + pattern iterative best fit search algorithm. Numbers next to markers indicate that a point was the best found during n:th cross pattern search.
+% Starting point was chosen to be tilt 60$^\circ$ azimuth 270$^\circ$ for visualization reasons.%Number 5 is missing from \ref{fig_iterative_6_step} as no new best fit was found, resulting in search distance deacrease. Red circle marks the best found fit.
+}
      \label{fig_iterative_visual_1}
 \end{figure}
+
+\newpage
+
+\subsection{Local lattice generation}
+The step 4 in the iterative panel angle solving algorithm detailed above is the first non-trivial step in the algorithm as it requires the generation of local lattices. One option would be to use a subsection of a Fibonnaci lattice, but generating large Fibonnacci lattices and utilizing only a small subsection would require unnecessary computation. 
+
+The method shown in \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using pattern \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
+
+\noindent \textbf{Angle space to unit disk equations}
+\begin{equation}
+\begin{split}
+\label{angle_space_to_unit_circle}
+d &= Tilt/90^\circ \\
+x &= cos(Azimuth)d \\
+y &= sin(Azimuth)d \\
+\end{split}
+\end{equation}
+
+
+\noindent \textbf{Unit disk points}
+\begin{equation}
+\begin{split}
+\label{local_lattice_from_xy}
+p_1 &= (x+s,y) \\
+p_2 &= (x-s,y) \\
+p_3 &= (x,y+s) \\
+p_4 &= (x,y-s) \\
+\end{split}
+\end{equation}
+
+\noindent \textbf{Unit disk to angle space equations}
+
+\begin{equation}
+\begin{split}
+\label{unit_circle_to_angle_space}
+d &= x^2+y^2\\
+Tilt &= \sqrt{d}*90^\circ\\
+Azimuth &= tan^{-1}2(x/d, y/d)
+\end{split}
+\end{equation}
+
+\pagebreak
+
+\subsection{Results}
+By using 30 iterations with initial search distance of 0.3 on a set of cloud free days from the FMI Helsinki and Kuopio dataset, scatter patterns \ref{iterative_multiday_helsinki2019} and \ref{iterative_multiday_kuopio2019} are generated. The center angle distances between known angles and cluster means for the Helsinki and Kuopio scatter patterns are 1.97$^\circ$ and 12.47$^\circ$ respectively. The Helsinki scatter pattern is marginally worse than the pattern achieved by exhaustive search algorithm were as results for Kuopio data seem to have a similar large bias as before with the exhaustive algorithm. Exact values vary depending on day smoothness requirements and chosen year.
+
+%Average tilt: 14.404 azimuth: 132.361
+%Fitness: 114.9164
+%Cluster CAD: 0.897
+
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{pics/iterative_multiday_helsinki}
+         \caption{Iterative search used on 8 days from FMI Helsinki dataset.}
+         \label{iterative_multiday_helsinki2019}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{pics/iterative_multiday_kuopio}
+         \caption{Iterative search used on 5 days from FMI Kuopio dataset.}
+         \label{iterative_multiday_kuopio2019}
+     \end{subfigure}
+     \hfill
+     
+     
+\caption{Scatter patterns for iterative panel estimation algorithm on multiple days.}
+
+%Cluster parameters: KUOPIO
+%Average tilt: 25.98 azimuth: 199.437
+%Cluster CAD: 12.47
+
+%Cluster parameters:
+%Average tilt: 13.385 azimuth: 130.392
+%Cluster CAD: 1.97
+
+%Cluster parameters: Helsinki 2020
+%Average tilt: 13.697 azimuth: 129.645
+%Fitness: 86.5242
+%luster CAD: 1.859
+
+     \label{fig_iterative_visual_1}
+\end{figure}
+
+\noindent One method for comparing the iterative method against the exhaustive is to compare the fitness values achieved by both methods. If for example the resulting fitness values are better for the exhaustive search, then there could be multiple convergence points in the basin of the fitness space and the iterative function could be converging on the wrong point. Where as if the iterative method achieves worse center angle distances and better fitness values than the exhaustive, the seemingly worse results of the iterative method would be a result of a better fit existing in the angle space which the Fibonnacci lattice points did not contain. By testing out individual days and sets of days, the difference between achieved fitness values with the different estimation methods do not seem to vary significantly. For the Helsinki dataset the fitness values are somewhere in the 75W to 120W range for both algorithms depending on chosen parameters, with even performance with both algorithms.
+
+%By using the year 2020 from the Helsinki dataset, filtering cloud free days with threshold of 1.5\% and accepting days 22 from day range of 120 to 250, the resulting fitness is 86W and center angle delta of 0.6$^\circ$. This means that the best found fit had an approximate deviation of 86W per minute. For the exhaustive search algorithm these fitness values were in the range of 76W to 117W.
+
+
+\subsection{Choosing between exhaustive and iterative angle estimation methods}
+Both methods are capable of achieving good to results depending on data quality and algorithm parameters. As there are multiple algorithm parameters and as the exhaustive is computationally expensive, it is difficult to prove that one method is better than the other. Each day in the datasets has an unique fitness space and parameters such as initial search distance, starting point and lattice point counts have a small and difficult to measure effects on the results of the algorithms.
+
+That being stated, the computational speed of the iterative method is much higher than that of exhaustive search algorithms. If 30 steps are used with a 4 point local lattice, estimating the panel angles for a single day require 121 simulations and comparisons. This means that approximately 83 days can be iteratively evaluated in the time it takes to exhaustively evaluate one day with a 10 000 point lattice. As the 30 step iterative search algorithm reaches search distances as low as $9e-6$, the iterative method is using finer precision than would practical and the speed of the iterative algorithm can be increased further by setting a search distance limit.
+
+Instead of choosing one method, the two can also be combined and used together. An iterative method with 5 to 10 steps is enough to find the general location of the best fit and a local subsection of a dense Fibonnaci lattice could be used in order to search a subsection of the angle space. This would however increase the algorithm complexity for small potential gains.
+
+Figure \ref{measured_vs_simulated_vs_estimated} shows a comparison of fitting results for a single day. There the difference between pover curves is not significant regardless of the estimation method used and thus iterative method may be preferable. The difference between exhaustive and iterative search is likewise imperceivable in the example from FMI Kuopio dataset seen in figure \ref{measured_vs_simulated_vs_estimated_kuopio} despite the higher center angle distance achieved with both exhaustive and iterative methods in all earlier examples.
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\linewidth]{pics/measured_vs_simulated_vs_estimated}
+\figcaption{Comparison of power curves from measurements, simulation with known installation angles and estimated panel angles with exhaustive and iterative method. Using day 150 from year 2019 in Helsinki dataset.}
+\label{measured_vs_simulated_vs_estimated}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\linewidth]{pics/measured_vs_simulated_vs_kuopio}
+\figcaption{Comparison of power curves from measurements, simulation with known installation angles and estimated panel angles with exhaustive and iterative method. Using day 167 from year 2019 in Kuopio dataset.}
+\label{measured_vs_simulated_vs_estimated_kuopio}
+\end{figure}
+
+\pagebreak
+\pagebreak
+
+\subsection{Further development ideas}
+Both algorithms perform well enough to make some of the assumptions made on the properties of fitness spaces practically irrelevant. Thus concepts of basins were not explored thoroughly but they and the field of dynamic systems which studies attractors and basins could offer additional insights into similar optimization problems.
+
+The problem of model fitting for angle estimation may also have connections to convolutions. Understanding the mathematical properties of signal impulses and their convolution shapes could help in proving how likely the formation of multiple basins are. This could be beneficial in starting point selection with iterative fitting algorithms.
+
+The estimation algorithms should be evaluated with multiple different datasets in order to determine whether results from the Kuopio data are an anomaly or the algorithms are as noise sensitive as the Kuopio data suggests. Similarly data from different sources and with different temporal resolutions would help in verifying how well the algorithms perform with available data.
 
 
 
