@@ -11,54 +11,65 @@ A level-1 auxiliary file: v2_tools.aux
 A level-1 auxiliary file: v2_geolocator.aux
 A level-1 auxiliary file: v2_angler.aux
 A level-1 auxiliary file: v2_remarks.aux
-A level-1 auxiliary file: v2_appendix.aux
 Database file #1: example_refs.bib
-Warning--entry type for "medium_fibolat_equation" isn't style-file defined
---line 45 of file example_refs.bib
-Warning--entry type for "sandia_poa_ghi" isn't style-file defined
---line 99 of file example_refs.bib
-Warning--entry type for "sandia_poa_dni" isn't style-file defined
---line 105 of file example_refs.bib
-Warning--entry type for "sandia_poa_dhi" isn't style-file defined
---line 111 of file example_refs.bib
-Warning--I didn't find a database entry for "github_source"
-Warning--there's no year in sandia_poa_dhi
-Warning--there's no year in sandia_poa_dni
-Warning--there's no year in sandia_poa_ghi
-`school' is a missing field, not a string, for entry king2004
-while executing---line 1036 of file uefunsrt.bst
-Warning--empty school in king2004
-Warning--there's no year in medium_fibolat_equation
+ptr=4, stack=
+title
+author
+S.~N. Laboratories
+
+---the literal stack isn't empty for entry sandia_poa_dhi
+while executing---line 1075 of file uefunsrt.bst
+ptr=4, stack=
+title
+author
+S.~N. Laboratories
+
+---the literal stack isn't empty for entry sandia_poa_dni
+while executing---line 1075 of file uefunsrt.bst
+ptr=4, stack=
+title
+author
+S.~N. Laboratories
+
+---the literal stack isn't empty for entry sandia_poa_ghi
+while executing---line 1075 of file uefunsrt.bst
+ptr=4, stack=
+title
+author
+V.~Seibert
+
+---the literal stack isn't empty for entry medium_fibolat_equation
+while executing---line 1075 of file uefunsrt.bst
 You've used 14 entries,
-            2422 wiz_defined-function locations,
-            643 strings with 7132 characters,
-and the built_in function-call counts, 3165 in all, are:
-= -- 336
+            2510 wiz_defined-function locations,
+            655 strings with 7247 characters,
+and the built_in function-call counts, 2996 in all, are:
+= -- 313
 > -- 145
 < -- 0
 + -- 55
 - -- 41
-* -- 279
-:= -- 519
+* -- 293
+:= -- 500
 add.period$ -- 14
 call.type$ -- 14
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 129
-empty$ -- 295
+cite$ -- 14
+duplicate$ -- 121
+empty$ -- 259
 format.name$ -- 41
-if$ -- 733
+if$ -- 678
 int.to.chr$ -- 0
 int.to.str$ -- 14
-missing$ -- 0
+missing$ -- 4
 newline$ -- 60
 num.names$ -- 14
-pop$ -- 35
+pop$ -- 14
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 48
+skip$ -- 32
 stack$ -- 0
 substring$ -- 162
 swap$ -- 35
@@ -66,8 +77,8 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 5
+warning$ -- 0
 while$ -- 22
 width$ -- 16
-write$ -- 133
-(There was 1 error message)
+write$ -- 134
+(There were 4 error messages)

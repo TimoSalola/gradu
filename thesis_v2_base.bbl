@@ -25,16 +25,22 @@ R.~Perez, P.~Ineichen, R.~Seals, J.~Michalsky, and R.~Stewart,
   (1990).
 
 \bibitem{sandia_poa_dhi}
-S.~N. Laboratories,
-\newblock {``POA Sky Diffuse,''} ({\textbf{!!YEAR!!}}).
+Sandia National Laboratories,{``Perez sky diffuse model,''} ,
+\newblock
+  \url{https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-sky-diffuse/perez-sky-diffuse-model/}
+  (visited on 2024-04-02).
 
 \bibitem{sandia_poa_dni}
-S.~N. Laboratories,
-\newblock {``POA Beam,''} ({\textbf{!!YEAR!!}}).
+Sandia National Laboratories,{``POA beam,''} ,
+\newblock
+  \url{https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-beam/}
+  (visited on 2024-04-02).
 
 \bibitem{sandia_poa_ghi}
-S.~N. Laboratories,
-\newblock {``POA Ground Reflected,''} ({\textbf{!!YEAR!!}}).
+Sandia National Laboratories,{``POA Ground Reflected,''} ,
+\newblock
+  \url{https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/}
+  (visited on 2024-04-02).
 
 \bibitem{solar_reflections}
 N.~Martin~Chivelet and J.~Ruiz,
@@ -46,7 +52,7 @@ N.~Martin~Chivelet and J.~Ruiz,
 \bibitem{king2004}
 D.~King, J.~Kratochvil, and W.~Boyson,
 \newblock {\em Photovoltaic Array Performance Model}, Vol. 8, ,
-\newblock PhD thesis 2004).
+\newblock PhD thesis (Sandia Naitional Laboratories, 2004).
 
 \bibitem{huld2010}
 T.~Huld, R.~Gottschalg, H.~G. Beyer, and M.~Topič,
@@ -70,7 +76,9 @@ H.~Vogel,
   Biosciences} {\bfseries 44}, 179--189 (1979).
 
 \bibitem{medium_fibolat_equation}
-V.~Seibert,
-\newblock {``Distributing points on a sphere,''} ({\textbf{!!YEAR!!}}).
+Vagner Seibert,{``Distributing points on a sphere,''} ,
+\newblock
+  \url{https://medium.com/@vagnerseibert/distributing-points-on-a-sphere-6b593cc05b42}
+  (visited on 2024-04-23).
 
 \end{thebibliography}

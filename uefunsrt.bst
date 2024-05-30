@@ -45,6 +45,10 @@ FUNCTION {init.state.consts}
   #3 'after.block :=
 }
 
+%########################################################################
+
+
+
 FUNCTION {fi.isFinnishLanguage} % added by MK
 {
   language missing$
@@ -148,6 +152,20 @@ FUNCTION {or}
 {   { pop$ #1 }
     'skip$
   if$
+}
+
+
+
+FUNCTION {format.date.either.or.check}
+{ year empty$
+    { note empty$
+        { "year missing" }
+        { "Accessed: " note * }
+      if$
+    }
+    { year }
+  if$
+  "year" output.check
 }
 
 FUNCTION {new.block.checka}
@@ -701,17 +719,6 @@ FUNCTION {format.web}
   if$
 }
 
-%FUNCTION {format.web}
-%{ url empty$
-%    { "empty url in " cite$ * warning$ " {\textbf{!!URL!!}} " }
-%    { " " url typewriter 
-%        urldate empty$
-%            { "empty urldate in " cite$ * warning$ " {\textbf{!!URLDATE!!}} " write$ }
-%            { " (" * bbl.valid * " " * urldate * ")" * }
-%        if$
-%    }
-%    if$
-%}
 
 % added by MK
 FUNCTION {format.nameweb}
@@ -724,6 +731,34 @@ FUNCTION {format.nameweb}
         if$
     }
   if$
+}
+
+% ###################################################
+
+
+FUNCTION {online}
+{
+  output.bibitem
+  format.authors "author" output.check
+  new.block
+  format.title "title" output.check
+  new.sentence
+  howpublished empty$
+    'skip$
+    { howpublished "howpublished" output.check new.sentence }
+  if$
+  url empty$
+    { "empty url in " cite$ * warning$ }
+    { "Available at: \url{" url * "}" * }
+  if$
+  new.sentence
+  urldate empty$
+    'skip$
+    { "Accessed: " urldate * }
+  if$
+  new.block
+  note output
+  fin.entry
 }
 
 FUNCTION {article}
@@ -950,6 +985,10 @@ FUNCTION {verbatim}
 
 FUNCTION {web} % added by MK
 { output.bibitem 
+  format.authors "author" % output.check
+  new.block
+  format.title "title" % output.check % Output title field
+  new.block
   format.nameweb output
   new.block
   format.web output

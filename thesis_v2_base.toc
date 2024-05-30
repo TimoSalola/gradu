@@ -38,8 +38,4 @@
 \contentsline {subsection}{\numberline {5.5.3}Choosing between exhaustive and iterative angle estimation methods}{59}{subsection.5.5.3}%
 \contentsline {subsection}{\numberline {5.5.4}Further development ideas}{61}{subsection.5.5.4}%
 \contentsline {chapter}{\numberline {6}Conclusion}{62}{chapter.6}%
-\contentsline {chapter}{Appendix}{63}{chapter.6}%
-\contentsline {section}{\numberline {.1}Code samples}{63}{section.Alph0.1}%
-\contentsline {subsection}{\numberline {.1.1}Cloud free day selection algorithm}{63}{subsection.Alph0.1.1}%
-\contentsline {subsection}{\numberline {.1.2}Angular distance equation}{66}{subsection.Alph0.1.2}%
-\contentsline {chapter}{References}{68}{section*.46}%
+\contentsline {chapter}{References}{63}{section*.46}%

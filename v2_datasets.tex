@@ -111,7 +111,7 @@ Another measurable trait is the peak power generation minute. Geometric intuitio
 \section{Data pre-processing}
 The data pre-processing required by the algorithms in this thesis can be split into two categories: classifying preprocessing and repairing preprocessing. Classifying preprocessing is used to determine if a certain section of data is suitable for analysis, the primary example here is the cloud free day detection algorithm which is discussed more throroughly in the next chapters. The second type of preprocessing, repairing preprocessing, involves using algorithms to fill gaps in the measurement data or otherwise attempt to repair data  which is unusable as is, but which could be used after repairing.
 
-The data preprocessing algorithms used in this thesis load the data from csv files and examine whether individual days in the dataset meet set qualification requirements. These are the minimum and maximum measurement count, whether first and last measurements are taken too close to minute 0 or 1440 and the the percentage of measurements included between the first and last measurement. Figure \ref{fig_accepted_days} contains a comparison on which days in the datasets met the requirements.
+The data preprocessing algorithms used in this thesis load the data from csv files and examine whether individual days in the dataset meet set qualification requirements. These are the minimum and maximum measurement count, whether first and last measurements are taken too close to minute 0 or 1439 and the the percentage of measurements included between the first and last measurement. Figure \ref{fig_accepted_days} contains a comparison on which days in the datasets met the requirements.
 
 
 \begin{figure}[h]

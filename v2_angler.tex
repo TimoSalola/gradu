@@ -4,7 +4,7 @@ Solar panel installation angles are a large factor in deciding the energy output
 
 One reason for lacking or faulty metadata is that panel angles can be difficult to measure accurately. The tilt angle of the panels or the angle between the panel normal and zenith can easily be measured with an angle ruler and a bubble level, but the azimuth angle of the panels is much harder to measure with the same degree of accuracy. If an accurate compass is used and the difference between the magnetic north and the geographic north is taken into account, metal structures and electrical systems nearby can still distort local magnetic fields enough to cause errors in measurements. The challenges in taking accurate measurements are not insurmountable, but they may contribute to the inaccuracies and the lack of available information in PV installation parameter metadata. 
 
-The space of possible panel installation angles can be thought as a half unit sphere in a spherical coordinate system where each point on the surface represents a direction to which the normal of the solar panels could be directed towards. A visualization of parameter space in 3D and 2D is shown in Subfigures \ref{fig_halfdome} and \ref{fig_anglespace1}. The 3 dots in the subfigure \ref{fig_anglespace1} mark the zenit for which azimuth is not well defined(red), the installation angles of FMI Helsinki installation azimuth $135^\circ$ tilt $15^\circ$(blue) and a close to power generation maximized installation with directly south facing panels with the tilt of $45^\circ$(black).
+The space of possible panel installation angles can be thought as a half unit sphere in a spherical coordinate system where each point on the surface represents a direction to which the normal of the solar panels could be directed towards. A visualization of parameter space in 3D and 2D is shown in Subfigures \ref{fig_halfdome} and \ref{fig_anglespace1}. The 3 dots in the Subfigure \ref{fig_anglespace1} mark the zenit for which azimuth is not well defined(red), the installation angles of FMI Helsinki installation azimuth $135^\circ$ tilt $15^\circ$(blue) and a close to power generation maximized installation with directly south facing panels with the tilt of $45^\circ$(black).
 
 
 \begin{figure}[h]
@@ -108,7 +108,7 @@ Where
 \end{align}
 
 
-\noindent By first calculating the distance between the vectors using equations 5.1-5.7 and then substituting the distance into equation 5.16, the resulting angle can then be used as an error value between two panel angle measurements. Python code based on this proof is included in appedix \ref{angular_distace_appendix}.
+\noindent By first calculating the distance between the vectors using equations 5.1-5.7 and then substituting the distance into equation 5.16, the resulting angle can then be used as an error value between two panel angle measurements. %Python code based on this proof is included in appedix \ref{angular_distace_appendix}.
 
 
 % This error value is the same as the angle between two points on the surface of a sphere. %In addition, if the deviation occurs only on the tilt axis, the error value and the tilt error are the same.% This makes the error values intuitive.
@@ -457,7 +457,7 @@ Second requirement is that the fitness space should contain as few convergence p
 \subsection{Local lattice generation}
 The step 4 in the iterative panel angle solving algorithm detailed above is the first non-trivial step in the algorithm as it requires the generation of local lattices. One option would be to use a subsection of a Fibonnaci lattice, but generating large Fibonnacci lattices and utilizing only a small subsection would require unnecessary computation. 
 
-The method shown in Subfigure \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with Equation \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using pattern from Equation \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
+The method shown in Subfigure \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with Equation \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using Equations \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
 
 \noindent \textbf{Angle space to unit disk equations}
 \begin{equation}
@@ -488,7 +488,7 @@ p_4 &= (x,y-s) \\
 \label{unit_circle_to_angle_space}
 d &= x^2+y^2\\
 Tilt &= \sqrt{d}*90^\circ\\
-Azimuth &= tan^{-1}2(x/d, y/d)
+Azimuth &= atan2(x/d, y/d)
 \end{split}
 \end{equation}
 

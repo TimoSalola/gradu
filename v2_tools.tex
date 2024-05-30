@@ -80,7 +80,7 @@ Before implementing the parameter estimation functions, the POA simulations shou
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\linewidth]{pics/multiday_vs_neat}
-\figcaption{Power output of FMI Kumpula PV installation and the pvlib POA simulation computed with the parameters from Table  \ref{table_fmi_helsinki_kuopio_parameters}. Horizontal axis on the graphs corresponds to time and vertical axis marks the estimated power values. The purpose of the graphs is to display the different shapes and deviations from POA models and thus axis names and numbers were left out. Upper row contains randomly selected days while as the lower row has days chosen by a clear sky algorithm mentioned in chapter \ref{clearskyalgo_chapter}. Measurements are from 2017. POA irradiance values were multiplied by 19 in order to match the curves values on power axis.}
+\figcaption{Power output of FMI Kumpula PV installation and the pvlib POA simulation computed with the parameters from Table  \ref{table_fmi_helsinki_kuopio_parameters}. Horizontal axis on the graphs corresponds to time and vertical axis marks the estimated power values. The purpose of the graphs is to display the different shapes and deviations from POA models and thus axis names and numbers were left out. Upper row contains randomly selected days while as the lower row has days chosen by a clear sky algorithm mentioned in Chapter \ref{clearskyalgo_chapter}. Measurements are from 2017. POA irradiance values were multiplied by 19 in order to match the curves values on power axis.}
 \label{fig-multidaypoavsmeasurements}
 \end{figure}
 
@@ -349,7 +349,7 @@ POA_{absorbed} = DNI(1-DNI_{r})+ DHI(1-DHI_{r})+GHI(1-GHI_{r})
 \end{split}
 \end{equation}
 
-\noindent Where $DNI$, $DHI$ and $GHI$ are solar irradiance values in watts and $DNI_r$, $DHI_r$, $GHI_r$ refer to \ref{solar_reflecive_dni_loss}, \ref{solar_reflecive_dhi_loss} and \ref{solar_reflecive_ghi_loss}.
+\noindent Where $DNI$, $DHI$ and $GHI$ are solar irradiance values in watts and $DNI_r$, $DHI_r$, $GHI_r$ refer to Equation \ref{solar_reflecive_dni_loss}, \ref{solar_reflecive_dhi_loss} and \ref{solar_reflecive_ghi_loss}.
 
 
 
@@ -413,7 +413,27 @@ k1        & k2        & k3        & k4       & k5       & k6       \\ \hline
 \end{table}
 
 \noindent %This leaves the rated power of the system as an unknown parameter. 
-For unknown PV systems, the unknown value $P_{rated}$ can be estimated with area matching. This is the process of calculating the integral or sum of power generation plots and matching their values. A 1kW system can be matched. Visualization of this process where a POA simulation of a 1kW installation is area matched with known measurement data is shown in Figure \ref{fig_area_match}.
+For unknown PV systems, the unknown value $P_{rated}$ can be estimated with the following area matching equation \ref{pv_area_matching}. Note that as the sum of $P_{simulated}$ varies depending on installation angles and geolocation, the multiplier value has to be calculated every time an unique set of PV system parameters is simulated. Visualization of area matching is shown in Figure \ref{fig_area_match}.
+
+
+%This is the process of calculating the integral or sum of power generation plots and matching their values. A 1kW system can be matched. Visualization of this process where a POA simulation of a 1kW installation is area matched with known measurement data is shown in Figure \ref{fig_area_match}.
+
+
+\noindent\textbf{Area matching}
+\begin{equation}
+\begin{split}
+\label{pv_area_matching}
+Multiplier = \sum_{t=0}^{1439} P_{measured}(t)/ \sum_{t=0}^{1439} P_{simulated}(t)
+\end{split}
+\end{equation}
+
+\noindent Where
+
+$P_{simulated}$ is simulated output of a 1kW installation.
+
+$Multiplier$ is an approximation of $P_{rated}$ and the accuracy of the approximation increases as parameters used for $P_{simulated}$ near the parameters of the unknown PV installation.
+
+
 
 %by comparing the sum of measured power output values to the sum of simulated power output with a theoretical 1kW system. Visualization of this process with POA simulations and real measurements is shown in Figure\ref{fig_area_match}.
 
@@ -427,7 +447,7 @@ For unknown PV systems, the unknown value $P_{rated}$ can be estimated with area
 
 \newpage
 \subsection{Model improvement results}
-The models can be compared with the original measurement data with the following equation.
+The models can be compared with the original measurement data with the following Equation \ref{pv_model_delta}.
 
 
 
@@ -435,14 +455,14 @@ The models can be compared with the original measurement data with the following
 \begin{equation}
 \begin{split}
 \label{pv_model_delta}
-Delta_{model} = \sum_{t=1}^{1440} |P_{measured}(t) - P_{simulated}(t)| /1440
+Delta_{model} = \sum_{t=0}^{1439} |P_{measured}(t) - P_{simulated}(t)| /1440
 \end{split}
 \end{equation}
 
-\noindent The delta value represents a normalized per minute deviation between the model and the meausred data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power regardless of the time of day and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
+\noindent The delta value represents a normalized per minute deviation between the model and the measured data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power regardless of the time of day and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
 
 
-Delta values for detected cloud free days for FMI Helsinki installation are on average 244 for the POA model and 145 for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487 and improved model 320 with 42 day dataset. This would indicate that the improved PV model is a better approximation for clear sky PV output than the PVlib POA model.
+Delta values for detected cloud free days for FMI Helsinki installation are on average 244W for the POA model and 145W for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487W and improved model 320W with 42 day dataset. This would indicate that the improved PV model is a closer approximation for clear sky PV output than the PVlib POA model.
 
 
 \begin{figure}[h]
