@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  30 MAY 2024 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  17 JUN 2024 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -949,44 +949,56 @@ File: pics/first_last_helsinki_kuopio2.png Graphic file (type png)
 Package pdftex.def Info: pics/first_last_helsinki_kuopio2.png  used on input li
 ne 133.
 (pdftex.def)             Requested size: 384.10959pt x 186.24629pt.
- [31] [32 <./pics/first_last_helsinki_kuopio2.png>] [33
+ [31] [32 <./pics/first_last_helsinki_kuopio2.png>]
+<pics/longitude_v2_helsinki.png, id=403, 722.7pt x 433.62pt>
+File: pics/longitude_v2_helsinki.png Graphic file (type png)
+<use pics/longitude_v2_helsinki.png>
+Package pdftex.def Info: pics/longitude_v2_helsinki.png  used on input line 148
+.
+(pdftex.def)             Requested size: 384.10959pt x 230.46591pt.
+<pics/longitude_v2_kuopio.png, id=404, 722.7pt x 433.62pt>
+File: pics/longitude_v2_kuopio.png Graphic file (type png)
+<use pics/longitude_v2_kuopio.png>
+Package pdftex.def Info: pics/longitude_v2_kuopio.png  used on input line 156.
+(pdftex.def)             Requested size: 384.10959pt x 230.46591pt.
+ [33
 
-]
+ <./pics/longitude_v2_helsinki.png>] [34 <./pics/longitude_v2_kuopio.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 176.
+               Default added (so using `tbp') on input line 180.
 
-<pics/solarnoontimes2.png, id=408, 751.80875pt x 529.98pt>
+<pics/solarnoontimes2.png, id=420, 751.80875pt x 529.98pt>
 File: pics/solarnoontimes2.png Graphic file (type png)
 <use pics/solarnoontimes2.png>
-Package pdftex.def Info: pics/solarnoontimes2.png  used on input line 178.
+Package pdftex.def Info: pics/solarnoontimes2.png  used on input line 182.
 (pdftex.def)             Requested size: 426.79134pt x 300.8706pt.
-[34] [35 <./pics/solarnoontimes2.png>] [36]
-<pics/slope_to_latitude3.png, id=434, 915.42pt x 446.66875pt>
+[35 <./pics/solarnoontimes2.png>] [36]
+<pics/slope_to_latitude3.png, id=441, 915.42pt x 446.66875pt>
 File: pics/slope_to_latitude3.png Graphic file (type png)
 <use pics/slope_to_latitude3.png>
-Package pdftex.def Info: pics/slope_to_latitude3.png  used on input line 229.
+Package pdftex.def Info: pics/slope_to_latitude3.png  used on input line 233.
 (pdftex.def)             Requested size: 426.79134pt x 208.24406pt.
  [37 <./pics/slope_to_latitude3.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 302.
+               Default added (so using `tbp') on input line 306.
 
-<pics/heatmap3d2.png, id=443, 483.8075pt x 411.5375pt>
+<pics/heatmap3d2.png, id=450, 483.8075pt x 411.5375pt>
 File: pics/heatmap3d2.png Graphic file (type png)
 <use pics/heatmap3d2.png>
-Package pdftex.def Info: pics/heatmap3d2.png  used on input line 304.
+Package pdftex.def Info: pics/heatmap3d2.png  used on input line 308.
 (pdftex.def)             Requested size: 213.39566pt x 181.51663pt.
 [38] [39 <./pics/heatmap3d2.png>] [40]
-<pics/geolocationmap2.png, id=464, 474.77374pt x 439.6425pt>
+<pics/geolocationmap2.png, id=471, 474.77374pt x 439.6425pt>
 File: pics/geolocationmap2.png Graphic file (type png)
 <use pics/geolocationmap2.png>
-Package pdftex.def Info: pics/geolocationmap2.png  used on input line 370.
+Package pdftex.def Info: pics/geolocationmap2.png  used on input line 374.
 (pdftex.def)             Requested size: 192.0548pt x 177.83957pt.
-<pics/geolocationmap3.png, id=465, 474.77374pt x 439.6425pt>
+<pics/geolocationmap3.png, id=472, 474.77374pt x 439.6425pt>
 File: pics/geolocationmap3.png Graphic file (type png)
 <use pics/geolocationmap3.png>
-Package pdftex.def Info: pics/geolocationmap3.png  used on input line 377.
+Package pdftex.def Info: pics/geolocationmap3.png  used on input line 381.
 (pdftex.def)             Requested size: 192.0548pt x 177.83957pt.
 ) [41 <./pics/geolocationmap2.png> <./pics/geolocationmap3.png>] [42]
 \openout2 = `v2_angler.aux'.
@@ -999,12 +1011,12 @@ Chapter 5.
 
 
 ]
-<pics/halfdome.png, id=485, 373.395pt x 353.32pt>
+<pics/halfdome.png, id=492, 373.395pt x 353.32pt>
 File: pics/halfdome.png Graphic file (type png)
 <use pics/halfdome.png>
 Package pdftex.def Info: pics/halfdome.png  used on input line 15.
 (pdftex.def)             Requested size: 149.37956pt x 141.34706pt.
-<pics/polarplot.png, id=486, 443.6575pt x 440.64626pt>
+<pics/polarplot.png, id=493, 443.6575pt x 440.64626pt>
 File: pics/polarplot.png Graphic file (type png)
 <use pics/polarplot.png>
 Package pdftex.def Info: pics/polarplot.png  used on input line 22.
@@ -1015,19 +1027,19 @@ Underfull \hbox (badness 1014) in paragraph at lines 23--23
  []
 
 [44 <./pics/halfdome.png> <./pics/polarplot.png>] [45] [46]
-<pics/measured_vs_simulated.png, id=522, 943.8462pt x 627.3036pt>
+<pics/measured_vs_simulated.png, id=529, 943.8462pt x 627.3036pt>
 File: pics/measured_vs_simulated.png Graphic file (type png)
 <use pics/measured_vs_simulated.png>
 Package pdftex.def Info: pics/measured_vs_simulated.png  used on input line 149
 .
 (pdftex.def)             Requested size: 362.77524pt x 241.10582pt.
  [47 <./pics/measured_vs_simulated.png>]
-<pics/disc5.png, id=534, 690.58pt x 681.54625pt>
+<pics/disc5.png, id=541, 690.58pt x 681.54625pt>
 File: pics/disc5.png Graphic file (type png)
 <use pics/disc5.png>
 Package pdftex.def Info: pics/disc5.png  used on input line 186.
 (pdftex.def)             Requested size: 192.0548pt x 189.5421pt.
-<pics/fibolat1.png, id=535, 690.58pt x 681.54625pt>
+<pics/fibolat1.png, id=542, 690.58pt x 681.54625pt>
 File: pics/fibolat1.png Graphic file (type png)
 <use pics/fibolat1.png>
 Package pdftex.def Info: pics/fibolat1.png  used on input line 193.
@@ -1038,7 +1050,7 @@ Underfull \hbox (badness 1824) in paragraph at lines 194--194
  []
 
 [48] [49 <./pics/disc5.png> <./pics/fibolat1.png>] [50]
-<pics/10p_fibo_fit_text.png, id=562, 383.20944pt x 309.155pt>
+<pics/10p_fibo_fit_text.png, id=569, 383.20944pt x 309.155pt>
 File: pics/10p_fibo_fit_text.png Graphic file (type png)
 <use pics/10p_fibo_fit_text.png>
 Package pdftex.def Info: pics/10p_fibo_fit_text.png  used on input line 231.
@@ -1047,7 +1059,7 @@ File: pics/10p_fibo_fit_text.png Graphic file (type png)
 <use pics/10p_fibo_fit_text.png>
 Package pdftex.def Info: pics/10p_fibo_fit_text.png  used on input line 231.
 (pdftex.def)             Requested size: 208.39566pt x 168.12524pt.
-<pics/10k_new_model.png, id=564, 872.25874pt x 698.61pt>
+<pics/10k_new_model.png, id=571, 872.25874pt x 698.61pt>
 File: pics/10k_new_model.png Graphic file (type png)
 <use pics/10k_new_model.png>
 Package pdftex.def Info: pics/10k_new_model.png  used on input line 259.
@@ -1057,7 +1069,7 @@ Package pdftex.def Info: pics/10k_new_model.png  used on input line 259.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [51 <./pics/10p_fibo_fit_text.png (PNG copy)>]
-<pics/Helsinki2018.png, id=574, 548.5293pt x 531.1845pt>
+<pics/Helsinki2018.png, id=581, 548.5293pt x 531.1845pt>
 File: pics/Helsinki2018.png Graphic file (type png)
 <use pics/Helsinki2018.png>
 Package pdftex.def Info: pics/Helsinki2018.png  used on input line 369.
@@ -1066,7 +1078,7 @@ File: pics/Helsinki2018.png Graphic file (type png)
 <use pics/Helsinki2018.png>
 Package pdftex.def Info: pics/Helsinki2018.png  used on input line 369.
 (pdftex.def)             Requested size: 208.39566pt x 201.80356pt.
-<pics/Helsinki2019.png, id=575, 536.2434pt x 531.1845pt>
+<pics/Helsinki2019.png, id=582, 536.2434pt x 531.1845pt>
 File: pics/Helsinki2019.png Graphic file (type png)
 <use pics/Helsinki2019.png>
 Package pdftex.def Info: pics/Helsinki2019.png  used on input line 376.
@@ -1080,7 +1092,7 @@ Package pdftex.def Info: pics/Helsinki2019.png  used on input line 376.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [52 <./pics/10k_new_model.png>]
-<pics/Kuopio2018.png, id=585, 540.5796pt x 531.1845pt>
+<pics/Kuopio2018.png, id=592, 540.5796pt x 531.1845pt>
 File: pics/Kuopio2018.png Graphic file (type png)
 <use pics/Kuopio2018.png>
 Package pdftex.def Info: pics/Kuopio2018.png  used on input line 395.
@@ -1089,7 +1101,7 @@ File: pics/Kuopio2018.png Graphic file (type png)
 <use pics/Kuopio2018.png>
 Package pdftex.def Info: pics/Kuopio2018.png  used on input line 395.
 (pdftex.def)             Requested size: 208.39566pt x 204.77007pt.
-<pics/Kuopio2019.png, id=586, 528.2937pt x 531.1845pt>
+<pics/Kuopio2019.png, id=593, 528.2937pt x 531.1845pt>
 File: pics/Kuopio2019.png Graphic file (type png)
 <use pics/Kuopio2019.png>
 Package pdftex.def Info: pics/Kuopio2019.png  used on input line 402.
@@ -1104,12 +1116,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [53 <./pics/Helsinki2018.png> <./pics/Helsinki2019.png>] [54 <./pics/Kuopio2018
 .png> <./pics/Kuopio2019.png>]
-<pics/iterative_1_step.png, id=602, 706.64pt x 681.54625pt>
+<pics/iterative_1_step.png, id=609, 706.64pt x 681.54625pt>
 File: pics/iterative_1_step.png Graphic file (type png)
 <use pics/iterative_1_step.png>
 Package pdftex.def Info: pics/iterative_1_step.png  used on input line 435.
 (pdftex.def)             Requested size: 192.0548pt x 185.2367pt.
-<pics/iterative_6_step.png, id=603, 706.64pt x 681.54625pt>
+<pics/iterative_6_step.png, id=610, 706.64pt x 681.54625pt>
 File: pics/iterative_6_step.png Graphic file (type png)
 <use pics/iterative_6_step.png>
 Package pdftex.def Info: pics/iterative_6_step.png  used on input line 442.
@@ -1117,13 +1129,13 @@ Package pdftex.def Info: pics/iterative_6_step.png  used on input line 442.
  [55
 
 ] [56 <./pics/iterative_1_step.png> <./pics/iterative_6_step.png>] [57]
-<pics/iterative_multiday_helsinki.png, id=635, 709.65125pt x 689.57625pt>
+<pics/iterative_multiday_helsinki.png, id=642, 709.65125pt x 689.57625pt>
 File: pics/iterative_multiday_helsinki.png Graphic file (type png)
 <use pics/iterative_multiday_helsinki.png>
 Package pdftex.def Info: pics/iterative_multiday_helsinki.png  used on input li
 ne 508.
 (pdftex.def)             Requested size: 192.0548pt x 186.61948pt.
-<pics/iterative_multiday_kuopio.png, id=636, 709.65125pt x 689.57625pt>
+<pics/iterative_multiday_kuopio.png, id=643, 709.65125pt x 689.57625pt>
 File: pics/iterative_multiday_kuopio.png Graphic file (type png)
 <use pics/iterative_multiday_kuopio.png>
 Package pdftex.def Info: pics/iterative_multiday_kuopio.png  used on input line
@@ -1131,7 +1143,7 @@ Package pdftex.def Info: pics/iterative_multiday_kuopio.png  used on input line
 (pdftex.def)             Requested size: 192.0548pt x 186.61948pt.
  [58 <./pics/iterative_multiday_helsinki.png> <./pics/iterative_multiday_kuopio
 .png>]
-<pics/measured_vs_simulated_vs_estimated.png, id=648, 945.5325pt x 573.14125pt>
+<pics/measured_vs_simulated_vs_estimated.png, id=655, 945.5325pt x 573.14125pt>
 
 File: pics/measured_vs_simulated_vs_estimated.png Graphic file (type png)
 <use pics/measured_vs_simulated_vs_estimated.png>
@@ -1142,7 +1154,7 @@ nput line 559.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<pics/measured_vs_simulated_vs_kuopio.png, id=649, 913.4125pt x 567.11874pt>
+<pics/measured_vs_simulated_vs_kuopio.png, id=656, 913.4125pt x 567.11874pt>
 File: pics/measured_vs_simulated_vs_kuopio.png Graphic file (type png)
 <use pics/measured_vs_simulated_vs_kuopio.png>
 Package pdftex.def Info: pics/measured_vs_simulated_vs_kuopio.png  used on inpu
@@ -1247,10 +1259,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19942 strings out of 480204
- 319182 string characters out of 5895010
+ 19966 strings out of 480204
+ 319964 string characters out of 5895010
  745149 words of memory out of 5000000
- 37195 multiletter control sequences out of 15000+600000
+ 37216 multiletter control sequences out of 15000+600000
  519111 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  74i,17n,77p,1264b,2550s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1269,9 +1281,9 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfrm1200.pfb>
-Output written on thesis_v2_base.pdf (68 pages, 7978297 bytes).
+Output written on thesis_v2_base.pdf (68 pages, 8030060 bytes).
 PDF statistics:
- 936 PDF objects out of 1000 (max. 8388607)
- 233 named destinations out of 1000 (max. 500000)
- 544 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 943 PDF objects out of 1000 (max. 8388607)
+ 234 named destinations out of 1000 (max. 500000)
+ 554 words of extra memory for PDF output out of 10000 (max. 10000000)
 

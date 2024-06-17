@@ -138,27 +138,31 @@ If the unfiltered multi-day approach is used, choosing the right day range is cr
 \clearpage
 
 \subsection{Longitude estimation results}
-The improved algorihm was tested on the day range of 125th to 250th of each year from both FMI datasets and the results can be seen on the Table \ref{table_geolocator_results}. For the Helsinki installations these estimates are all off by less than $0.3^\circ$ while as the Kuopio installation deltas are a bit higher with max of just over $1^\circ$. More impressively, the mean delta of multiple years for the Helsinki dataset is just $0.07^\circ$ and $0.46^\circ$ for Kuopio. In kilometers, the mean deltas can be approximated to 4 and 28 kilometers respectively. The lower accuracy of the Kuopio estimations could be due to multitude of factors ranging from differences in local climate or lower elevation of the installation among others. 
+The longitude estimation algorithm was tested on a day range for each year in the FMI Helsinki dataset and the results are seen in figure \ref{fig_longitude_estimation_helsinki}. By taking the mean of the longitude predictions for each year in the dataset, the resulting longitude estimates varied between -0.804$^\circ$ to 0.0766$^\circ$ from known installation longitudes. Results for the Kuopio dataset shown in \ref{fig_longitude_estimation_kuopio} were similar with mean delta range of -0.1042$^\circ$ to 0.9424$^\circ$.
 
 
+In kilometers the year with the highest mean deviation of -0.804$^\circ$ in the Helsinki dataset corresponds to an error of approximately 45 kilometers as per \ref{equation_longitude_delta_km}. With Kuopio results the highest delta of 0.9424$^\circ$ is 49 kilometers respectively.
 
-
-\begin{table}[ht!]%[!h]
+\begin{figure}[ht!]
 \centering
-\begin{tabular}{r|c|c|c|c} \hline\hline
+\includegraphics[width=0.9\linewidth]{pics/longitude_v2_helsinki}
+\figcaption{Box plot of longitude estimation using FMI Helsinki dataset. Boxes mark 25\% to 75\% quantile intervals and the orange middle lines are the medians. Correct longitude marked as a black line near 25 degrees.}
+\label{fig_longitude_estimation_helsinki}
+\end{figure}
 
- Year & Longitude Helsinki & $\Delta^\circ$  & Longitude Kuopio & $\Delta^\circ$ \\ \hline
- 2021 & $25.115^\circ$  & $0.154^\circ $  & $26.625^\circ$ & $-1.009^\circ $ \\
- 2020 & $25.029^\circ$ & $0.068^\circ $& $27.691^\circ$  & $0.057^\circ $ \\
- 2019 & $24.944^\circ$ & $-0.017^\circ $& $27.411^\circ$ & $-0.223^\circ $  \\
- 2018 & $25.243^\circ$ & $0.282^\circ $& $26.862^\circ$ & $-0.772^\circ $ \\
- 2017 & $24.836^\circ$  & $-0.125^\circ $& $27.297^\circ$ & $-0.337^\circ $ \\
- mean & $25.031^\circ$  & $0.07^\circ $& $27.177^\circ$ & $-0.457^\circ $ \\
-\hline\hline
-\end{tabular}
-\tabcaption{Means of multi-day longitude estimations from 125th to 250th day of each year.}
-\label{table_geolocator_results}
-\end{table}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.9\linewidth]{pics/longitude_v2_kuopio}
+\figcaption{Box plot of longitude estimation using FMI Kuopio dataset. Boxes mark 25\% to 75\% quantile intervals and the orange middle lines are the medians. Correct longitude marked as a black line near 25 degrees.}
+\label{fig_longitude_estimation_kuopio}
+\end{figure}
+
+
+%The improved algorihm was tested on the day range of 125th to 250th of each year from both FMI datasets and the results can be seen on the Table \ref{table_geolocator_results}. For the Helsinki installations these estimates are all off by less than $0.3^\circ$ while as the Kuopio installation deltas are a bit higher with max of just over $1^\circ$. More impressively, the mean delta of multiple years for the Helsinki dataset is just $0.07^\circ$ and $0.46^\circ$ for Kuopio. In kilometers, the mean deltas can be approximated to 4 and 28 kilometers respectively. The lower accuracy of the Kuopio estimations could be due to multitude of factors ranging from differences in local climate or lower elevation of the installation among others. 
+
+
+
 
 \newpage
 \subsection{Possible issues and further development ideas}
