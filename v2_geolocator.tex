@@ -138,7 +138,7 @@ If the unfiltered multi-day approach is used, choosing the right day range is cr
 \clearpage
 
 \subsection{Longitude estimation results}
-The longitude estimation algorithm was tested on a day range for each year in the FMI Helsinki dataset and the results are seen in figure \ref{fig_longitude_estimation_helsinki}. By taking the mean of the longitude predictions for each year in the dataset, the resulting longitude estimates varied between -0.804$^\circ$ to 0.0766$^\circ$ from known installation longitudes. Results for the Kuopio dataset shown in \ref{fig_longitude_estimation_kuopio} were similar with mean delta range of -0.1042$^\circ$ to 0.9424$^\circ$.
+The longitude estimation algorithm was tested on a day range for each year in the FMI Helsinki dataset and the results are seen in figure \ref{fig_longitude_estimation_helsinki}. By taking the mean of the longitude predictions for each year in the dataset, the resulting longitude estimates varied between -0.804$^\circ$ to 0.0766$^\circ$ from known installation longitudes. Results for the Kuopio dataset shown in figure \ref{fig_longitude_estimation_kuopio} were similar with mean delta range of -0.1042$^\circ$ to 0.9424$^\circ$.
 
 
 In kilometers the year with the highest mean deviation of -0.804$^\circ$ in the Helsinki dataset corresponds to an error of approximately 45 kilometers as per \ref{equation_longitude_delta_km}. With Kuopio results the highest delta of 0.9424$^\circ$ is 49 kilometers respectively.
@@ -166,7 +166,10 @@ In kilometers the year with the highest mean deviation of -0.804$^\circ$ in the 
 
 \newpage
 \subsection{Possible issues and further development ideas}
-While experimenting with the solar minute estimation functions, a curious trait was found. In Figure \ref{fig_solarnoontimes}, the average of the first and last minute is approximately the same for each day at different latitudes as long as the latitude is below 50 degrees. As the latitude is increased, the solar noon estimates begin to deviate significantly, becoming strongly skewed after 70 degrees. 
+PV output measuring systems may not be able to accurately measure when the power output is zero. The capacitance of electrical circuits, instrument accuracy, or other phenomena could lead to small positive or negative power readings even when the PV system is not producing any power. This also occurs in the FMI datasets as simply filtering out zero power minutes was not sufficient; power values had to be greater than zero. This suggests the presence of negative output measurements in the PV data. Before this filtering was applied, the per year means exhibited a systematic bias of -3$^\circ$ or 12 minutes. In theory some datasets may include false positive readings and thus they would have to be filtered more strictly.
+
+
+While experimenting with the solar minute estimation functions, a curious trait was found. In Figure \ref{fig_solarnoontimes}, the average of the first and last minute is approximately the same for each day at different latitudes as long as the latitude is below 50$^\circ$. As the latitude is increased, the solar noon estimates begin to deviate significantly, becoming strongly skewed after 70$^\circ$. 
 
 At first this behavior seems strange as astronomical solar noon should occur happen at the same time when longitude and the day are the same regardless of latitude. However as the solar noon estimates are calculated based on the first and last non-zero irradiance minute of the day, it would make sense that the estimations could be off by significant amount during equinoxes due to rapid changes in day lengths. Measuring out how significantly this affects longitude estimations is challenging. In theory, if the same bias occurs in both the measurements and the model, no corrections would be needed. The effect should be also lessened by using longer day ranges for predicting longitudes or by making sure that the intervals include an equal amount of days from both halves of the year. 
 
