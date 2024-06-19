@@ -247,7 +247,7 @@ Due to seasonal differences in data quality, polar winters and the midnight sun,
 \begin{table}[!ht]
 \centering
 \begin{tabular}{r|c|c} \hline\hline
- \multicolumn{3}{ c }{FMI Kumpula}\\\hline
+ \multicolumn{3}{ c }{FMI Kumpula[250-300]}\\\hline
 Year & Predicted latitude & Error\\
 2021 & $61.365^\circ$ &  $1.161^\circ$\\
 2020 & $64.493^\circ$ &  $4.289^\circ$\\
@@ -265,10 +265,7 @@ Year & Predicted latitude & Error\\
 \noindent
 
 \subsection{Improving latitude prediction algorithm}
-The results of the algorithm shown in Table \ref{table_geolocator_latitude_results} are somewhere in the correct 
-
-
-, but the delta of over $4^\circ$ in the 2020 estimate is significant and much higher than the error of the longitude estimation algorithm. The first step in improving the algorithm would be the use of last non-zero minutes as well as the first non-zero minutes. This doubles the amount of outputs from the algorithm and while doubling the amount of outputs does not directly increase the accuracy of the algorithm, it can provide additional insights into the performance of the algorithm. %This is especially valuable as the available datasets are small.
+The results of the algorithm shown in Table \ref{table_geolocator_latitude_results} are somewhere in the correct region, but the delta of over $4^\circ$ in the 2020 estimate is significant and much higher than the error of the longitude estimation algorithm. The first step in improving the algorithm would be the use of last non-zero minutes as well as the first non-zero minutes. This doubles the amount of outputs from the algorithm and while doubling the amount of outputs does not directly increase the accuracy of the algorithm, it can provide additional insights into the performance of the algorithm. %This is especially valuable as the available datasets are small.
 
 
 
@@ -276,7 +273,7 @@ The results of the algorithm shown in Table \ref{table_geolocator_latitude_resul
 \centering
 \begin{tabular}{r|c|c|c|c} \hline\hline
 
-\multicolumn{5}{ c }{FMI Kumpula}\\\hline
+\multicolumn{5}{ c }{FMI Kumpula[250-300]}\\\hline
 Year & First min. p. & Error &  Last min. p. & Error \\
 2021 & $61.365^\circ$ &  $1.161^\circ$ & $63.685^\circ$ & $3.481^\circ$\\
 2020 & $64.493^\circ$ &  $4.289^\circ$ & $64.288^\circ$ & $4.084^\circ$\\
@@ -296,7 +293,7 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 
 \noindent The second step in improving the algorithm is choosing the best possible day range for latitude estimation. One way of choosing the day ranges would be by testing multiple day ranges and choosing the range which results in the lowest average absolute error from the known latitude, but this is problematic as the correct latitude should not be assumed to be known. However if there were multiple datasets with complete metadata, this could be used in order to find universally well-behaving day ranges.
 
-\textit{Standard deviation minimization} is the second option for automated day range selection. As there are two estimated latitude values per year, datasets with $n$ years of data would provide $n*2$ estimated latitude values. Standard deviation of these values could expected to be small if the day interval does not contain days with bad data quality and this means that the interval selection can be automated. Following Figure \ref{fig_heatmap3d2} shows the general shape of the standard deviation plane for FMI Kuopio instalation. 
+\textit{Standard deviation minimization} is the second option for automated day range selection. As there are two estimated latitude values per year, datasets with $n$ years of data would provide $n*2$ estimated latitude values. Standard deviation of these values could expected to be small if the day interval does not contain days with bad data quality and this means that the interval selection can be automated. Following Figure \ref{fig_heatmap3d2} shows a heatmap for FMI Helsinki latitude estimation. Lowest found standard deviation occured with the day interval 180th to 310th with standard deviation of 0.3788$^\circ$.
 
 
 %However exhaustively searching the day interval space with reasonable intervals can be slow and as seen in the figure \ref{fig_heatmap3d2}, low standard deviation intervals are common in the parameter space. As a result, an arbitrarily chosen long interval is likely to perform almost as well as the very best algoritmicly chosen interval.
@@ -308,21 +305,44 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 
 \begin{figure}[]
 \centering
-\includegraphics[width=0.5\linewidth]{pics/heatmap3d2}
-\figcaption{3D -surface plot of day interval ranges and resulting standard deviations for FMI Kuopio dataset.}
+\includegraphics[width=0.8\linewidth]{pics/std_dev_helsinki_latitude}
+\figcaption{Standard deviation map for FMI Helsinki latitude estimation algorithm. Tightest grouping of latitude results was achieved with day interval 180th to 310th.}
 \label{fig_heatmap3d2}
 \end{figure}
 
 \newpage
 
 \subsection{Latitude estimation results}
-The following two tables contain examples of the results of the latitude estimation algorithm. Results of the latitude estimation algorithm are not as good as the longitude estimations, but for now they will suffice. The predictions follow a similar patter as the previous longitude estimations in that predictions for the Helsinki installation are grouped tighter and their errors are lower than those of the Kuopio installation. 
+Latitude estimation appears to be more challenging to optimize than longitude estimation. With the Helsinki dataset the found low standard deviation interval 180-310 predictions shown in Table \ref{table_geolocator_latitude_results_180_310} do not seem to be better than those achieved by an arbitrarily chosen interval 190-310 shown in Table \ref{table_geolocator_latitude_results_190_250}. Results for the Kuopio dataset contain similar variance with the interval 190-280 resulting in predictions shown in Table \ref{table_geolocator_latitude_results_kuopio}.
+
+
 
 \begin{table}[!ht]
 \centering
 \begin{tabular}{r|c|c|c|c} \hline\hline
 
-\multicolumn{5}{ c }{FMI Helsinki latitude estimation results}\\\hline
+\multicolumn{5}{ c }{FMI Helsinki latitude estimation results(180-310)}\\\hline
+Year & First min. p. & Error &  Last min. p. & Error \\
+
+2021 & $60.7453^\circ$ &  $0.5409^\circ$ & $61.107^\circ$ & $ 0.9026^\circ$\\
+2020 & $60.4969^\circ$ &  $0.2925^\circ$ & $60.82^\circ$ & $0.6156^\circ$\\
+2019 & $60.5981^\circ$ & $0.3937^\circ$ & $60.4222^\circ$ & $0.2178^\circ$\\
+2018 & $60.6537^\circ$ & $0.4493^\circ$ & $60.5745^\circ$ & $0.3701^\circ$\\
+2017 & $61.416^\circ$ & $1.2116^\circ$  & $61.2206^\circ$ & $1.0162^\circ$\\
+
+\hline\hline
+\end{tabular}
+\tabcaption{Estimated latitudes for FMI Helsinki Kumpula dataset with day range of 180th to 310th}
+\label{table_geolocator_latitude_results_180_310}
+\end{table}
+
+%The following two tables contain examples of the results of the latitude estimation algorithm. Results of the latitude estimation algorithm are not as good as the longitude estimations, but for now they will suffice. The predictions follow a similar patter as the previous longitude estimations in that predictions for the Helsinki installation are grouped tighter and their errors are lower than those of the Kuopio installation. 
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{r|c|c|c|c} \hline\hline
+
+\multicolumn{5}{ c }{FMI Helsinki latitude estimation results(190-250)}\\\hline
 Year & First min. p. & Error &  Last min. p. & Error \\
 
 2021 & $59.792^\circ$ &  $-0.677^\circ$ & $60.186^\circ$ & $-0.334^\circ$\\
@@ -334,14 +354,16 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 \hline\hline
 \end{tabular}
 \tabcaption{Estimated latitudes for FMI Helsinki Kumpula dataset with day range of 190th to 250th}
-\label{table_geolocator_latitude_results_f_and_l2}
+\label{table_geolocator_latitude_results_190_250}
 \end{table}
+
+\noindent 
 
 \begin{table}[!ht]
 \centering
 \begin{tabular}{r|c|c|c|c} \hline\hline
 
-\multicolumn{5}{ c }{FMI Kuopio latitude estimation results}\\\hline
+\multicolumn{5}{ c }{FMI Kuopio latitude estimation results(190-280)}\\\hline
 Year & First min. p. & Error &  Last min. p. & Error \\
 2021 & $62.626^\circ$ &  $-0.266^\circ$ & $63.197^\circ$ & $0.305^\circ$\\
 2020 & $62.259^\circ$ &  $-0.633^\circ$ & $61.895^\circ$ & $-0.997^\circ$\\
@@ -354,6 +376,8 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 \tabcaption{Estimated latitudes for FMI Kuopio Kumpula dataset with day range of 190th to 280th.}
 \label{table_geolocator_latitude_results_kuopio}
 \end{table}
+
+
 
 \subsection{Possible issues and further development ideas}
 PVlib POA based first and last minute estimations are slower to compute than necessary as only two timestamps are needed. The use of a simpler sunrise and sunset equation would increase the speed significantly, allowing for the use of brute force day range selection algorithms.
