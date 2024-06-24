@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  20 JUN 2024 00:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  24 JUN 2024 19:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1262,7 +1262,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  19970 strings out of 480204
  320201 string characters out of 5895010
- 745149 words of memory out of 5000000
+ 746149 words of memory out of 5000000
  37217 multiletter control sequences out of 15000+600000
  519111 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -1282,7 +1282,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfrm1200.pfb>
-Output written on thesis_v2_base.pdf (70 pages, 7997408 bytes).
+Output written on thesis_v2_base.pdf (70 pages, 7997035 bytes).
 PDF statistics:
  956 PDF objects out of 1000 (max. 8388607)
  237 named destinations out of 1000 (max. 500000)

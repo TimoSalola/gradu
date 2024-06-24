@@ -24,7 +24,7 @@
 \contentsline {subsection}{\numberline {4.2.1}Latitude algorithm}{37}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Improving latitude prediction algorithm}{38}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Latitude estimation results}{40}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Possible issues and further development ideas}{41}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.4}Possible issues and further development ideas}{40}{subsection.4.2.4}%
 \contentsline {section}{\numberline {4.3}Combined latitude and longitude estimations}{43}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Estimating panel angles}{45}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Prediction error function}{46}{section.5.1}%
