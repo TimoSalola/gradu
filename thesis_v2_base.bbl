@@ -81,4 +81,10 @@ Vagner Seibert,{``Distributing points on a sphere,''} ,
   \url{https://medium.com/@vagnerseibert/distributing-points-on-a-sphere-6b593cc05b42}
   (visited on 2024-04-23).
 
+\bibitem{project_source}
+Github repository,{``Project source code,''} ,
+\newblock
+  \url{https://github.com/TimoSalola/PV_parameter_estimation_thesis_code}
+  (visited on 2024-06-24).
+
 \end{thebibliography}

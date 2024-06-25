@@ -412,7 +412,7 @@ As it is unlikely that the longitude and latitude estimation algorithms are used
      \end{subfigure}
      \hfill
      \caption{Geolocation estimations for FMI datasets.}
-     \label{fig_anglespace}
+     \label{fig_geolocationmap}
 \end{figure}
 
 \noindent In the Helsinki predictions figure, the estimated geolocations are scattered around the known installation location, showing very little bias and some random noise. Similar behavior can be seen in Kuopio predictions where two outliers 2017 and 2020 deviate more significatly. One degree on the latidue axis is approximately 110 km regardless of latitude and longitude, one degree of longitude is 56km at $60^\circ$ N and 50 km at $63^\circ$ N. As the variance is strongest on the latitude axis, it is likely that the latitude prediction algorithm is more sensitive to variations in the data and further development should be focused on more accurate latitude prediction and day range selection.
