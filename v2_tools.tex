@@ -1,5 +1,16 @@
-\chapter{Solar irradiance simulation tools}
-The primary tool used in this thesis for simulating PV generation with different parameters is the python library PVlib. PVlib contains be built functions for estimating solar irradiance, angle of incidence and a multitude of other useful tools. As seen in Table \ref{table_poa_simulated_format}, the plane of array(POA) simulations which estimate the irradiance per 1m² of solar panel surface resemble the earlier FMI PV datasets in their structure.
+\chapter{PV output simulation}
+The earlier PV model presented in section \ref{section_simple_pv_model} assumes PV output to be $\eta * P$. The value of $\eta$ can be difficult to accurately approximate due to differences in PV panel technologies, inverter efficiencies and other factors, but values in the range of 0.15 to 0.20 can be used as placeholders if a value is required. However for model fitting purposes $\eta$ does not need to be known as the if the shape of the curve is correct, the amplitudes of the curves can be matched.
+
+The value $P$ has to be estimated. Physically accurate models are fairly complicated but luckily there are pre-existing tools made for solar PV modeling. The python library PVlib contains functions for estimating solar angles and different radiation types, the most relevant as of now being the POA irradiance. This plane of array irradiance is the sum of radiation reaching a $1m^2$ sized plane with given location, angles and datetime. An example of POA values generated with PVlib is listed on Table \ref{table_poa_simulated_format}.
+
+
+
+
+
+% accept that the model presented in earlier section \ref{section_simple_pv_model} is valid and 
+
+
+%The primary tool used in this thesis for simulating PV generation with different parameters is the python library PVlib. PVlib contains be built functions for estimating solar irradiance, angle of incidence and a multitude of other useful tools. As seen in Table \ref{table_poa_simulated_format}, the plane of array(POA) simulations which estimate the irradiance per 1m² of solar panel surface resemble the earlier FMI PV datasets in their structure.
 
 %An example of the irradiance simulation outputs is shown in table \ref{table_poa_simulated_format} and the table shows that the output format is simular to the FMI PV datasets shown earlier in table \ref{table_fmi_kumpula_csv}.
 
@@ -21,7 +32,7 @@ The primary tool used in this thesis for simulating PV generation with different
 
 \begin{tabular}{r|cccc} \hline\hline
 
-Timestamp[UTC] & Minute & POA(W) \\ \hline
+Timestamp[UTC] & Minute & POA(W/m) \\ \hline
 $2018-05-30$ $00:00$ &  $0$ & $0.0$\\
 $2018-05-30$ $00:01$ &  $1$ & $0.0$\\
 $2018-05-30$ $00:02$ &  $2$ & $0.0$\\
@@ -41,7 +52,7 @@ $2018-05-30 $ $23:59$ & $1439$ & $0.0$\\
 \end{table}
 
 
-\subsection{PVlib POA function inputs} 
+%\subsection{PVlib POA function inputs} 
 %PVlib plane of array irradiance can be simulated with 
 
 %\begin{lstlisting}[caption={PVlib POA simulation function header.}, label={poa_header}]
@@ -49,25 +60,25 @@ $2018-05-30 $ $23:59$ & $1439$ & $0.0$\\
 %\end{lstlisting}
 
 
-\noindent The following listing contains the relevant parameters of the plane of array irradiance function and their domains.
+%\noindent The following listing contains the relevant parameters of the plane of array irradiance function and their domains.
 %The POA simulation function accepts real --or integer as is the case with the day parameter-- valued parameters in the ranges listed below. 
 
-\begin{itemize}
-	\item Year $\in \mathbb{N}$
-	\item Day [1, 365/366] $\in \mathbb{N}$
-	\item Latitude [-90, 90] $\in \mathbb{R}$%, Finland fits within subrange [59, 70]
-	\item Longitude [-180, 180]  $\in \mathbb{R}$%, Finland fits within subrange [19, 32] 
-  	\item Tilt [0, 90] $\in \mathbb{R}$
-  	\item Azimuth [0, 360[ $\in \mathbb{R}$
-\end{itemize}
+%\begin{itemize}
+%	\item Year $\in \mathbb{N}$
+%	\item Day [1, 365/366] $\in \mathbb{N}$
+%	\item Latitude [-90, 90] $\in \mathbb{R}$%, Finland fits within subrange [59, 70]
+%	\item Longitude [-180, 180]  $\in \mathbb{R}$%, Finland fits within subrange [19, 32] 
+%  	\item Tilt [0, 90] $\in \mathbb{R}$
+%  	\item Azimuth [0, 360[ $\in \mathbb{R}$
+%\end{itemize}
 
 %\noindent \textbf{Note:} While the function does accept the full latitude and longitude ranges as inputs, it may be beneficial to restrict the range of the coordinate parameters when the approximate location of the installation is known. For example, Finland fits within subrange [19, 32] on the longitude axis and thus it could make sense to restrict the longitude range when examining installations located within Finland.
+%
+%\vspace{3mm}
+%\noindent
+%The day and year parameters can be assumed to be always known as datasets include timestamps and this leaves four unknown system parameters. These four parameters span a 4D parameter space of possible PV installations. The size of this parameter space is connected to the difficulty of the parameter estimation problem. As the parameters are in $\mathbb{R}$, the amount of sensible combinations is the product of the discretization of each of the parameter ranges. Tilt and azimuth parameters can be discretized as integers, resulting in $90*360$ or $32400$ unique angle space points. The geographic latitude and longitude coordinates are somewhat harder to discretize. In an arbitrary 0.1 degree geographic discretization there would be $1800*3600$ or 6480000 coordinate combinations. The product of these two sums results in $2*10^{11}$ unique parameter combinations.
 
-\vspace{3mm}
-\noindent
-The day and year parameters can be assumed to be always known as datasets include timestamps and this leaves four unknown system parameters. These four parameters span a 4D parameter space of possible PV installations. The size of this parameter space is connected to the difficulty of the parameter estimation problem. As the parameters are in $\mathbb{R}$, the amount of sensible combinations is the product of the discretization of each of the parameter ranges. Tilt and azimuth parameters can be discretized as integers, resulting in $90*360$ or $32400$ unique angle space points. The geographic latitude and longitude coordinates are somewhat harder to discretize. In an arbitrary 0.1 degree geographic discretization there would be $1800*3600$ or 6480000 coordinate combinations. The product of these two sums results in $2*10^{11}$ unique parameter combinations.
-
-A parameter space this large is difficult to examine exhaustively. Even a system capable of evaluating 100 000 angle space points per second would need approximately 23 days in order to evaluate all of the possible combinations. However if the parameters can be solved in isolation from oneanother, the required computational time would decrease significantly. Instead of $90*360*1800*36000$, there would be $90+360+1800+3600$ combinations to evaluate. This highlights how important it is to break problems into smaller pieces whenever possible and much of this thesis focuses on how this can be done with solar PV parameter estimation. 
+%A parameter space this large is difficult to examine exhaustively. Even a system capable of evaluating 100 000 angle space points per second would need approximately 23 days in order to evaluate all of the possible combinations. However if the parameters can be solved in isolation from oneanother, the required computational time would decrease significantly. Instead of $90*360*1800*36000$, there would be $90+360+1800+3600$ combinations to evaluate. This highlights how important it is to break problems into smaller pieces whenever possible and much of this thesis focuses on how this can be done with solar PV parameter estimation. 
 
 
 \newpage
