@@ -1,7 +1,7 @@
 \chapter{PV output simulation}
 The earlier PV model presented in section \ref{section_simple_pv_model} assumes PV output to be $\eta * P$. The value of $\eta$ can be difficult to accurately approximate due to differences in PV panel technologies, inverter efficiencies and other factors, but values in the range of 0.15 to 0.20 can be used as placeholders if a value is required. However for model fitting purposes $\eta$ does not need to be known as the if the shape of the curve is correct, the amplitudes of the curves can be matched.
 
-The value $P$ has to be estimated. Physically accurate models are fairly complicated but luckily there are pre-existing tools made for solar PV modeling. The python library PVlib contains functions for estimating solar angles and different radiation types, the most relevant as of now being the POA irradiance. This plane of array irradiance is the sum of radiation reaching a $1m^2$ sized plane with given location, angles and datetime. An example of POA values generated with PVlib is listed on Table \ref{table_poa_simulated_format}.
+The value $P$ has to be estimated. Physically accurate models are fairly complicated but luckily there are pre-existing tools made for solar PV modeling. The python library PVlib contains functions for estimating solar angles and different radiation types, the most relevant as of now being the POA irradiance. This plane of array irradiance is the sum of radiation reaching a $1m^2$ sized plane in clear sky conditions with given location, angles and datetime. A section of PVlib generated POA values are shown in Table \ref{table_poa_simulated_format}.
 
 
 
@@ -47,7 +47,7 @@ $2018-05-30 $ $23:59$ & $1439$ & $0.0$\\
 
 \hline\hline
 \end{tabular}
-\tabcaption{One day of simulated plane of array irradiance values. Note that the minute column is added to the table for convinience and it is reduntant as minutes can be read from the timestamps.}
+\tabcaption{One day of simulated clear sky plane of array irradiance values. Note that the minute column is added to the table for convinience and it is reduntant as minutes can be read from the timestamps.}
 \label{table_poa_simulated_format}
 \end{table}
 
@@ -83,15 +83,21 @@ $2018-05-30 $ $23:59$ & $1439$ & $0.0$\\
 
 \newpage
 \section{PVlib POA evaluation}
+Before the PVlib POA simulations are used for parameter estimation, the simulated values should be compared with known PV measurements. Figure \ref{fig-multidaypoavsmeasurements} contains 6 days from FMI Kumpula dataset year 2017 plotted on orange and PVlib simulated POA values with the parameters of the Kumpula installation. Power values of the POA simulations were multiplied by 19 in order to match the magnitudes of both plots.
 
-Before implementing the parameter estimation functions, the POA simulations should be tested against known measurement data. Figure \ref{fig-multidaypoavsmeasurements} displays that in clear sky conditions the pvlib irradiance model is following real world measurements closely with a few exceptions. And during cloudy days the measurements are often lower than the clear sky model would indicate, but they can also peak higher than they would during cloud free days. These increases of power generation above clear sky estimated power are likely to be caused by the additional sunlight reflected from clouds towards solar panels in partly cloudy weather conditions and it shows that cloud induced noise can be positive as well as negative. 
+This plot shows that in presumably cloud free conditions during days 123, 136 and 141 the POA values and real PV output curves have matching shapes with minor deviations. And during days 70, 150 and 240 clouds, snow or other factors have caused noise into power generation resulting in deviation between the measurements and the PVlib POA simulation. This noise appears to result in both increases and decreases in expected power generation. Decreases are fairly intuitive as clouds can block direct solar radiation from reaching panel surfaces but positive noise can be unintuitive and it has implications for model fitting. Well positioned clouds can reflect additional sunlight onto the panels or snow near panels may increase ground reflectivity. This noise charasteristic means that local maximums or minimums of power measurements can not be used to approximate the expected power output in normal conditions. 
 
 
 
+
+%Before implementing the parameter estimation functions, the POA simulations should be tested against known measurement data. Figure \ref{fig-multidaypoavsmeasurements} displays that in clear sky conditions the pvlib irradiance model is following real world measurements closely with a few exceptions. And during cloudy days the measurements are often lower than the clear sky model would indicate, but they can also peak higher than they would during cloud free days. These increases of power generation above clear sky estimated power are likely to be caused by the additional sunlight reflected from clouds towards solar panels in partly cloudy weather conditions and it shows that cloud induced noise can be positive as well as negative. 
+
+
+% Power output of FMI Kumpula PV installation and the pvlib POA simulation computed with the parameters from Table  \ref{table_fmi_helsinki_kuopio_parameters}. Horizontal axis on the graphs corresponds to time and vertical axis marks the estimated power values. The purpose of the graphs is to display the different shapes and deviations from POA models and thus axis names and numbers were left out. Upper row contains randomly selected days while as the lower row has days chosen by a clear sky algorithm mentioned in Chapter \ref{clearskyalgo_chapter}. Measurements are from 2017. POA irradiance values were multiplied by 19 in order to match the curves values on power axis.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\linewidth]{pics/multiday_vs_neat}
-\figcaption{Power output of FMI Kumpula PV installation and the pvlib POA simulation computed with the parameters from Table  \ref{table_fmi_helsinki_kuopio_parameters}. Horizontal axis on the graphs corresponds to time and vertical axis marks the estimated power values. The purpose of the graphs is to display the different shapes and deviations from POA models and thus axis names and numbers were left out. Upper row contains randomly selected days while as the lower row has days chosen by a clear sky algorithm mentioned in Chapter \ref{clearskyalgo_chapter}. Measurements are from 2017. POA irradiance values were multiplied by 19 in order to match the curves values on power axis.}
+\figcaption{Plots comparing POA simulations with real PV measurements from FMI Kumpula dataset year 2017.}
 \label{fig-multidaypoavsmeasurements}
 \end{figure}
 
@@ -128,7 +134,7 @@ Before implementing the parameter estimation functions, the POA simulations shou
 
 In the exact opposite case where every measureable property of irradiance plots is affected by every input parameter, solving the parameters would be much harder or even impossible. For example if all of the parameters influenced the same traits to different extents and the system was not bijective, multiple parameter combinations could result in the same simulated power graph. In a such system there would not be a single solution but rather a set of possible solutions.
 
-The problem of solving installation parameters would appear to be somewhere in between the two extremes. The longitude parameter would seem to shift the curve along the time axis where as tilt and azimuth parameters do not affect the first or last non-zero minutes but they do affect the shape of the curve. Observations of parameter to trait interactions are listed on Table \ref{table_traits}.
+The problem of solving installation parameters would appear to be somewhere in between the two extremes. The longitude parameter would seem to shift the curve along the time axis whereas tilt and azimuth parameters do not affect the first or last non-zero minutes but they do affect the shape of the curve. Observations of parameter to trait interactions are listed in Table \ref{table_traits}.
 
 
 
