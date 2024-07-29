@@ -134,7 +134,7 @@ This plot shows that in presumably cloud free conditions during days 123, 136 an
 
 In the exact opposite case where every measureable property of irradiance plots is affected by every input parameter, solving the parameters would be much harder or even impossible. For example if all of the parameters influenced the same traits to different extents and the system was not bijective, multiple parameter combinations could result in the same simulated power graph. In a such system there would not be a single solution but rather a set of possible solutions.
 
-The problem of solving installation parameters would appear to be somewhere in between the two extremes. The longitude parameter would seem to shift the curve along the time axis whereas tilt and azimuth parameters do not affect the first or last non-zero minutes but they do affect the shape of the curve. Observations of parameter to trait interactions are listed in Table \ref{table_traits}.
+\newpage The problem of solving installation parameters would appear to be somewhere in between the two extremes. The longitude parameter would seem to shift the curve along the time axis whereas tilt and azimuth parameters do not affect the first or last non-zero minutes but they do affect the shape of the curve. Observations of parameter to trait interactions are listed in Table \ref{table_traits}.
 
 
 
@@ -218,12 +218,14 @@ The problem of solving installation parameters would appear to be somewhere in b
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=1\linewidth]{pics/poa_var_lat}
-\figcaption{First and last non-zero power minutes of each day from year long simulations at different latitudes}
+\includegraphics[width=1\linewidth]{pics/different_latitudes}
+\figcaption{First and last non-zero power minutes of each day from year long POA simulations at different northern latitudes.}
 \label{fig_poa_var_lat}
 \end{figure}
 
-\noindent The latitude simulations in Figure \ref{fig_poa_var_lat} show that the day length stays fairly consistent for locations close to the equator, but with latitudes of $50^\circ$ and higher, the day to day variation is significant. These POA simulations would imply that the region around equinoxes is ideal for day length based analysis as there day length is always well defined and the rate of change can be measured. 
+\noindent The latitude simulations in Figure \ref{fig_poa_var_lat} show that the day length stays fairly consistent at lower latitudes but with latitudes of $50^\circ$N and higher, the day lenghth becomes significant. This variation in day lengths can be consistently measured near equinoxes as day lengths are always well defined.
+
+%for locations close to the equator, but with latitudes of $50^\circ$ and higher, the day to day variation is significant. These POA simulations would imply that the region around equinoxes is ideal for day length based analysis as there day length is always well defined and the rate of change can be measured. 
 
 
 \newpage
@@ -235,11 +237,20 @@ The problem of solving installation parameters would appear to be somewhere in b
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{pics/poa_eval_single_day}
-\figcaption{Figure comparing Pvlib simulated POA irradiance and actual measured PV output of FMI Helsinki installation.}
+\figcaption{Figure comparing Kumpula PV measurements on orange and PVlib simulated clear sky POA irradiance(purple). POA power values were scaled with a multiplier in order to match curve magnitudes.}
 \label{fig-poa_eval_single_day}
 \end{figure}
 
-\noindent Figure \ref{fig-poa_eval_single_day} compares the simulated and measured PV output during a sunny day in Helsinki. The shapes of the curves match quite closely, but there are some discrepancies. The estimated power values for the peak production hours are higher than measured power values and a similar phenomena is seen near minute 1000. These discrepancies can be explained by real world phenomena as PVlib POA values describe the amount of radiation reaching the surface of a solar panel. This is different from the power output of a PV system as thermal losses and panel reflections are not taken into account. This section examines an improved PV model which includes these losses.
+\noindent 
+Figure \ref{fig-poa_eval_single_day} and the earlier multi-day comparison Figure \ref{fig-multidaypoavsmeasurements} both suggest that PVlib POA estimates are a fairly good approximation of clear sky PV output. However when examined more closely, there are some deviations between the POA simulations and real PV outputs. The PVlib simulations suggest a higher than achieved output near 580 and 1000 minutes. 
+
+At 1000 minutes this is likely a result of reflective losses as the radiation reaching a panel surface is not equal to absorbed radiation and with south-east facing panels the direct component of solar radiation would be reaching the panel surfaces at shallow angle, increasing the fraction of radiation reflected away from the panel surface. This means that a more accurate PV model would have to take panel reflections into account in order to correct for this discrepancy between the model and the PV measurements.
+
+Near 580 minutes the panels are absorbing a high amount of radiation. If we assume the solar panels to be operating at approximately 20\% efficiency, 80\% of incoming radiation is transformed into heat and the efficiency of PV panels and many other electrical devices is dependent on operating temperature. This would also explain the negative noise present during the peak output hours as gusts of wind may be enough to cool the panels enough to cause noise patterns in the PV data. This noise is difficult to estimate, but panel temperature modeling could be included in a better PV model and this may result in higher estimation accuracy near peak production times.
+
+
+
+%Figure \ref{fig-poa_eval_single_day} compares the simulated and measured PV output during a sunny day in Helsinki. The shapes of the curves match quite closely, but there are some discrepancies. The estimated power values for the peak production hours are higher than measured power values and a similar phenomena is seen near minute 1000. These discrepancies can be explained by real world phenomena as PVlib POA values describe the amount of radiation reaching the surface of a solar panel. This is different from the power output of a PV system as thermal losses and panel reflections are not taken into account. This section examines an improved PV model which includes these losses.
 
 \newpage
 
@@ -255,43 +266,47 @@ The problem of solving installation parameters would appear to be somewhere in b
 
 
 \noindent 
-The improved PV model in Figure \ref{fig-pv_model} introduces some new concepts, among which are the following irradiance types.
+Figure \ref{fig-pv_model} contains a comparison of steps required for PVlib POA based solar PV output estimation and the steps of a more physically accurate PV model. While the steps required by the methods may seem different, they are very similar.
+
+When the PVlib POA model is used, PVlib internally calculates estimates for DNI, DHI and GHI, each of which is a component of solar irradiance, and then transposes the irradiances to the solar panel surface. The sum of the radiation types after transposition is the plane of array irradiance or POA. However if we use PVlib to generate a table of the three radiation components, we can then transpose the radiation types to the panel surface with our own models for transpositions, reflection estimation, panel temperatures and the output of the PV system. The three irradiance types were mentioned earlier as direct radiation, atmosphere scattered radiation and ground reflected radiation but in meteorology they go by the following names.
+
+
 
 \begin{itemize}
-\item DNI is diffused normal irradiance which represents direct sunlight received by a 1m² -sized plane with AOI of 0 degrees. Note that athmosphere scattered or ground reflected irradiance are not components of DNI.
+\item DNI is direct normal irradiance which represents direct sunlight received by a 1m² -sized plane with AOI of 0 degrees. Note that DNI consists of only direct sunlight and atmospherically scattered light or ground relfections are not components of DNI.
 
-\item DHI is diffuse horizontal irradiance which represents the irradiance reaching a shaded 1m² -sized plane with tilt of 0 degrees. DHI represents atmosphere scattered irradiance.
+\item DHI is diffuse horizontal irradiance which represents the irradiance reaching a shaded 1m² -sized plane with tilt of 0 degrees. DHI represents atmosphere scattered radiation and DHI can be measured with an instrument which blocks direct sunlight.
 
 \item GHI is global horizontal irradiance and it represents the amount of irradiance per 1m² -sized plane with tilt of 0 degrees. GHI is made up of direct irradiance and atmosphere scattered irradiance. GHI combined with albedo can be used to estimate the ground reflected irradiance.
 \end{itemize}
 
 \noindent
-These irradiance types are present in both the simpler PVlib POA based model and the improved PV model. The difference between the two models is that in the POA-model, PVlib internally calculates three irradiance components DNI, DHI and GHI and projects them to the panel surface, returning the resulting sum as plane of array irradiance. Where as in the more complex PV model, PVlib estimates DNI, DHI and GHI, each of which are processed by multiple functions before they are combined into an estimated power output value, resulting in a physically more accurate PV output estimation.
+%These irradiance types are present in both the simpler PVlib POA based model and the improved PV model. The difference between the two models is that in the POA-model, PVlib internally calculates three irradiance components DNI, DHI and GHI and projects them to the panel surface, returning the resulting sum as plane of array irradiance. Where as in the more complex PV model, PVlib estimates DNI, DHI and GHI, each of which are processed by multiple functions before they are combined into an estimated power output value, resulting in a physically more accurate PV output estimation.
 
-\subsection{Panel surface projections}
+\subsection{Panel surface transpositions}
 
-The first step in the improved model is panel surface projection. Sandia National Laboratories, the original author of PVlib, suggests the following two equations for DNI and GHI projection and five alternative models for DHI projection. Perez 1990 model \cite{perez} was chosen for DHI projections due to the use of the model by a co-worker at FMI and inclusion in Sandia suggested projection models \cite{sandia_poa_dhi}. For implementation of DNI, DHI and GHI equations, see thesis source code.
+The first step in the improved model is panel surface transposition. Sandia National Laboratories, the original author of PVlib, suggests the following two equations for DNI and GHI transposition and five alternative models for DHI transposition. Perez 1990 model \cite{perez} was chosen for DHI transposition due to the use of the model by a co-worker at FMI and inclusion in Sandia suggested projection models \cite{sandia_poa_dhi}. Chosen DNI and GHI transposition models are shown below. DHI Perez transposition model utilizes number tables and as a function included in PVlib was used, the mathematical notation for the method was left out. See thesis source code for the implementations.
 
 %As there are three irradiance types with different apparent sources and thus directions, three irradiance projection functions are needed. The simplest way to project DNI and DHI to panel surface is to use the equations $DNI_{proj}= DNI* sin(AOI)$ and $DHI_{proj}= DHI* sin(tilt)$ both of which are mathematically trivial. However ground reflected irradiance projection is not as simple. The original author of PVlib, Sandia National Laboratories recommends the use the following two equations for DNI and GHI, offering five different models for DHI. 
 
 
-\noindent\textbf{DNI projection}\cite{sandia_poa_dni}
+\noindent\textbf{DNI transposition}\cite{sandia_poa_dni}
 %
 \begin{equation}
 \begin{split}
 \label{sandia_eq_dni}
-DNI_{proj}(DNI, AOI)= DNI*cos(AOI)
+DNI_{poa}(DNI, AOI)= DNI*cos(AOI)
 \end{split}
 \end{equation}
 Where $AOI$ is the angle of incidence.
 
 
-\noindent\textbf{GHI projection}\cite{sandia_poa_ghi}
+\noindent\textbf{GHI transposition}\cite{sandia_poa_ghi}
 %
 \begin{equation}
 \begin{split}
 \label{sandia_eq_ghi}
-GHI_{proj}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
+GHI_{poa}(GHI, albedo, tilt)= GHI*albedo*\frac{1-cos(tilt)}{2}
 \end{split}
 \end{equation}
 
@@ -312,10 +327,10 @@ $tilt$ is the tilt angle of the PV installation, this is $15^\circ$ for both FMI
 %\end{equation}
 
 \newpage
-\subsection{Reflection estimation and absorbed irradiance}
-The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a physical contraption in which solar panels were rotated under a light beam from a solar simulator. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.q. a $DNI_{reflected}$ value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
+\subsection{Reflection estimation}
+The following Solar irradiance reflection equations originate from 2001 Martin and Ruiz paper \cite{solar_reflections}. This study used a physical contraption in which solar panels were rotated under a light beam from a solar simulator. Values from the reflective losses equations represent the fraction of irradiance reflected away from the panels e.g. a $DNI_{reflected}$ value of 0.24 would tell us that 24\% of irradiance is lost due to reflections and 76\% is absorbed. 
 
-\noindent\textbf{DNI reflective lossess}
+\noindent\textbf{Reflected fraction of DNI}
 
 % THIS IS F_A(Beta) in original source
 \begin{equation} 
@@ -327,7 +342,7 @@ DNI_{reflected}= exp(-\frac{1}{a_r}(c_1 p_1 +c_2 p_1^2))
 
 
 % THIS IS F_D(Beta) in original source
-\noindent\textbf{DHI reflective lossess}
+\noindent\textbf{Reflected fraction of DHI}
 %
 \begin{equation}
 \begin{split}
@@ -336,7 +351,7 @@ DHI_{reflected}= exp(-\frac{1}{a_r}(c_1 p_2 +c_2 p_2^2))
 \end{split}
 \end{equation}
 
-\noindent\textbf{GHI reflective lossess}
+\noindent\textbf{Reflected fraction of GHI}
 %
 \begin{equation}
 \begin{split}
@@ -357,23 +372,49 @@ $p_1= sin(tilt) + \frac{tilt-sin(tilt)}{1-cos(tilt)}$
 
 $p_2= sin(tilt) + \frac{\pi - tilt-sin(tilt)}{1+cos(tilt)}$
 
+\newpage
+\subsection{Absorbed irradiance}
+Now that relfective losses can be estimated for each radiation source, the amount of radiation absorbed by the PV panels can be calculated with the following equations. Resulting values are in watts.
 
-\noindent\textbf{Absorbed irradiance}
+\noindent\textbf{Absorbed DNI}
 \begin{equation}
 \begin{split}
-\label{solar_reflecive_absorbed}
-POA_{absorbed} = DNI(1-DNI_{r})+ DHI(1-DHI_{r})+GHI(1-GHI_{r})
+DNI_{absorbed} = DNI_{poa}(1-DNI_{reflected})
 \end{split}
 \end{equation}
 
-\noindent Where $DNI$, $DHI$ and $GHI$ are solar irradiance values in watts and $DNI_r$, $DHI_r$, $GHI_r$ refer to Equation \ref{solar_reflecive_dni_loss}, \ref{solar_reflecive_dhi_loss} and \ref{solar_reflecive_ghi_loss}.
+\noindent\textbf{Absorbed DHI}
+\begin{equation}
+\begin{split}
+DHI_{absorbed} = DHI_{poa}(1-DHI_{reflected})
+\end{split}
+\end{equation}
+
+\noindent\textbf{Absorbed GHI}
+\begin{equation}
+\begin{split}
+GHI_{absorbed} = GHI_{poa}(1-GHI_{reflected})
+\end{split}
+\end{equation}
+
+
+\noindent\textbf{Absorbed radiation}
+\begin{equation}
+\begin{split}
+POA_{absorbed} = DNI_{absorbed}+DHI_{absorbed}+GHI_{absorbed}
+\end{split}
+\end{equation}
 
 
 
 
 
+
+\newpage
 \subsection{Panel temperature estimation}
-Panel temperatures need to be estimated as the efficiency of solar panels depends on panel temperature. This can be accomplished with the following King et al 2004 model\cite{king2004} if air temperature, wind speed and absorbed radiation are known. Note that as the model does not take the thermal capacity of the panels into account, the actual panel temperature is likely smoother and delayed compared to modeled temperature.
+The previously calculated $POA_{absorbed}$ can be used to estimate the panel temperature by using the following King et al. 2004 model\cite{king2004}. This King model requires air temperature, wind speed and absorbed radiation to be known. As air temperature nor wind speed are known, dummy values can be used instead. Note that the King model does not take thermal capacity of the panels into account and thus the model responds to changes faster than the real temperature of PV panels. 
+
+%Panel temperatures need to be estimated as the efficiency of solar panels depends on panel temperature. This can be accomplished with the following King et al. 2004 model\cite{king2004} if air temperature, wind speed and absorbed radiation are known. Note that as the model does not take the thermal capacity of the panels into account, the actual panel temperature is likely smoother and delayed compared to modeled temperature.
 
 \noindent\textbf{Panel temperature}
 \begin{equation}
@@ -400,7 +441,7 @@ $w$ is wind speed at panel elevation.
 
 \newpage
 \subsection{Output estimation}
-Now that the absorbed radiation and panel temperature are known, the output can be estimated with the following Huld et al 2010 model\cite{huld2010}.
+Now that the absorbed radiation and panel temperature are known, the output can be estimated with the following Huld et al. 2010 model\cite{huld2010}.
 
 \noindent\textbf{PV output model}
 \begin{equation}
@@ -429,8 +470,11 @@ k1        & k2        & k3        & k4       & k5       & k6       \\ \hline
 \end{tabular}
 \end{table}
 
-\noindent %This leaves the rated power of the system as an unknown parameter. 
-For unknown PV systems, the unknown value $P_{rated}$ can be estimated with the following area matching equation \ref{pv_area_matching}. Note that as the sum of $P_{simulated}$ varies depending on installation angles and geolocation, the multiplier value has to be calculated every time an unique set of PV system parameters is simulated. Visualization of area matching is shown in Figure \ref{fig_area_match}.
+\noindent %This leaves the rated power of the system as an unknown parameter.
+If the variable $P_{rated}$ is not known, it can be estimated by using an area matching algorithm. 
+
+
+%or unknown PV systems, the unknown value $P_{rated}$ can be estimated with the following area matching equation \ref{pv_area_matching}. Note that as the sum of $P_{simulated}$ varies depending on installation angles and geolocation, the multiplier value has to be calculated every time an unique set of PV system parameters is simulated. Visualization of area matching is shown in Figure \ref{fig_area_match}.
 
 
 %This is the process of calculating the integral or sum of power generation plots and matching their values. A 1kW system can be matched. Visualization of this process where a POA simulation of a 1kW installation is area matched with known measurement data is shown in Figure \ref{fig_area_match}.
@@ -440,15 +484,21 @@ For unknown PV systems, the unknown value $P_{rated}$ can be estimated with the 
 \begin{equation}
 \begin{split}
 \label{pv_area_matching}
-Multiplier = \sum_{t=0}^{1439} P_{measured}(t)/ \sum_{t=0}^{1439} P_{simulated}(t)
+P_{rated} \approx \sum_{t=0}^{1439} P_{measured}(t)/ \sum_{t=0}^{1439} P_{simulated}(t)
 \end{split}
 \end{equation}
 
 \noindent Where
 
-$P_{simulated}$ is simulated output of a 1kW installation.
+$P_{simulated}$ is simulated output of a 1m$^2$ installation for a clear day.
 
-$Multiplier$ is an approximation of $P_{rated}$ and the accuracy of the approximation increases as parameters used for $P_{simulated}$ near the parameters of the unknown PV installation.
+$P_{measured}$ is the measured PV output during a clear day.
+
+
+\noindent Visualization of area matching by using a single cloud free day from Helsinki dataset and a PVlib POA simulation is included in Figure \ref{fig_area_match}.
+
+
+%$P_{rated}$ is an approximation of $P_{rated}$ and the accuracy of the approximation increases as parameters used for $P_{simulated}$ near the parameters of the unknown PV installation.
 
 
 
@@ -476,10 +526,9 @@ Delta_{model} = \sum_{t=0}^{1439} |P_{measured}(t) - P_{simulated}(t)| /1440
 \end{split}
 \end{equation}
 
-\noindent The delta value represents a normalized per minute deviation between the model and the measured data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power regardless of the time of day and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
+\noindent The $Delta_{model}$ value represents a normalized per minute deviation between the tested model and the measured data. Normalization by division with 1440 results in low delta values as this assumes that the system is constantly generating power regardless of the time of day and thus the resulting delta value is somewhat missleading but for comparison between models these values are still useful.
 
-
-Delta values for detected cloud free days for FMI Helsinki installation are on average 244W for the POA model and 145W for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487W and improved model 320W with 42 day dataset. This would indicate that the improved PV model is a closer approximation for clear sky PV output than the PVlib POA model.
+Delta values for detected cloud free days for FMI Helsinki installation are on average 244W for the POA model and 145W for the improved model based on a sample of 22 cloud free days. For FMI Kuopio the POA model achieved a delta of 487W whereas the delta of the improved model was 320W with a 42 day dataset. This would indicate that the improved PV model is a closer approximation for clear sky PV output than the PVlib POA model.
 
 
 \begin{figure}[h]
@@ -489,7 +538,9 @@ Delta values for detected cloud free days for FMI Helsinki installation are on a
 \label{fig-poa_eval_simplecomplex}
 \end{figure}
 
-\noindent Figure \ref{fig-poa_eval_simplecomplex} shows what the improvement looks like in a best case scenario. The improved model can be seen to approximate the power output with comparable or higher accuracy than the POA model during a modeled day. Despite the good performance of the improved model, the POA model still has uses due to faster computational speed. If for example only the first and last non-zero minutes matter, it may not make sense to use a physically more accurate model. In the next chapters which of these models is being used will be mentioned on case by case basis.
+\noindent Figure \ref{fig-poa_eval_simplecomplex} shows what the improvement looks like in a best case scenario. The improved model can be seen to approximate the power output with comparable or higher accuracy than the POA model during the tested day. This is especially notable during peak production hours and near 1000 minutes where AOI is high.
+
+Despite the good performance of the improved model, the POA model still has uses due to faster computational speed. If for example only the first and last non-zero minutes matter, it may not make sense to use a physically more accurate model. In the next chapters which of these models is being used will be mentioned on case by case basis.
 
 
 

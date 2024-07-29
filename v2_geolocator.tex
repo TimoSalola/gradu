@@ -76,15 +76,17 @@ Where $sn$ is the approximated solar noon minute calculated by taking the averag
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END
 
 
-\noindent The simplicity of Equation \ref{equation_naive_longitude} makes the equation appealing, but the assumption of solar noon occuring at 720 minutes should still be verified. In Figure \ref{fig_solarnoons} solar noons can be seen to occur at around 720 minutes at longitude 0$^\circ$ but they can also be observed occuring 15 minutes earlier or later than that. This 15 minute delta would translate into an error range of $(\pm 15/1440)*360^\circ = \pm 3.75^\circ$ degrees or approximately $\pm 200 km$ at the latitudes of Helsinki according to the Equation \ref{equation_latitude_delta_km}.
+\noindent The simplicity of Equation \ref{equation_naive_longitude} makes the equation appealing, but the assumption of solar noon occuring at 720 minutes should still be verified. In Figure \ref{fig_solarnoons} solar noons can be seen to occur at around 720 minutes at longitude 0$^\circ$ but they can also be observed occuring 15 minutes earlier or later than that. The cause for this pattern is a combination of Earth's axial tilt and elliptical orbit \cite{eot}. This 15 minute delta would translate into an error range of $(\pm 15/1440)*360^\circ = \pm 3.75^\circ$ degrees or approximately $\pm 200 km$ at the latitudes of Helsinki according to the Equation \ref{equation_latitude_delta_km}.
 
 
-Knowing that the PV installation is within a 400 kilometer wide slice may in some cases be enough for determining the country in which the PV installation is located in, but for most other purposes this level of accuracy is unlikely to be valuable. Fortunately the naive model can be improved upon by taking the solar noon timing variation into account. \hfill \break
+Knowing that the PV installation is within a 400 kilometer wide slice may in some cases be enough for determining the country in which the PV installation is located in, but for most other purposes this level of accuracy is unlikely to be valuable. Fortunately the naive model can be improved upon by taking the solar noon timing variation into account.
+
+\hfill \break
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=1\linewidth]{pics/solarnoons2}
-\figcaption{Approximations of solar noon minutes based on PVlib POA function at longitude $0^\circ$ for year 2023. This pattern is caused by the difference in solar time and UTC time \cite{eot}.}
+\figcaption{Approximations of solar noon minutes based on PVlib POA function at longitude $0^\circ$ for year 2023.}
 \label{fig_solarnoons}
 \end{figure}
 
@@ -119,7 +121,7 @@ Longitude(sn)= \frac{360}{1440}(sn_{poa}-sn)
 %The theoretical accuracy at this stage could be as high as $\frac{360^\circ}{1440} = 0.25^\circ$ but 
 \noindent The improved algorithm should no longer have a systematic error of up to 15 minutes after the difference between solar time and UTC time variation has been taken into account. In addition to correcting for the irregular solar noon timing, the algorithm can be improved even further by using it on larger sections of data and averaging the results, or alternatively, the algorithm could be applied only on selected cloud-free days where the expected errors are likely to be smaller.
 
-If the unfiltered multi-day approach is used, choosing the right day range is crucial. If the range is too narrow, a single outlier value can distort the results significantly, however if the whole year is used, certain periods of the year may contain more noise than others and thus their use could decrease the accuracy of the results. The two scatterplots in Figure \ref{fig_first_last_kuopio_helsinki} show the data quality from the very first and last days of the year seem to be significantly worse than the data from the longest days of the year. Based on these visualizations, days inside the range 100th to 280th would seem best suited for first and last minute sensitive analysis algorithms for both Helsinki and Kuopio installations.
+If the unfiltered multi-day approach is used, choosing the right day range is crucial. If the range is too narrow, a single outlier value can distort the results significantly, however if the whole year is used, certain periods of the year may contain more noise than others and thus their use could decrease the accuracy of the results. The two scatterplots in Figure \ref{fig_first_last_kuopio_helsinki} show that the data quality from the very first and last days of the year seem to be significantly worse than the data from the longest days of the year. Based on these visualizations, days inside the range 100th to 280th would seem best suited for first and last minute sensitive analysis algorithms for both Helsinki and Kuopio installations.
 
 
 
@@ -138,7 +140,7 @@ If the unfiltered multi-day approach is used, choosing the right day range is cr
 \clearpage
 
 \subsection{Longitude estimation results}
-The longitude estimation algorithm was tested on a day range for each year in the FMI Helsinki dataset and the results are seen in figure \ref{fig_longitude_estimation_helsinki}. By taking the mean of the longitude predictions for each year in the dataset, the resulting longitude estimates varied between -0.804$^\circ$ to 0.0766$^\circ$ from known installation longitudes. Results for the Kuopio dataset shown in figure \ref{fig_longitude_estimation_kuopio} were similar with mean delta range of -0.1042$^\circ$ to 0.9424$^\circ$.
+The longitude estimation algorithm was tested on a day range of 125th to 250th for each year in the FMI Helsinki dataset and the results are seen in figure \ref{fig_longitude_estimation_helsinki}. By taking the mean of the longitude predictions for each year in the dataset, the resulting longitude estimates varied between -0.804$^\circ$ to 0.0766$^\circ$ from known installation longitudes. Results for the Kuopio dataset shown in figure \ref{fig_longitude_estimation_kuopio} were similar with mean delta range of -0.1042$^\circ$ to 0.9424$^\circ$.
 
 
 In kilometers the year with the highest mean deviation of -0.804$^\circ$ in the Helsinki dataset corresponds to an error of approximately 45 kilometers as per \ref{equation_longitude_delta_km}. With Kuopio results the highest delta of 0.9424$^\circ$ is 49 kilometers respectively.
@@ -166,16 +168,19 @@ In kilometers the year with the highest mean deviation of -0.804$^\circ$ in the 
 
 \newpage
 \subsection{Possible issues and further development ideas}
-PV output measuring systems may not be able to accurately measure when the power output is zero. The capacitance of electrical circuits, instrument accuracy, or other phenomena could lead to small positive or negative power readings even when the PV system is not producing any power. This also occurs in the FMI datasets as simply filtering out zero power minutes was not sufficient; power values had to be greater than zero. This suggests the presence of negative output measurements in the PV data. Before this filtering was applied, the per year means exhibited a systematic bias of -3$^\circ$ or 12 minutes. In theory some datasets may include false positive readings and thus they would have to be filtered more strictly.
+PV output measuring systems may not be able to accurately measure when the power output is zero. The capacitance of electrical circuits, instrument accuracy, or other phenomena could lead to small positive or negative power readings even when the PV system is not producing any electricity. Small negative power output readings occur in the FMI datasets and the first and last non-zero power minutes are used instead of first and last greater than zero power minutes, this results in a bias of -3$^\circ$ in the longitude predictions. If similar positive false readings are present in datasets, this could complicate the estimation of the times when power production begins or stops.
 
 
 While experimenting with the solar minute estimation functions, a curious trait was found. In Figure \ref{fig_solarnoontimes}, the average of the first and last minute is approximately the same for each day at different latitudes as long as the latitude is below 50$^\circ$. As the latitude is increased, the solar noon estimates begin to deviate significantly, becoming strongly skewed after 70$^\circ$. 
 
-At first this behavior seems strange as astronomical solar noon should occur happen at the same time when longitude and the day are the same regardless of latitude. However as the solar noon estimates are calculated based on the first and last non-zero irradiance minute of the day, it would make sense that the estimations could be off by significant amount during equinoxes due to rapid changes in day lengths. Measuring out how significantly this affects longitude estimations is challenging. In theory, if the same bias occurs in both the measurements and the model, no corrections would be needed. The effect should be also lessened by using longer day ranges for predicting longitudes or by making sure that the intervals include an equal amount of days from both halves of the year. 
+At first this behavior seems strange as astronomical solar noon should occur at the same time when longitude and the day are the same regardless of latitude. However as the solar noon estimates are calculated based on the first and last non-zero irradiance minute of the day, it would make sense that the estimations could be off by significant amount during equinoxes due to rapid changes in day lengths. Thus the day range was split into two sections and the color of days was chosen according to their distance from equinoxes. Line color was chosen based on distance from equinoxes where darker lines were the furthest away. This structure visible in the figure suggest that day length variation is a likely to be a factor in the phenomena. 
+
+
+In theory, if the same bias occurs in both the measurements and the modeled first and last positive power minutes, no corrections would be needed. The effect should be also lessened by using longer day ranges for predicting longitudes or by making sure that the intervals include an equal amount of days from both halves of the year as the direction in which this error occurs appears to be the opposite on both halves of the year.
 
 Improvements in the algorithm accuracy could be achieved via by increasing the sampling interval of the irradiance simulations. PVlib POA simulations include a parameter for sampling frequency which is currently set to 1-per-minute in order to match the measuring frequency of FMI datasets. This could be increased to 1-per-second and the added resolution could help in determining more accurate estimates for solar noon times, resulting in possible gains in algorithm accuracy.
 
-PVlib POA model was used instead of the more complex reflection and temperature aware model. This could be done as the geolocation is connected to first and last non-zero minute times which should be the same for both models. However even the POA model might be overly complicated as only two time values are needed.
+PVlib POA model was used instead of the more complex reflection and temperature aware model. This could be done as the geolocation is connected to first and last non-zero minute times which should be the same for both models. However even the POA model might be overly complicated as only two time values are needed. The usage of a much simpler model could increase computational speed significantly.
 
 
 
@@ -183,7 +188,7 @@ PVlib POA model was used instead of the more complex reflection and temperature 
 \begin{figure}[]
 \centering
 \includegraphics[width=1\linewidth]{pics/solarnoontimes2}
-\figcaption{Relationship between latitude parameter and estimated solar noon time. Each line represents a different day of the year and x-axis values are normalized so that each line begins at 0 deviation. Lines with darker colors mark days which are further away from spring and fall equinoxes.}
+\figcaption{Each line represents a set of solar noon estimates based on first and last simulated non-zero power minute at different latitudes. Days are split based on whether they belong to the first or second half of the year. Darker line color marks days which are further away from equinoxes.}
 \label{fig_solarnoontimes}
 \end{figure}
 
@@ -199,7 +204,7 @@ PVlib POA model was used instead of the more complex reflection and temperature 
 \section{Estimating geographic latitude}
 Similarly to the longitude, the latitude of an installation is strongly connected to the timing of the first and last non-zero minutes of the day. This means that PVlib POA simulations can be used instead of the more complex PV model.
 
-In Figure \ref{fig_poa_var_lat}, the simulated first and last minutes can be seen to change day by day at varying rates based on the latitude. In mathematical terms it could be said that the slope of the day-to-first-minute function is determined by the latitude of the installation. And for the days around equinoxes, and at higher latitudes of $50^\circ$ to $70^\circ$, this relationship would seem to be bijective as per earlier Figure \ref{fig_poa_var_lat}. The followinth algorithm is based on the former observations.
+In earlier Figure \ref{fig_poa_var_lat}, the simulated first and last minutes can be seen to change day by day at varying rates based on the latitude. In mathematical terms it could be said that the slope of the day-to-first-minute function is determined by the latitude of the installation. And for the days around equinoxes, and at higher latitudes of $50^\circ$ to $70^\circ$, this relationship would seem to be bijective as per earlier Figure \ref{fig_poa_var_lat}. The following algorithm is based on the former observations.
 
 
 \hfill
@@ -208,26 +213,26 @@ In Figure \ref{fig_poa_var_lat}, the simulated first and last minutes can be see
 \subsection{Latitude algorithm}
 %\noindent\textbf{Latitude algorithm}
 \begin{enumerate}
-  \item Simulate first non-zero minutes over a specific day range at a given latitude.
+  \item Simulate first non-zero minutes for a day range A to B at a given latitude.
   
-  \item Fit a linear equation to the simulated day to first minute pairs from step 1.
+  \item Fit a line to the simulated day to first minute pairs from step 1. Save the line slopes and the corresponding latitude.
   
-  \item Repeat steps 1 and 2 for multiple latitudes and graph the relationship between days and first minutes.
+  \item Repeat steps 1 and 2 for multiple latitudes.
   
-  \item Fit a line to the graph from step 3 and save the line slope.
+  \item Create a slope to latitude graph from the earlier steps.
   
-  \item Create a slope to latitude graph.
+  \item Fit an n-degree polynomial equation to the graph from step 4.
   
-  \item Fit an n-degree polynomial equation to the graph from step 5.
+  \item Select the day range A to B from a solar PV dataset and fit a line to the first non-zero power minutes. Feed the slope of this line to the polynomial from step 5. Value of this polynomial is an approximation of the latitude of the PV system.
   
-  \item Calculate the slope of first minutes for real measurement data over the same range as was done in step 1 and use the slope as input for polynomial from step 6. The value of the polynomial is the estimated latitude.
+ 
   
 \end{enumerate}
 
 \noindent
 \textbf{Notes:}
 %A visualization of the algorithm can be seen in the following figure \ref{fig_slope_to_latitude}. 
-Due to seasonal differences in data quality, polar winters and the midnight sun, the range of days chosen for the algorithm is important. If the range is short, individual outliers in measurements can result in large errors. Whereas if the range is too long, it will be harder to choose the range while avoiding low data quality sections. In the algorithm visualization Figure \ref{fig_slope_to_latitude}, the range of 250th to 300th seems to result in acceptable slope to latitude curve smoothness.
+Due to seasonal differences in data quality, polar winters and the midnight sun, the range of days chosen for the algorithm is important. If the range is short, individual outliers in measurements can result in large errors. Whereas if the range is too long, it will be harder to choose the range while avoiding low data quality sections. In the algorithm visualization Figure \ref{fig_slope_to_latitude}, the range of 250th to 300th seems to result in a good linear fit.
 \newpage
 
 %\subsection{Latitude algorithm visualization}
@@ -293,7 +298,7 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 
 \noindent The second step in improving the algorithm is choosing the best possible day range for latitude estimation. One way of choosing the day ranges would be by testing multiple day ranges and choosing the range which results in the lowest average absolute error from the known latitude, but this is problematic as the correct latitude should not be assumed to be known. However if there were multiple datasets with complete metadata, this could be used in order to find universally well-behaving day ranges.
 
-\textit{Standard deviation minimization} is the second option for automated day range selection. As there are two estimated latitude values per year, datasets with $n$ years of data would provide $n*2$ estimated latitude values. Standard deviation of these values could expected to be small if the day interval does not contain days with bad data quality and this means that the interval selection can be automated. Following Figure \ref{fig_heatmap3d2} shows a heatmap for FMI Helsinki latitude estimation. Lowest found standard deviation occured with the day interval 180th to 310th with standard deviation of 0.3788$^\circ$.
+\textit{Standard deviation minimization} is another option for day range selection. As there are two estimated latitude values per year, datasets with $n$ years of data would provide $n*2$ estimated latitude values. Standard deviation of these values could expected to be small if the day interval does not contain days with bad data quality and this means that the interval selection can be automated. Following Figure \ref{fig_heatmap3d2} shows a heatmap for FMI Helsinki latitude estimation. Lowest found standard deviation occured with the day interval 180th to 310th with standard deviation of 0.3788$^\circ$.
 
 
 %However exhaustively searching the day interval space with reasonable intervals can be slow and as seen in the figure \ref{fig_heatmap3d2}, low standard deviation intervals are common in the parameter space. As a result, an arbitrarily chosen long interval is likely to perform almost as well as the very best algoritmicly chosen interval.
@@ -313,7 +318,12 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 \newpage
 
 \subsection{Latitude estimation results}
-Latitude estimation appears to be more challenging to optimize than longitude estimation. With the Helsinki dataset the found low standard deviation interval 180-310 predictions shown in Table \ref{table_geolocator_latitude_results_180_310} do not seem to be better than those achieved by an arbitrarily chosen interval 190-310 shown in Table \ref{table_geolocator_latitude_results_190_250}. Results for the Kuopio dataset contain similar variance with the interval 190-280 resulting in predictions shown in Table \ref{table_geolocator_latitude_results_kuopio}.
+Latitude estimation appears to be more challenging to optimize than longitude estimation. With the Helsinki dataset the found low standard deviation interval 180-310 predictions shown in Table \ref{table_geolocator_latitude_results_180_310} do not seem to be better than those achieved by an arbitrarily chosen interval 190-250 shown in Table \ref{table_geolocator_latitude_results_190_250}. This observation is supported by the flatness of the standard deviation space in Figure \ref{fig_heatmap3d2} which also suggest that large sections in the day interval space have a similarly low standard deviation. Results for the Kuopio installation have higher variance but the scatter appears to otherwise be similar as seen on Table \ref{table_geolocator_latitude_results_kuopio}.
+
+%Achieved results are fairly good and they will be left as is.
+
+
+%Results for the Kuopio dataset contain similar variance with the interval 190-280 resulting in predictions shown in Table \ref{table_geolocator_latitude_results_kuopio}.
 
 
 
@@ -377,21 +387,25 @@ Year & First min. p. & Error &  Last min. p. & Error \\
 \label{table_geolocator_latitude_results_kuopio}
 \end{table}
 
-
+\clearpage
 
 \subsection{Possible issues and further development ideas}
 PVlib POA based first and last minute estimations are slower to compute than necessary as only two timestamps are needed. The use of a simpler sunrise and sunset equation would increase the speed significantly, allowing for the use of brute force day range selection algorithms.
 
-Different methods could also be used. In Hagdadi 2017 \cite{navid_australian_article} latitude estimations are done by fitting solar irradiance models with 3 unknown parameters to power generation measurement data. The latitude deltas of 1.65$^\circ$ to 3.42$^\circ$  in the 2017 article are higher than those achieved in this thesis, however as the datasets, geographical regions and algorithms are different, direct comparison can not be made.
+Different methods could also be used. In Hagdadi 2017 \cite{navid_australian_article} latitude estimations are done by fitting solar irradiance models with 3 unknown parameters to power generation measurement data. The latitude deltas of 1.65$^\circ$ to 3.42$^\circ$ in the 2017 article are higher than those achieved in this thesis, however as the datasets, geographical regions and algorithms are different, direct comparison can not be made.
 
 %by this paper, however as the datasets, geographical regions and algorithms are different, direct comparison can not be made.
 
-In earlier Figure \ref{fig_slope_to_latitude} the slope to latitude fitting can be seen to be slightly off. This is because the polynomial used is of 2nd degree and higher degree polynomials may result in a closer fit. Similarly a piecewise linear interpolation based fitting could result in a more accurate model and thus better estimation accuracy at the risk of overfitting. 
+In earlier Figure \ref{fig_slope_to_latitude} the slope to latitude fitting is not perfect. The use of higher degree polynomials may result in a closer fit which in turn may result in a marginal improvement in latitude prediction accuracy. Alternatively a piecewise linear interpolation based fitting could be used. Both methods can in theory result in higher estimation accuracy at the risk of overfitting.
+ 
+
+The two day intervals 180 to 310 and 190 to 250 may be biased. For the interval 180 to 310 all of the intervals result in positive error values whereas with 190 to 250 these errors mostly negative. This suggests that there could be biases in the data which do not influence standard deviation of the results. This will be left as a possible topic of study for future studies.
+
 
 
 \newpage
 \section{Combined latitude and longitude estimations}
-As it is unlikely that the longitude and latitude estimation algorithms are used in isolation from one another, their results should be examined together. This can be done by plotting the estimated locations on a map. Here the two installations in Helsinki and Kuopio and their predicted locations per year are plotted side by side with day range of 190 to 280.
+As it is unlikely that the longitude and latitude estimation algorithms are used in isolation from one another, their results should be examined together. This can be done by plotting the estimated locations on a map. Here the two installations in Helsinki and Kuopio and their predicted locations per year are plotted side by side. Plotted latitudes are from earlier tables \ref{table_geolocator_latitude_results_190_250}, \ref{table_geolocator_latitude_results_kuopio} and longitudes are from the longitude prediction algorithm using an arbitrarily chosen day range of 190th to 280th.
 
 \begin{figure}[h]
 	
