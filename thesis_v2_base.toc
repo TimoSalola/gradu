@@ -33,7 +33,7 @@
 \contentsline {subsection}{\numberline {5.3.1}Importance of lattice density}{54}{subsection.5.3.1}%
 \contentsline {section}{\numberline {5.4}Solving panel angles}{55}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Solving panel angles iteratively}{59}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Local lattice generation}{61}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.1}Local lattice generation}{60}{subsection.5.5.1}%
 \contentsline {subsection}{\numberline {5.5.2}Results}{62}{subsection.5.5.2}%
 \contentsline {subsection}{\numberline {5.5.3}Choosing between exhaustive and iterative angle estimation methods}{63}{subsection.5.5.3}%
 \contentsline {subsection}{\numberline {5.5.4}Further development ideas}{65}{subsection.5.5.4}%

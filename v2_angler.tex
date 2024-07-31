@@ -252,7 +252,8 @@ Tilt($^\circ$) & Azimuth($^\circ$) & Delta(W)\\
 \end{floatrow}
 \end{figure}
 
-\noindent The fit achieved with the 10 point lattice is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice show in Figure \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$, delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. Without multicore optimizations and depending on other code optimizations, evaluating a single day from the dataset against a 10 000 point lattice can take up to several hours on a modern laptop.
+\noindent The fit achieved with the 10 point lattice is not very good and better results can be achieved by increasing the lattice density. The trivial method is to use a Fibonacci lattice with a higher point count, for example the fit achieved with a 10 000 point lattice show in Figure \ref{10k_fits_new_helsinki} found the best fit at tilt 14.79$^\circ$, azimuth 136.2$^\circ$, delta value of 136.2W and center angle error of 0.3659 degrees$^\circ$. This is a much better fit but increasing the lattice density comes with a higher computational cost. With moderately well written python code lacking multicore optimizations, evaluating a full 10 000 point lattice for a single day can take up to several hours on a modern laptop.
+
 
 \begin{figure}[h]
 \centering
@@ -428,6 +429,12 @@ Second requirement is that the fitness space should contain as few convergence p
 \end{enumerate}
 
 
+
+\newpage
+
+\subsection{Local lattice generation}
+The step 4 in the iterative panel angle solving algorithm detailed above is the first non-trivial step in the algorithm as it requires the generation of local lattices. One option would be to use a subsection of a Fibonnaci lattice, but generating large Fibonnacci lattices and utilizing only a small subsection would require unnecessary computation. 
+
 \begin{figure}[H]
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
@@ -452,12 +459,8 @@ Second requirement is that the fitness space should contain as few convergence p
      \label{fig_iterative_visual_1}
 \end{figure}
 
-\newpage
 
-\subsection{Local lattice generation}
-The step 4 in the iterative panel angle solving algorithm detailed above is the first non-trivial step in the algorithm as it requires the generation of local lattices. One option would be to use a subsection of a Fibonnaci lattice, but generating large Fibonnacci lattices and utilizing only a small subsection would require unnecessary computation. 
-
-The method shown in Subfigure \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with Equation \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using Equations \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
+\noindent The method shown in Subfigure \ref{fig_iterative_1_step} is based on generating a + pattern by first transferring the starting point from angle space to a unit disk with Equation \ref{angle_space_to_unit_circle}. On this unit disk 4 points are generated, each of which is $s$ units away from the start point either on x or y -axis using Equations \ref{local_lattice_from_xy}. When these 4 points are transformed back into angle space with \ref{unit_circle_to_angle_space}, they can be used as the local lattice surrounding the chosen center point.
 
 \noindent \textbf{Angle space to unit disk equations}
 \begin{equation}
@@ -495,7 +498,8 @@ Azimuth &= atan2(x/d, y/d)
 \pagebreak
 
 \subsection{Results}
-By using 30 iterations with initial search distance of 0.3 on a set of cloud free days from the FMI Helsinki and Kuopio dataset, scatter patterns shown in Figures \ref{iterative_multiday_helsinki2019} and \ref{iterative_multiday_kuopio2019} are generated. The center angle distances between known angles and cluster means for the Helsinki and Kuopio scatter patterns are 1.97$^\circ$ and 12.47$^\circ$ respectively. The Helsinki scatter pattern is marginally worse than the pattern achieved by exhaustive search algorithm were as results for Kuopio data seem to have a similar large bias as before with the exhaustive algorithm. Exact values vary depending on day smoothness requirements and chosen year.
+By using 30 iterations with initial search distance of 0.3 on a set of cloud free days from the FMI Helsinki and Kuopio dataset, scatter patterns shown in Figures \ref{iterative_multiday_helsinki2019} and \ref{iterative_multiday_kuopio2019} are generated. The center angle distances between known angles and cluster means for the Helsinki and Kuopio scatter patterns are 1.97$^\circ$ and 12.47$^\circ$ respectively. The Helsinki scatter pattern is marginally worse than the pattern achieved by exhaustive search algorithm shown in Figure \ref{fig_fmi_helsinki_1000_multi_day_2020}. This may be due to the algorithm getting stuck on a local minimum. Whereas Kuopio results are similar fits found with the exhaustive search. 
+
 
 %Average tilt: 14.404 azimuth: 132.361
 %Fitness: 114.9164
@@ -549,7 +553,7 @@ Both methods are capable of achieving good to results depending on data quality 
 
 That being stated, the computational speed of the iterative method is much higher than that of exhaustive search algorithms. If 30 steps are used with a 4 point local lattice, estimating the panel angles for a single day require 121 simulations and comparisons. This means that approximately 83 days can be iteratively evaluated in the time it takes to exhaustively evaluate one day with a 10 000 point lattice. As the 30 step iterative search algorithm reaches search distances as low as $9e-6$ units on the unit disk, the iterative method is using finer precision than would practical and the speed of the iterative algorithm can be increased further by setting a search distance limit.
 
-Instead of choosing one method, the two search methods can be combined and used together. An iterative method with 5 to 10 steps is enough to find the general location of the best fit and a local subsection of a dense Fibonnaci lattice could be used in order to search a subsection of the angle space. This would however increase the algorithm complexity for small potential gains.
+Instead of choosing one method, the two search methods can be combined and used together. An iterative method with 5 to 10 steps is enough to find the general location of the best fit and a local subsection of a dense Fibonnaci lattice could be used in order to search a subsection of the angle space. Whether the increased algorithm complexity is worth the potential gains may be usage case specific.
 
 Figure \ref{measured_vs_simulated_vs_estimated} shows a comparison of fitting results for a single day. There the difference between pover curves is not significant regardless of the estimation method used and thus iterative method may be preferable. The difference between exhaustive and iterative search is likewise imperceivable in the example from FMI Kuopio dataset seen in Figure \ref{measured_vs_simulated_vs_estimated_kuopio} despite the higher center angle distance achieved with both exhaustive and iterative methods in all earlier examples.
 
@@ -572,7 +576,7 @@ Figure \ref{measured_vs_simulated_vs_estimated} shows a comparison of fitting re
 \pagebreak
 
 \subsection{Further development ideas}
-Both algorithms perform well enough to make some of the assumptions made on the properties of fitness spaces practically irrelevant. Thus concepts of basins were not explored thoroughly but they and the field of dynamic systems which studies attractors and basins could offer additional insights into similar optimization problems.
+The concepts of basins were not explored thoroughly but they and the field of dynamic systems which studies attractors and basins could offer additional insights into similar optimization problems. Similarly the smoothness of fitness spaces and methods for avoiding getting stuck on local minimum points could be helpful.
 
 The problem of model fitting for angle estimation may also have connections to convolutions. Understanding the mathematical properties of signal impulses and their convolution shapes could help in proving how likely the formation of multiple basins are. This could be beneficial in starting point selection with iterative fitting algorithms.
 
