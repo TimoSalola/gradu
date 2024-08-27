@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  30 JUL 2024 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  27 AUG 2024 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,60 +548,234 @@ Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \c@LT@chunks=\count305
 \LT@p@ftn=\toks36
 )
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+Package: glossaries 2021/11/01 v4.49 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks37
+\XKV@tempa@toks=\toks38
+)
+\XKV@depth=\count306
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+Package: mfirstuc 2021/10/15 v2.07 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count307
+)
+\@glsmfirst=\toks39
+\@glsmrest=\toks40
+)
+(/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-base.sty
+Package: datatool-base 2019/09/27 v2.32 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/substr/substr.sty
+Package: substr 2009/10/20 v1.2 Handle substrings
+\c@su@anzahl=\count308
+)
+(/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-fp.sty
+Package: datatool-fp 2019/09/27 v2.32 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(/usr/share/texlive/texmf-dist/tex/latex/fp/defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count309
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count310
+\FP@xia=\count311
+\FP@xib=\count312
+\FP@xfa=\count313
+\FP@xfb=\count314
+\FP@rega=\count315
+\FP@regb=\count316
+\FP@regs=\count317
+\FP@times=\count318
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count319
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fp/fp-eval.sty
+Package: fp-eval 1995/04/03
+)))
+\@dtl@toks=\toks41
+\@dtl@tmpcount=\count320
+\dtl@tmplength=\skip64
+\dtl@sortresult=\count321
+\@dtl@numgrpsepcount=\count322
+\@dtl@datatype=\count323
+\dtl@codeA=\count324
+\dtl@codeB=\count325
+\@dtl@foreach@level=\count326
+)
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-
+307.sty
+Package: glossaries-compatible-307 2021/11/01 v4.49 (NLCT)
+) (/usr/share/texlive/texmf-dist/tex/latex/tracklang/tracklang.sty
+Package: tracklang 2020/06/30 v1.5 (NLCT) Track Languages
+
+(/usr/share/texlive/texmf-dist/tex/generic/tracklang/tracklang.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty
+Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
+)
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries-english/glossaries-english.
+ldf
+File: glossaries-english.ldf 2014/11/23 v1.0
+)
+\gls@level=\count327
+\@gls@tmpb=\toks42
+\gls@tmplen=\skip65
+\glskeylisttok=\toks43
+\glslabeltok=\toks44
+\glsshorttok=\toks45
+\glslongtok=\toks46
+
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.st
+y
+Package: glossary-hypernav 2021/11/01 v4.49 (NLCT)
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
+Package: glossary-list 2021/11/01 v4.49 (NLCT)
+\glslistdottedwidth=\skip66
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
+Package: glossary-long 2021/11/01 v4.49 (NLCT)
+\glsdescwidth=\skip67
+\glspagelistwidth=\skip68
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+Package: glossary-super 2021/11/01 v4.49 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2020/02/02 v4.1g the supertabular environment
+\c@tracingst=\count328
+\ST@wd=\dimen174
+\ST@rightskip=\skip69
+\ST@leftskip=\skip70
+\ST@parfillskip=\skip71
+\ST@pageleft=\dimen175
+\ST@headht=\dimen176
+\ST@tailht=\dimen177
+\ST@pagesofar=\dimen178
+\ST@pboxht=\dimen179
+\ST@lineht=\dimen180
+\ST@prevht=\dimen181
+\ST@toadd=\dimen182
+\ST@dimen=\dimen183
+\ST@pbox=\box61
+))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
+Package: glossary-tree 2021/11/01 v4.49 (NLCT)
+\glstreeindent=\skip72
+))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries-extra/glossaries-extra.sty
+Package: glossaries-extra 2021/11/22 v1.48 (NLCT)
+\@glsxtr@leveloffset=\count329
+\glsxtrresourcecount=\count330
+\@glsxtrnewgls@inner=\count331
+\glsshortpltok=\toks47
+\glslongpltok=\toks48
+\mglselementindex=\count332
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 53.
-Package hyperref Info: Option `breaklinks' set `true' on input line 53.
+Package hyperref Info: Option `colorlinks' set `true' on input line 54.
+Package hyperref Info: Option `breaklinks' set `true' on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/floatrow/floatrow.sty
 Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
-\c@float@type=\count306
-\float@exts=\toks37
-\float@box=\box61
-\@floatcapt=\box62
+\c@float@type=\count333
+\float@exts=\toks49
+\float@box=\box62
+\@floatcapt=\box63
 Package floatrow Info: Modified float package code loaded on input line 455.
 Package floatrow Info: Modified rotfloat package code loaded on input line 473.
 
-\FR@everyfloat=\toks38
+\FR@everyfloat=\toks50
 \flrow@foot=\insert252
-\FB@wd=\dimen174
-\FBo@wd=\dimen175
-\FBc@wd=\dimen176
-\FBo@ht=\skip64
-\FBc@ht=\skip65
-\FBf@ht=\skip66
-\FBo@max=\skip67
-\FBc@max=\skip68
-\FBf@max=\skip69
-\c@FBl@b=\count307
-\floatbox@depth=\count308
-\c@FRobj=\count309
-\c@FRsobj=\count310
-\Xhsize=\skip70
-\sXhsize=\skip71
-\Zhsize=\skip72
-\sZhsize=\skip73
-\flrow@rowbox=\box63
-\FR@Zunitlength=\dimen177
-\c@FBcnt=\count311
-\FPOScnt=\count312
-\LTleft=\skip74
-\LTright=\skip75
-\LTleft=\skip76
-\LTright=\skip77
-\flrow@types=\toks39
+\FB@wd=\dimen184
+\FBo@wd=\dimen185
+\FBc@wd=\dimen186
+\FBo@ht=\skip73
+\FBc@ht=\skip74
+\FBf@ht=\skip75
+\FBo@max=\skip76
+\FBc@max=\skip77
+\FBf@max=\skip78
+\c@FBl@b=\count334
+\floatbox@depth=\count335
+\c@FRobj=\count336
+\c@FRsobj=\count337
+\Xhsize=\skip79
+\sXhsize=\skip80
+\Zhsize=\skip81
+\sZhsize=\skip82
+\flrow@rowbox=\box64
+\FR@Zunitlength=\dimen187
+\c@FBcnt=\count338
+\FPOScnt=\count339
+\LTleft=\skip83
+\LTright=\skip84
+\LTleft=\skip85
+\LTright=\skip86
+\flrow@types=\toks51
 )
-LaTeX Font Info:    Trying to load font information for T1+aer on input line 87
-.
+\glswrite=\write5
+\glo@main@file=\write6
+\openout6 = `thesis_v2_base.glo'.
+
+Package glossaries Info: Writing glossary file thesis_v2_base.glo on input line
+ 88.
+\glo@acronym@file=\write7
+\openout7 = `thesis_v2_base.acn'.
+
+Package glossaries Info: Writing glossary file thesis_v2_base.acn on input line
+ 88.
+LaTeX Font Info:    Trying to load font information for T1+aer on input line 18
+4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count313
-\l__pdf_internal_box=\box64
+\l__color_backend_stack_int=\count340
+\l__pdf_internal_box=\box65
 )
 (./thesis_v2_base.aux (./thesis_front.aux) (./thesis_abs.aux)
 (./thesis_preface.aux) (./v2_introduction.aux) (./v2_datasets.aux)
@@ -609,38 +783,38 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 (./v2_appendix.aux))
 \openout1 = `thesis_v2_base.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
+LaTeX Font Info:    ... okay on input line 184.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count314
-\scratchdimen=\dimen178
-\scratchbox=\box65
-\nofMPsegments=\count315
-\nofMParguments=\count316
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count317
-\MPscratchDim=\dimen179
-\MPnumerator=\count318
-\makeMPintoPDFobject=\count319
-\everyMPtoPDFconversion=\toks41
+\scratchcounter=\count341
+\scratchdimen=\dimen188
+\scratchbox=\box66
+\nofMPsegments=\count342
+\nofMParguments=\count343
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count344
+\MPscratchDim=\dimen189
+\MPnumerator=\count345
+\makeMPintoPDFobject=\count346
+\everyMPtoPDFconversion=\toks53
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -650,7 +824,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 87.
+Package hyperref Info: Link coloring ON on input line 184.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -661,11 +835,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count320
+\c@section@level=\count347
 )
-LaTeX Info: Redefining \ref on input line 87.
-LaTeX Info: Redefining \pageref on input line 87.
-LaTeX Info: Redefining \nameref on input line 87.
+LaTeX Info: Redefining \ref on input line 184.
+LaTeX Info: Redefining \pageref on input line 184.
+LaTeX Info: Redefining \nameref on input line 184.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: floatrow package is loaded.
@@ -676,15 +850,16 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 )
 Package caption Info: Fixing longtable code of `floatrow' package.
+Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count321
+\c@lstlisting=\count348
 
 (/usr/share/texlive/texmf-dist/tex/latex/floatrow/fr-longtable.sty
 Package: fr-longtable 2007/11/28 v0.1b (beta) floatrow: additions for longtable
 
-\flrow@LT@lasthead=\box66
-\flrow@LT@prelastfoot=\box67
-\c@FBLTpage=\count322
+\flrow@LT@lasthead=\box67
+\flrow@LT@prelastfoot=\box68
+\c@FBLTpage=\count349
 )
 \openout2 = `thesis_front.aux'.
 
@@ -709,6 +884,8 @@ Non-PDF special ignored!
 <special> header=psfrag.pro
 Non-PDF special ignored!
 <special> papersize=597.50787pt,845.04684pt
+
+\openout5 = `thesis_v2_base.ist'.
 
 
 ]
@@ -740,14 +917,22 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ])
-\tf@toc=\write5
-\openout5 = `thesis_v2_base.toc'.
+\tf@toc=\write8
+\openout8 = `thesis_v2_base.toc'.
 
- [4]
+
+(./thesis_v2_base.gls [1]
+Underfull \hbox (badness 10000) in alignment at lines 2--50
+[] []
+ []
+
+[2
+
+
+]) [3]
 \openout2 = `v2_introduction.aux'.
 
-
-(./v2_introduction.tex
+ (./v2_introduction.tex
 Chapter 1.
 
 Overfull \hbox (3.28633pt too wide) in paragraph at lines 3--4
@@ -755,21 +940,21 @@ Overfull \hbox (3.28633pt too wide) in paragraph at lines 3--4
 -lem sug-gested by the Finnish
  []
 
-[1
+[4
 
 
-]) [2]
+]) [5]
 \openout2 = `v2_datasets.aux'.
 
  (./v2_datasets.tex
 Chapter 2.
-[3
+[6
 
 
 
 
 ]
-<pics/fmikumpula.jpg, id=143, 1800.4866pt x 1014.4299pt>
+<pics/fmikumpula.jpg, id=172, 1800.4866pt x 1014.4299pt>
 File: pics/fmikumpula.jpg Graphic file (type jpg)
 <use pics/fmikumpula.jpg>
 Package pdftex.def Info: pics/fmikumpula.jpg  used on input line 17.
@@ -778,28 +963,28 @@ Package pdftex.def Info: pics/fmikumpula.jpg  used on input line 17.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4 <./pics/fmikumpula.jpg>] [5]
-<pics/pvmodel2.png, id=160, 736.08333pt x 349.75111pt>
+[7 <./pics/fmikumpula.jpg>] [8]
+<pics/pvmodel2.png, id=192, 736.08333pt x 349.75111pt>
 File: pics/pvmodel2.png Graphic file (type png)
 <use pics/pvmodel2.png>
 Package pdftex.def Info: pics/pvmodel2.png  used on input line 116.
 (pdftex.def)             Requested size: 341.43436pt x 162.23232pt.
- [6
+ [9
 
  <./pics/pvmodel2.png (PNG copy)>]
-<pics/oneyear2.png, id=168, 609.27625pt x 495.8525pt>
+<pics/oneyear2.png, id=201, 609.27625pt x 495.8525pt>
 File: pics/oneyear2.png Graphic file (type png)
 <use pics/oneyear2.png>
 Package pdftex.def Info: pics/oneyear2.png  used on input line 132.
 (pdftex.def)             Requested size: 341.43436pt x 277.87979pt.
- [7 <./pics/oneyear2.png>]
-<pics/twodayshelsinki.png, id=177, 582.175pt x 252.945pt>
+ [10 <./pics/oneyear2.png>]
+<pics/twodayshelsinki.png, id=211, 582.175pt x 252.945pt>
 File: pics/twodayshelsinki.png Graphic file (type png)
 <use pics/twodayshelsinki.png>
 Package pdftex.def Info: pics/twodayshelsinki.png  used on input line 140.
 (pdftex.def)             Requested size: 426.79134pt x 185.43567pt.
- [8 <./pics/twodayshelsinki.png (PNG copy)>] [9]
-<pics/cloudfree_algo.png, id=198, 809.0225pt x 782.925pt>
+ [11 <./pics/twodayshelsinki.png (PNG copy)>] [12]
+<pics/cloudfree_algo.png, id=232, 809.0225pt x 782.925pt>
 File: pics/cloudfree_algo.png Graphic file (type png)
 <use pics/cloudfree_algo.png>
 Package pdftex.def Info: pics/cloudfree_algo.png  used on input line 243.
@@ -808,7 +993,7 @@ Package pdftex.def Info: pics/cloudfree_algo.png  used on input line 243.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10]) [11 <./pics/cloudfree_algo.png>]
+[13]) [14 <./pics/cloudfree_algo.png>]
 \openout2 = `v2_tools.aux'.
 
  (./v2_tools.tex
@@ -816,43 +1001,43 @@ Chapter 3.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12
+[15
 
 
 
 
-] [13]
-<pics/multiday_vs_neat.png, id=228, 937.5025pt x 574.145pt>
+] [16]
+<pics/multiday_vs_neat.png, id=262, 937.5025pt x 574.145pt>
 File: pics/multiday_vs_neat.png Graphic file (type png)
 <use pics/multiday_vs_neat.png>
 Package pdftex.def Info: pics/multiday_vs_neat.png  used on input line 99.
 (pdftex.def)             Requested size: 384.10959pt x 235.23451pt.
- [14 <./pics/multiday_vs_neat.png>]
-<pics/poa_eval_new_crop.png, id=234, 507.67444pt x 291.75667pt>
+ [17 <./pics/multiday_vs_neat.png>]
+<pics/poa_eval_new_crop.png, id=268, 507.67444pt x 291.75667pt>
 File: pics/poa_eval_new_crop.png Graphic file (type png)
 <use pics/poa_eval_new_crop.png>
 Package pdftex.def Info: pics/poa_eval_new_crop.png  used on input line 128.
 (pdftex.def)             Requested size: 384.10959pt x 220.74905pt.
- [15 <./pics/poa_eval_new_crop.png (PNG copy)>] [16]
-<pics/poa_var_lon.png, id=248, 562.2606pt x 400.3758pt>
+ [18 <./pics/poa_eval_new_crop.png (PNG copy)>] [19]
+<pics/poa_var_lon.png, id=281, 562.2606pt x 400.3758pt>
 File: pics/poa_var_lon.png Graphic file (type png)
 <use pics/poa_var_lon.png>
 Package pdftex.def Info: pics/poa_var_lon.png  used on input line 188.
 (pdftex.def)             Requested size: 426.79134pt x 303.90997pt.
- [17 <./pics/poa_var_lon.png>]
-<pics/different_latitudes.png, id=259, 418.89833pt x 276.58888pt>
+ [20 <./pics/poa_var_lon.png>]
+<pics/different_latitudes.png, id=292, 418.89833pt x 276.58888pt>
 File: pics/different_latitudes.png Graphic file (type png)
 <use pics/different_latitudes.png>
 Package pdftex.def Info: pics/different_latitudes.png  used on input line 221.
 (pdftex.def)             Requested size: 426.79134pt x 281.81305pt.
- [18 <./pics/different_latitudes.png (PNG copy)>]
-<pics/poa_eval_single_day.png, id=266, 340.82889pt x 241.79222pt>
+ [21 <./pics/different_latitudes.png (PNG copy)>]
+<pics/poa_eval_single_day.png, id=299, 340.82889pt x 241.79222pt>
 File: pics/poa_eval_single_day.png Graphic file (type png)
 <use pics/poa_eval_single_day.png>
 Package pdftex.def Info: pics/poa_eval_single_day.png  used on input line 239.
 (pdftex.def)             Requested size: 298.75262pt x 211.95135pt.
- [19 <./pics/poa_eval_single_day.png (PNG copy)>] [20]
-<pics/uml2.png, id=278, 749.91278pt x 344.84389pt>
+ [22 <./pics/poa_eval_single_day.png (PNG copy)>] [23]
+<pics/uml2.png, id=312, 749.91278pt x 344.84389pt>
 File: pics/uml2.png Graphic file (type png)
 <use pics/uml2.png>
 Package pdftex.def Info: pics/uml2.png  used on input line 261.
@@ -872,12 +1057,12 @@ LaTeX Info: Symbol \texttwosuperior not provided by
 LaTeX Info: Symbol \texttwosuperior not provided by
             font family aer in TS1 encoding.
             Default family used instead on input line 278.
-[21 <./pics/uml2.png>]
+[24 <./pics/uml2.png>]
 LaTeX Info: Symbol \texttwosuperior not provided by
             font family aer in TS1 encoding.
             Default family used instead on input line 280.
- [22] [23] [24] [25]
-<pics/areamatching2.png, id=329, 755.82375pt x 549.05125pt>
+ [25] [26] [27] [28]
+<pics/areamatching2.png, id=366, 755.82375pt x 549.05125pt>
 File: pics/areamatching2.png Graphic file (type png)
 <use pics/areamatching2.png>
 Package pdftex.def Info: pics/areamatching2.png  used on input line 510.
@@ -886,8 +1071,8 @@ Package pdftex.def Info: pics/areamatching2.png  used on input line 510.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26]
-<pics/pvlibsimplecomplex.png, id=341, 537.56389pt x 336.81389pt>
+[29]
+<pics/pvlibsimplecomplex.png, id=378, 537.56389pt x 336.81389pt>
 File: pics/pvlibsimplecomplex.png Graphic file (type png)
 <use pics/pvlibsimplecomplex.png>
 Package pdftex.def Info: pics/pvlibsimplecomplex.png  used on input line 536.
@@ -896,18 +1081,18 @@ Package pdftex.def Info: pics/pvlibsimplecomplex.png  used on input line 536.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27 <./pics/areamatching2.png>]) [28 <./pics/pvlibsimplecomplex.png (PNG copy)>
+[30 <./pics/areamatching2.png>]) [31 <./pics/pvlibsimplecomplex.png (PNG copy)>
 ]
 \openout2 = `v2_geolocator.aux'.
 
  (./v2_geolocator.tex
 Chapter 4.
-[29
+[32
 
 
 
 
-] [30]
+] [33]
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
@@ -917,94 +1102,94 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
-[31]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
-<pics/solarnoons2.png, id=381, 899.36pt x 427.5975pt>
+<pics/solarnoons2.png, id=418, 899.36pt x 427.5975pt>
 File: pics/solarnoons2.png Graphic file (type png)
 <use pics/solarnoons2.png>
 Package pdftex.def Info: pics/solarnoons2.png  used on input line 88.
 (pdftex.def)             Requested size: 426.79134pt x 202.91518pt.
-[32 <./pics/solarnoons2.png>]
-<pics/first_last_helsinki_kuopio2.png, id=389, 929.4725pt x 450.68375pt>
+[35 <./pics/solarnoons2.png>]
+<pics/first_last_helsinki_kuopio2.png, id=426, 929.4725pt x 450.68375pt>
 File: pics/first_last_helsinki_kuopio2.png Graphic file (type png)
 <use pics/first_last_helsinki_kuopio2.png>
 Package pdftex.def Info: pics/first_last_helsinki_kuopio2.png  used on input li
 ne 135.
 (pdftex.def)             Requested size: 384.10959pt x 186.24629pt.
- [33] [34 <./pics/first_last_helsinki_kuopio2.png>]
-<pics/longitude_v2_helsinki.png, id=405, 722.7pt x 433.62pt>
+ [36] [37 <./pics/first_last_helsinki_kuopio2.png>]
+<pics/longitude_v2_helsinki.png, id=441, 722.7pt x 433.62pt>
 File: pics/longitude_v2_helsinki.png Graphic file (type png)
 <use pics/longitude_v2_helsinki.png>
 Package pdftex.def Info: pics/longitude_v2_helsinki.png  used on input line 150
 .
 (pdftex.def)             Requested size: 384.10959pt x 230.46591pt.
-<pics/longitude_v2_kuopio.png, id=406, 722.7pt x 433.62pt>
+<pics/longitude_v2_kuopio.png, id=442, 722.7pt x 433.62pt>
 File: pics/longitude_v2_kuopio.png Graphic file (type png)
 <use pics/longitude_v2_kuopio.png>
 Package pdftex.def Info: pics/longitude_v2_kuopio.png  used on input line 158.
 (pdftex.def)             Requested size: 384.10959pt x 230.46591pt.
- [35
+ [38
 
- <./pics/longitude_v2_helsinki.png>] [36 <./pics/longitude_v2_kuopio.png>]
+ <./pics/longitude_v2_helsinki.png>] [39 <./pics/longitude_v2_kuopio.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 188.
 
-<pics/solarnoontimes2.png, id=421, 751.80875pt x 529.98pt>
+<pics/solarnoontimes2.png, id=457, 751.80875pt x 529.98pt>
 File: pics/solarnoontimes2.png Graphic file (type png)
 <use pics/solarnoontimes2.png>
 Package pdftex.def Info: pics/solarnoontimes2.png  used on input line 190.
 (pdftex.def)             Requested size: 426.79134pt x 300.8706pt.
-[37] [38 <./pics/solarnoontimes2.png>] [39]
-<pics/slope_to_latitude3.png, id=446, 915.42pt x 446.66875pt>
+[40] [41 <./pics/solarnoontimes2.png>] [42]
+<pics/slope_to_latitude3.png, id=482, 915.42pt x 446.66875pt>
 File: pics/slope_to_latitude3.png Graphic file (type png)
 <use pics/slope_to_latitude3.png>
 Package pdftex.def Info: pics/slope_to_latitude3.png  used on input line 241.
 (pdftex.def)             Requested size: 426.79134pt x 208.24406pt.
- [40 <./pics/slope_to_latitude3.png>]
+ [43 <./pics/slope_to_latitude3.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 311.
 
-<pics/std_dev_helsinki_latitude.png, id=455, 423.5022pt x 292.6935pt>
+<pics/std_dev_helsinki_latitude.png, id=491, 423.5022pt x 292.6935pt>
 File: pics/std_dev_helsinki_latitude.png Graphic file (type png)
 <use pics/std_dev_helsinki_latitude.png>
 Package pdftex.def Info: pics/std_dev_helsinki_latitude.png  used on input line
  313.
 (pdftex.def)             Requested size: 341.43436pt x 235.97282pt.
-[41] [42 <./pics/std_dev_helsinki_latitude.png>] [43] [44
+[44] [45 <./pics/std_dev_helsinki_latitude.png>] [46] [47
 
 ]
-<pics/geolocationmap2.png, id=486, 474.77374pt x 439.6425pt>
+<pics/geolocationmap2.png, id=523, 474.77374pt x 439.6425pt>
 File: pics/geolocationmap2.png Graphic file (type png)
 <use pics/geolocationmap2.png>
 Package pdftex.def Info: pics/geolocationmap2.png  used on input line 415.
 (pdftex.def)             Requested size: 192.0548pt x 177.83957pt.
-<pics/geolocationmap3.png, id=487, 474.77374pt x 439.6425pt>
+<pics/geolocationmap3.png, id=524, 474.77374pt x 439.6425pt>
 File: pics/geolocationmap3.png Graphic file (type png)
 <use pics/geolocationmap3.png>
 Package pdftex.def Info: pics/geolocationmap3.png  used on input line 422.
 (pdftex.def)             Requested size: 192.0548pt x 177.83957pt.
-) [45 <./pics/geolocationmap2.png> <./pics/geolocationmap3.png>] [46]
+) [48 <./pics/geolocationmap2.png> <./pics/geolocationmap3.png>] [49]
 \openout2 = `v2_angler.aux'.
 
  (./v2_angler.tex
 Chapter 5.
-[47
+[50
 
 
 
 
 ]
-<pics/halfdome.png, id=508, 373.395pt x 353.32pt>
+<pics/halfdome.png, id=544, 373.395pt x 353.32pt>
 File: pics/halfdome.png Graphic file (type png)
 <use pics/halfdome.png>
 Package pdftex.def Info: pics/halfdome.png  used on input line 15.
 (pdftex.def)             Requested size: 149.37956pt x 141.34706pt.
-<pics/polarplot.png, id=509, 443.6575pt x 440.64626pt>
+<pics/polarplot.png, id=545, 443.6575pt x 440.64626pt>
 File: pics/polarplot.png Graphic file (type png)
 <use pics/polarplot.png>
 Package pdftex.def Info: pics/polarplot.png  used on input line 22.
@@ -1014,20 +1199,20 @@ Underfull \hbox (badness 1014) in paragraph at lines 23--23
 []\T1/aer/b/n/10 (b) |\T1/aer/m/n/10 2D pro-jec-tion of the an-gle
  []
 
-[48 <./pics/halfdome.png> <./pics/polarplot.png>] [49] [50]
-<pics/measured_vs_simulated.png, id=544, 943.8462pt x 627.3036pt>
+[51 <./pics/halfdome.png> <./pics/polarplot.png>] [52] [53]
+<pics/measured_vs_simulated.png, id=581, 943.8462pt x 627.3036pt>
 File: pics/measured_vs_simulated.png Graphic file (type png)
 <use pics/measured_vs_simulated.png>
 Package pdftex.def Info: pics/measured_vs_simulated.png  used on input line 149
 .
 (pdftex.def)             Requested size: 362.77524pt x 241.10582pt.
- [51 <./pics/measured_vs_simulated.png>]
-<pics/disc5.png, id=557, 690.58pt x 681.54625pt>
+ [54 <./pics/measured_vs_simulated.png>]
+<pics/disc5.png, id=593, 690.58pt x 681.54625pt>
 File: pics/disc5.png Graphic file (type png)
 <use pics/disc5.png>
 Package pdftex.def Info: pics/disc5.png  used on input line 186.
 (pdftex.def)             Requested size: 192.0548pt x 189.5421pt.
-<pics/fibolat1.png, id=558, 690.58pt x 681.54625pt>
+<pics/fibolat1.png, id=594, 690.58pt x 681.54625pt>
 File: pics/fibolat1.png Graphic file (type png)
 <use pics/fibolat1.png>
 Package pdftex.def Info: pics/fibolat1.png  used on input line 193.
@@ -1037,8 +1222,8 @@ Underfull \hbox (badness 1824) in paragraph at lines 194--194
 []\T1/aer/b/n/10 (b) |\T1/aer/m/n/10 Fi-bonacci lattice-based dis-cretiza-tion
  []
 
-[52] [53 <./pics/disc5.png> <./pics/fibolat1.png>] [54]
-<pics/10p_fibo_fit_text.png, id=586, 383.20944pt x 309.155pt>
+[55] [56 <./pics/disc5.png> <./pics/fibolat1.png>] [57]
+<pics/10p_fibo_fit_text.png, id=622, 383.20944pt x 309.155pt>
 File: pics/10p_fibo_fit_text.png Graphic file (type png)
 <use pics/10p_fibo_fit_text.png>
 Package pdftex.def Info: pics/10p_fibo_fit_text.png  used on input line 231.
@@ -1047,13 +1232,13 @@ File: pics/10p_fibo_fit_text.png Graphic file (type png)
 <use pics/10p_fibo_fit_text.png>
 Package pdftex.def Info: pics/10p_fibo_fit_text.png  used on input line 231.
 (pdftex.def)             Requested size: 208.39566pt x 168.12524pt.
-<pics/10k_new_model.png, id=588, 872.25874pt x 698.61pt>
+<pics/10k_new_model.png, id=624, 872.25874pt x 698.61pt>
 File: pics/10k_new_model.png Graphic file (type png)
 <use pics/10k_new_model.png>
 Package pdftex.def Info: pics/10k_new_model.png  used on input line 260.
 (pdftex.def)             Requested size: 341.43436pt x 273.45883pt.
- [55 <./pics/10p_fibo_fit_text.png (PNG copy)>] [56 <./pics/10k_new_model.png>]
-<pics/Helsinki2018.png, id=602, 548.5293pt x 531.1845pt>
+ [58 <./pics/10p_fibo_fit_text.png (PNG copy)>] [59 <./pics/10k_new_model.png>]
+<pics/Helsinki2018.png, id=639, 548.5293pt x 531.1845pt>
 File: pics/Helsinki2018.png Graphic file (type png)
 <use pics/Helsinki2018.png>
 Package pdftex.def Info: pics/Helsinki2018.png  used on input line 370.
@@ -1062,7 +1247,7 @@ File: pics/Helsinki2018.png Graphic file (type png)
 <use pics/Helsinki2018.png>
 Package pdftex.def Info: pics/Helsinki2018.png  used on input line 370.
 (pdftex.def)             Requested size: 208.39566pt x 201.80356pt.
-<pics/Helsinki2019.png, id=603, 536.2434pt x 531.1845pt>
+<pics/Helsinki2019.png, id=640, 536.2434pt x 531.1845pt>
 File: pics/Helsinki2019.png Graphic file (type png)
 <use pics/Helsinki2019.png>
 Package pdftex.def Info: pics/Helsinki2019.png  used on input line 377.
@@ -1071,8 +1256,8 @@ File: pics/Helsinki2019.png Graphic file (type png)
 <use pics/Helsinki2019.png>
 Package pdftex.def Info: pics/Helsinki2019.png  used on input line 377.
 (pdftex.def)             Requested size: 208.39566pt x 206.43164pt.
- [57 <./pics/Helsinki2018.png> <./pics/Helsinki2019.png>]
-<pics/Kuopio2018.png, id=616, 540.5796pt x 531.1845pt>
+ [60 <./pics/Helsinki2018.png> <./pics/Helsinki2019.png>]
+<pics/Kuopio2018.png, id=652, 540.5796pt x 531.1845pt>
 File: pics/Kuopio2018.png Graphic file (type png)
 <use pics/Kuopio2018.png>
 Package pdftex.def Info: pics/Kuopio2018.png  used on input line 396.
@@ -1081,7 +1266,7 @@ File: pics/Kuopio2018.png Graphic file (type png)
 <use pics/Kuopio2018.png>
 Package pdftex.def Info: pics/Kuopio2018.png  used on input line 396.
 (pdftex.def)             Requested size: 208.39566pt x 204.77007pt.
-<pics/Kuopio2019.png, id=617, 528.2937pt x 531.1845pt>
+<pics/Kuopio2019.png, id=653, 528.2937pt x 531.1845pt>
 File: pics/Kuopio2019.png Graphic file (type png)
 <use pics/Kuopio2019.png>
 Package pdftex.def Info: pics/Kuopio2019.png  used on input line 403.
@@ -1090,36 +1275,36 @@ File: pics/Kuopio2019.png Graphic file (type png)
 <use pics/Kuopio2019.png>
 Package pdftex.def Info: pics/Kuopio2019.png  used on input line 403.
 (pdftex.def)             Requested size: 208.39566pt x 209.53593pt.
- [58 <./pics/Kuopio2018.png> <./pics/Kuopio2019.png>] [59
+ [61 <./pics/Kuopio2018.png> <./pics/Kuopio2019.png>] [62
 
 ]
-<pics/iterative_1_step.png, id=636, 706.64pt x 681.54625pt>
+<pics/iterative_1_step.png, id=672, 706.64pt x 681.54625pt>
 File: pics/iterative_1_step.png Graphic file (type png)
 <use pics/iterative_1_step.png>
 Package pdftex.def Info: pics/iterative_1_step.png  used on input line 442.
 (pdftex.def)             Requested size: 192.0548pt x 185.2367pt.
-<pics/iterative_6_step.png, id=637, 706.64pt x 681.54625pt>
+<pics/iterative_6_step.png, id=673, 706.64pt x 681.54625pt>
 File: pics/iterative_6_step.png Graphic file (type png)
 <use pics/iterative_6_step.png>
 Package pdftex.def Info: pics/iterative_6_step.png  used on input line 449.
 (pdftex.def)             Requested size: 192.0548pt x 185.2367pt.
- [60 <./pics/iterative_1_step.png> <./pics/iterative_6_step.png>]
-[61]
-<pics/iterative_multiday_helsinki.png, id=659, 709.65125pt x 689.57625pt>
+ [63 <./pics/iterative_1_step.png> <./pics/iterative_6_step.png>]
+[64]
+<pics/iterative_multiday_helsinki.png, id=696, 709.65125pt x 689.57625pt>
 File: pics/iterative_multiday_helsinki.png Graphic file (type png)
 <use pics/iterative_multiday_helsinki.png>
 Package pdftex.def Info: pics/iterative_multiday_helsinki.png  used on input li
 ne 512.
 (pdftex.def)             Requested size: 192.0548pt x 186.61948pt.
-<pics/iterative_multiday_kuopio.png, id=660, 709.65125pt x 689.57625pt>
+<pics/iterative_multiday_kuopio.png, id=697, 709.65125pt x 689.57625pt>
 File: pics/iterative_multiday_kuopio.png Graphic file (type png)
 <use pics/iterative_multiday_kuopio.png>
 Package pdftex.def Info: pics/iterative_multiday_kuopio.png  used on input line
  519.
 (pdftex.def)             Requested size: 192.0548pt x 186.61948pt.
- [62 <./pics/iterative_multiday_helsinki.png> <./pics/iterative_multiday_kuopio
+ [65 <./pics/iterative_multiday_helsinki.png> <./pics/iterative_multiday_kuopio
 .png>]
-<pics/measured_vs_simulated_vs_estimated.png, id=672, 945.5325pt x 573.14125pt>
+<pics/measured_vs_simulated_vs_estimated.png, id=709, 945.5325pt x 573.14125pt>
 
 File: pics/measured_vs_simulated_vs_estimated.png Graphic file (type png)
 <use pics/measured_vs_simulated_vs_estimated.png>
@@ -1130,7 +1315,7 @@ nput line 563.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<pics/measured_vs_simulated_vs_kuopio.png, id=673, 913.4125pt x 567.11874pt>
+<pics/measured_vs_simulated_vs_kuopio.png, id=710, 913.4125pt x 567.11874pt>
 File: pics/measured_vs_simulated_vs_kuopio.png Graphic file (type png)
 <use pics/measured_vs_simulated_vs_kuopio.png>
 Package pdftex.def Info: pics/measured_vs_simulated_vs_kuopio.png  used on inpu
@@ -1139,17 +1324,17 @@ t line 570.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[63]
+[66]
 
-LaTeX Warning: Text page 64 contains only floats.
+LaTeX Warning: Text page 67 contains only floats.
 
-[64 <./pics/measured_vs_simulated_vs_estimated.png> <./pics/measured_vs_simulat
-ed_vs_kuopio.png>]) [65]
+[67 <./pics/measured_vs_simulated_vs_estimated.png> <./pics/measured_vs_simulat
+ed_vs_kuopio.png>]) [68]
 \openout2 = `v2_remarks.aux'.
 
  (./v2_remarks.tex
 Chapter 6.
-) [66
+) [69
 
 
 
@@ -1159,7 +1344,7 @@ Chapter 6.
 
  (./v2_appendix.tex
 Appendix defined ...
-) [67
+) [70
 
 
 
@@ -1217,7 +1402,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--44
 adiance /
  []
 
-[68
+[71
 
 
 
@@ -1233,25 +1418,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--83
 []6b593cc05b42$[][]
  []
 
-) [69] (./thesis_v2_base.aux (./thesis_front.aux) (./thesis_abs.aux)
+) [72
+runsystem(makeindex -s thesis_v2_base.ist -t thesis_v2_base.glg -o thesis_v2_ba
+se.gls thesis_v2_base.glo)...executed safely (allowed).
+
+runsystem(makeindex -s thesis_v2_base.ist -t thesis_v2_base.alg -o thesis_v2_ba
+se.acr thesis_v2_base.acn)...executed safely (allowed).
+
+] (./thesis_v2_base.aux (./thesis_front.aux) (./thesis_abs.aux)
 (./thesis_preface.aux) (./v2_introduction.aux) (./v2_datasets.aux)
 (./v2_tools.aux) (./v2_geolocator.aux) (./v2_angler.aux) (./v2_remarks.aux)
 (./v2_appendix.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 19984 strings out of 480204
- 320295 string characters out of 5895010
- 745149 words of memory out of 5000000
- 37219 multiletter control sequences out of 15000+600000
+ 29068 strings out of 480204
+ 504827 string characters out of 5895010
+ 1004376 words of memory out of 5000000
+ 46152 multiletter control sequences out of 15000+600000
  519111 words of font info for 122 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 74i,17n,77p,1264b,2550s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 91i,17n,91p,1264b,2550s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dis
@@ -1267,9 +1456,9 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfrm1200.pfb>
-Output written on thesis_v2_base.pdf (73 pages, 7945306 bytes).
+Output written on thesis_v2_base.pdf (75 pages, 7954005 bytes).
 PDF statistics:
- 982 PDF objects out of 1000 (max. 8388607)
- 244 named destinations out of 1000 (max. 500000)
+ 1022 PDF objects out of 1200 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
  568 words of extra memory for PDF output out of 10000 (max. 10000000)
 

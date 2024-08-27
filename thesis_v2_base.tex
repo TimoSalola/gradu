@@ -22,6 +22,9 @@
 \usepackage{tabularx}
 \usepackage{longtable} % for table header multicolumn
 
+\usepackage[acronym]{glossaries} % TESTING 27.08.2024
+\usepackage[automake]{glossaries-extra}
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -48,8 +51,6 @@
 
 
 
-
-
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=red,urlcolor=blue,breaklinks=true}
 %
 %
@@ -70,8 +71,6 @@
   {\end{tabular}\par\vspace{\belowdisplayskip}}
 
 
-
-
 \usepackage{floatrow}
 % Table float box with bottom caption, box width adjusted to content
 \newfloatcommand{capbtabbox}{table}[][\FBwidth]
@@ -81,8 +80,106 @@
 \DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
 
 
+% ###########################################################
+
+\usepackage{glossaries}
+
+\makeglossaries
 
 
+
+\newglossaryentry{albedo}
+{
+        name=Albedo,
+        description={In PV context albedo refers to the fraction of sunlight relfected by a surface. Ground albedo near PV site can be used for estimating how ground reflections contribute to PV system output}
+}
+
+\newglossaryentry{inverter}
+{
+        name=Inverter,
+        description={Electronic device used for transforming direct current to alternating current. Often used with PV installations}
+}
+
+
+\newglossaryentry{tilt}
+{
+        name=Tilt,
+        description={One of the two panel angle components. Measured in degrees. Tilt of a solar where the panel normal vector is pointing directly up would be 0$^\circ$ and towards the horizon would be 90$^\circ$}
+}
+
+\newglossaryentry{azimuth}
+{
+        name=Azimuth,
+        description={One of the two panel angle components. Measured in degrees, zero point is north and rotation is measured clockwise}
+}
+
+\newglossaryentry{nominal capacity}
+{
+        name=Nominal capacity,
+        description={Expected system output when panels are receiving 1000W/m$^2$ and panel temperature is 25$^\circ$C}
+}
+
+
+\newglossaryentry{pv}
+{
+        name=PV,
+        description={Photovoltaic. Refers to solar power technology which uses semiconductors with photovoltaic effect for electricity generation}
+}
+
+\newglossaryentry{AOI}
+{
+        name=AOI,
+        description={Angle of incidence. In PV context this is usually the angle between solar panel normal vector and a vector which represents incoming radiation}
+}
+
+\newglossaryentry{POA}
+{
+        name=POA,
+        description={Plane of array. In PV context this refers to a 1m$^2$ surface which has equal tilt and azimuth angles as a PV panel installation}
+}
+
+\newglossaryentry{DNI}
+{
+        name=DNI,
+        description={Direct Normal Irradiance. Irradiance in Watts per m$^2$ surface with AOI of 0$^\circ$}
+}
+
+\newglossaryentry{DHI}
+{
+        name=DHI,
+        description={Diffuse Horizontal Irradiance. Irradiance per 1m$^2$ of shaded surface with tilt of 0$^\circ$. Can be measured with a pyranometer with a solar tracker which blocks direct sunlight}
+}
+
+\newglossaryentry{GHI}
+{
+        name=GHI,
+        description={Global Horizontal Irradiance. Irradiance per 1m/$^2$ surface with tilt of 0$^\circ$. Can be measured with a pyranometer}
+}
+
+\newglossaryentry{irradiance}
+{
+        name=Irradiance,
+        description={Radiation per unit of surface area, W/$m^2$}
+}
+
+\newglossaryentry{solar noon}
+{
+        name=Solar noon,
+        description={In this thesis solar noon is defined as the daily midpoint between sunset and sunrise. This midpoint is easier to measure than the point in time during which Sun crosses the local meridian which is the official definition of the solar noon}
+}
+
+\newglossaryentry{cloud free day}
+{
+        name=Cloud free day,
+        description={Day during which the PV system is producing power and clouds do not influence PV production enough for the incluence to be noticeable. Note that clouds may still be present}
+}
+
+
+
+
+
+
+% ###########################################################
 
 \begin{document}
 
@@ -101,6 +198,8 @@
 \include{thesis_front}
 \newpage
 \include{thesis_abs}
+
+
 %
 \newpage                     % (Un)comment these lines depending on if you have or not have a preface
 \include{thesis_preface}     %
@@ -110,10 +209,14 @@
 \bookmark[dest=contentpage]{Contents}
 \tableofcontents
 %
-\newpage
 \setcounter{page}{0}
 \pagenumbering{arabic}
 %
+
+\glsaddall
+
+\printglossary[type=main,style=long,nonumberlist]
+
 
 % ############################## INCLUDES HERE
 \include{v2_introduction}
@@ -136,4 +239,8 @@
 %
 %\include{thesis_app} % If there are no appendices, remove this line.
 %
+
+
+
+
 \end{document}

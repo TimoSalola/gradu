@@ -1,44 +1,44 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Installations and datasets}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Simple solar PV model}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Visualizing the data}{7}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Clear day detection algorithm}{9}{section.2.3}%
-\contentsline {chapter}{\numberline {3}PV output simulation}{12}{chapter.3}%
-\contentsline {section}{\numberline {3.1}PVlib POA evaluation}{13}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Influence of different longitudes}{17}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Influence of different latitudes}{18}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Increasing the accuracy of solar PV simulations}{19}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Improved PV model}{21}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Panel surface transpositions}{22}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Reflection estimation}{23}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Absorbed irradiance}{24}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Panel temperature estimation}{25}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Output estimation}{26}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Model improvement results}{27}{subsection.3.2.7}%
-\contentsline {chapter}{\numberline {4}Estimating geographic location}{29}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Estimating geographic longitude}{31}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Longitude estimation results}{35}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Possible issues and further development ideas}{36}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Estimating geographic latitude}{39}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Latitude algorithm}{39}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Improving latitude prediction algorithm}{40}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Latitude estimation results}{42}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Possible issues and further development ideas}{44}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}Combined latitude and longitude estimations}{45}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Estimating panel angles}{47}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Prediction error function}{48}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Simulation fitness function}{51}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Angle space discretization}{52}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Importance of lattice density}{54}{subsection.5.3.1}%
-\contentsline {section}{\numberline {5.4}Solving panel angles}{55}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Solving panel angles iteratively}{59}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Local lattice generation}{60}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Results}{62}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Choosing between exhaustive and iterative angle estimation methods}{63}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}Further development ideas}{65}{subsection.5.5.4}%
-\contentsline {chapter}{\numberline {6}Conclusion}{66}{chapter.6}%
-\contentsline {chapter}{Appendix}{67}{chapter.6}%
-\contentsline {section}{\numberline {.1}Source code}{67}{section.Alph0.1}%
-\contentsline {section}{\numberline {.2}Data files}{67}{section.Alph0.2}%
-\contentsline {chapter}{References}{68}{section*.47}%
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Installations and datasets}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Simple solar PV model}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Visualizing the data}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Clear day detection algorithm}{12}{section.2.3}%
+\contentsline {chapter}{\numberline {3}PV output simulation}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}PVlib POA evaluation}{16}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Influence of different longitudes}{20}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Influence of different latitudes}{21}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Increasing the accuracy of solar PV simulations}{22}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Improved PV model}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Panel surface transpositions}{25}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Reflection estimation}{26}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Absorbed irradiance}{27}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Panel temperature estimation}{28}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Output estimation}{29}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Model improvement results}{30}{subsection.3.2.7}%
+\contentsline {chapter}{\numberline {4}Estimating geographic location}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Estimating geographic longitude}{34}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Longitude estimation results}{38}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Possible issues and further development ideas}{39}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Estimating geographic latitude}{42}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Latitude algorithm}{42}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Improving latitude prediction algorithm}{43}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Latitude estimation results}{45}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Possible issues and further development ideas}{47}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Combined latitude and longitude estimations}{48}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Estimating panel angles}{50}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Prediction error function}{51}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Simulation fitness function}{54}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Angle space discretization}{55}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Importance of lattice density}{57}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Solving panel angles}{58}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Solving panel angles iteratively}{62}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Local lattice generation}{63}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Results}{65}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Choosing between exhaustive and iterative angle estimation methods}{66}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Further development ideas}{68}{subsection.5.5.4}%
+\contentsline {chapter}{\numberline {6}Conclusion}{69}{chapter.6}%
+\contentsline {chapter}{Appendix}{70}{chapter.6}%
+\contentsline {section}{\numberline {.1}Source code}{70}{section.Alph0.1}%
+\contentsline {section}{\numberline {.2}Data files}{70}{section.Alph0.2}%
+\contentsline {chapter}{References}{71}{section*.49}%

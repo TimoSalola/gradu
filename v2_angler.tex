@@ -421,8 +421,8 @@ Second requirement is that the fitness space should contain as few convergence p
 \noindent \textbf{Iterative panel angle estimation algorithm}
 \begin{enumerate}
 	\item Choose a cloud free day from the dataset for evaluation.
-  \item Choose a starting or "center" point from the angle space. This can be either the best result from a low density lattice or a fixed point such as tilt 45$^\circ$ azimuth 180$^\circ$.
-  \item Evaluate the fitness at the center point and store that as the center point fitness.
+  \item Choose a starting point for the iterative algorithm from the angle space. This can be either the best result from a low density lattice or a fixed point such as tilt 45$^\circ$ azimuth 180$^\circ$.
+  \item Evaluate the fitness at the starting point and store that as the center point fitness.
   \item Choose a few points near this center point within a given distance and evaluate their fitness. If any of the neighboring points results in a better fit than the center point, this point will then be chosen as the new center point.
   \item Repeat steps 3 and 4 until step 4 does not find a better fit. When this happens, decrease the distance used for the local lattice in step 4.
   \item Repeat steps 3,4 and 5 for a set number of times. Last center point is the best iteratively found fit.
